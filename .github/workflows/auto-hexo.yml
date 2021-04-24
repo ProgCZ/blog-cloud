@@ -1,0 +1,51 @@
+name: Auto Hexo
+on: push
+jobs:
+  Worker:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Setup Node
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Checkout source
+      uses: actions/checkout@v2
+      with:
+        ref: source
+        path: 'blog-source-ws'
+
+    - name: Setup Hexo
+      run: |
+        npm install -g hexo-cli@4.2.0
+        cd blog-source-ws
+        npm install
+
+    - name: Checkout master
+      uses: actions/checkout@v2
+      with:
+        ref: master
+        path: 'blog-source-ws/public'
+
+    - name: Regenerate and Deploy
+      run: |
+        export TZ='Asia/Shanghai'
+        cd blog-source-ws/public
+        ls -a | egrep -v '^\.{1,2}$' | egrep -v .git | xargs rm -rf
+        cd ..
+        hexo g
+        cd public
+        git config --local user.name "ProgCZ"
+        git config --local user.email "zhaozengzhi1995@163.com"
+        git add -A
+        git commit -m "update at `date '+%Y-%m-%d %H:%M:%S'`"
+        git push origin master
+
+    - name: Sleep
+      run: |
+        sleep 30
+
+    - name: Ping Google
+      uses: wei/curl@v1
+      with:
+        args: http://www.google.com/ping?sitemap=https://progcz.com/sitemap.xml
