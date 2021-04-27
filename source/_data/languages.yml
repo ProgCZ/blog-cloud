@@ -1,0 +1,10 @@
+zh-CN:
+  counter:
+    archive_posts:
+      zero: 暂无文章。
+      one: 目前共计 1 篇文章。
+      other: "目前共计 %d 篇文章。"
+  state:
+    posts: 文章
+  search:
+    placeholder: 搜索一下

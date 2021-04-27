@@ -1,0 +1,50 @@
+<script>
+
+function whenDOMReady() {
+  /* 替换站点标题中不规范的部分 */
+  const titleReplaceMap = new Map([
+    [/([^\w\d\s])?(:\s)+/g, '$1：'], // 将中文语句中的「英文冒号+空格」替换为「中文冒号」
+  ]);
+  for (let [key, value] of titleReplaceMap) {
+    document.title = document.title.replaceAll(key, value);
+  }
+
+  /* 替换归档页面中不规范的部分 */
+  const collectionHeaderReplaceMap = new Map([
+    [/.*(目前共计[\d\s]*篇文章).*/g, '$1'], // 将归档页面上方的提示语简化为「目前共计[\d\s]*篇文章」
+  ]);
+  let collectionHeader = document.getElementsByClassName("collection-header");
+  for (let i = 0; i < collectionHeader.length; i++) {
+    for (let [key, value] of collectionHeaderReplaceMap) {
+      collectionHeader[i].innerHTML = collectionHeader[i].innerHTML.replaceAll(key, value);
+    }
+  }
+
+  /* 替换文章信息中不规范的部分 */
+  const postMetaReplaceMap = new Map([
+    [/，/g, '>'], // 将分类之间的分隔符「中文逗号」替换为「大于号」
+  ]);
+  let postMeta = document.getElementsByClassName("post-meta");
+  for (let i = 0; i < postMeta.length; i++) {
+    for (let [key, value] of postMetaReplaceMap) {
+      postMeta[i].innerHTML = postMeta[i].innerHTML.replaceAll(key, value);
+    }
+  }
+
+  /* 替换页脚中不规范的部分 */
+  const copyrightReplaceMap = new Map([
+    [/© /g, '<span class="with-love"><i class="fa fa-copyright"></i> </span>'], // 将版权符号替换为 fa
+    [/fa /g, 'far '], // 将 fa 替换为 far
+  ]);
+  let copyright = document.getElementsByClassName("copyright");
+  for (let i = 0; i < copyright.length; i++) {
+    for (let [key, value] of copyrightReplaceMap) {
+      copyright[i].innerHTML = copyright[i].innerHTML.replaceAll(key, value);
+    }
+  }
+};
+whenDOMReady();
+var pjax = new Pjax();
+document.addEventListener("pjax:send", whenDOMReady);
+
+</script>
