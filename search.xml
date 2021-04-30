@@ -2389,4 +2389,79 @@
         <tag>Divide and Conquer</tag>
       </tags>
   </entry>
+  <entry>
+    <title>谈谈 Hexo 的主题现状以及我对 NexT 的细节改造</title>
+    <url>/posts/1619784301/</url>
+    <content><![CDATA[<p>上次发文还是三月初，中间停更了这么久，主要原因在于，之前我对主题源码进行了侵入式的改造，难以升级享受最新的版本特性，于是我就想要重建这个博客站点，兼顾可升级和可改造。</p>
+<p>那我就想，既然要重建，何不换个主题试一下？果然，试试就逝世。</p>
+<span id="more"></span>
+
+<h2 id="1-Hexo-主题"><a href="#1-Hexo-主题" class="headerlink" title="1 Hexo 主题"></a>1 Hexo 主题</h2><p>在静态博客框架中，Hexo 向来是最受青睐的选择，没有之一。</p>
+<p>Jekyll 作为 GitHub 官方支持的框架，可以直接托管源码而无需手动生成静态网页，Hugo 借助 Go 语言的性能优势，号称全世界最快的框架，然而这两者都有一点远落后于 Hexo，那就是最为关键的<strong>主题生态</strong>。</p>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/04/01.png"></div><div class="group-picture-column"><img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/04/02.png"></div></div></div>
+
+<p>作为一个想搭博客的人来说，审美能对自己胃口才是头等大事，所以主题生态只有枝繁叶茂才能留住众口难调的用户。</p>
+<p>Hexo 使用 Node.js 开发，从语言层面上就吸引了大批优秀的前端工程师，精美主题可以说是层出不穷。</p>
+<p>当然再好的主题也必然有令人不甚满意的地方，这里就把 Butterfly 单拎出来说说问题。</p>
+<h3 id="1-1-Butterfly"><a href="#1-1-Butterfly" class="headerlink" title="1.1 Butterfly"></a>1.1 <a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></h3><p><img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/04/03.png"></p>
+<p>简洁好看，尤其是首屏的视觉效果，足够吸引眼球。这也是我刚开始重建的第一选择。</p>
+<p>但是这个主题，说得严重一点，「金玉其外，败絮其中。」</p>
+<p>我相信，任何用过 Butterfly 的人，一定会被 <code>_config.butterfly.yml</code> 中混乱的配置给搞得心烦意乱，举个栗子：</p>
+<p>配置中有一段是关于网站默认的展示模式，可以选择明亮/暗黑：</p>
+<figure class="highlight yaml"><figcaption><span>code</span><a href="https://github.com/jerryc127/hexo-theme-butterfly/blob/dev/_config.yml">_config.yml</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Default display mode (網站默認的顯示模式)</span></span><br><span class="line"><span class="comment"># light (default) / dark</span></span><br><span class="line"><span class="attr">display_mode:</span> <span class="string">light</span></span><br></pre></td></tr></table></figure>
+
+<p>然而在后面又出现了一段是关于暗黑模式，可以选择是否开启：</p>
+<figure class="highlight yaml"><figcaption><span>code</span><a href="https://github.com/jerryc127/hexo-theme-butterfly/blob/dev/_config.yml">_config.yml</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># dark mode</span></span><br><span class="line"><span class="attr">darkmode:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># Toggle Button to switch dark/light mode</span></span><br><span class="line">    <span class="attr">button:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># Switch dark/light mode automatically (自動切換 dark mode和 light mode)</span></span><br><span class="line">    <span class="comment"># autoChangeMode: 1  Following System Settings, if the system doesn&#x27;t support dark mode, it will switch dark mode between 6 pm to 6 am</span></span><br><span class="line">    <span class="comment"># autoChangeMode: 2  Switch dark mode between 6 pm to 6 am</span></span><br><span class="line">    <span class="comment"># autoChangeMode: false</span></span><br><span class="line">    <span class="attr">autoChangeMode:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>这让我不禁想问：如果我在前面选了默认明亮模式，后面又选了开启暗黑模式，那主题到底是展现哪一种？只有试过之后才能知道，无疑增加了理解成本。</p>
+<p>类似的问题还有很多，就不赘述了。总之这个配置文件折磨了我很久，最终不得不放弃。</p>
+<div class="note warning"><p>不管怎样，我还是很尊重主题作者的，提供免费开源的主题给大家用，本身就非常值得敬佩。但还是那句话，「若批评不自由，则赞美无意义。」</p>
+<p><del>而且感觉主题作者是个暴躁老哥，惹不太起。</del></p>
+</div>
+
+<h2 id="2-NexT-改造"><a href="#2-NexT-改造" class="headerlink" title="2 NexT 改造"></a>2 NexT 改造</h2><p>当然，我换过不止 Butterfly 一个主题，然而其他主题即便没有混乱的配置文件，也存在大量优化不到位的细节，所以兜兜转转又回到了 NexT 的怀抱。</p>
+<h3 id="2-1-基本配置"><a href="#2-1-基本配置" class="headerlink" title="2.1 基本配置"></a>2.1 基本配置</h3><p><code>_config.yml</code> 和 <code>_config.next.yml</code> 中的配置基本都体现在 <a href="https://github.com/ProgCZ/progcz.github.io/commit/f3cdd681835389803f187024e06124960f48d251">commit f3cdd68</a> 中，不再赘述。</p>
+<h3 id="2-2-特殊改造"><a href="#2-2-特殊改造" class="headerlink" title="2.2 特殊改造"></a>2.2 特殊改造</h3><p>特殊改造基本都体现在 <a href="https://github.com/ProgCZ/progcz.github.io/commit/3d56b383f78c1b260edb668ff7ed8e0d6f5232fd">commit 3d56b38</a> 中，没有污染博客源码，只是通过自定义的 js 和 css 来实现。</p>
+<ol>
+<li><p>替换站点标题中不规范的部分</p>
+<p> 如果足够细心的话，你就会发现，在每个分类页面中，标题中的冒号都是英文冒号，不符合中文排版规范：</p>
+<p> <img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/04/04.png"></p>
+<p> 替换后：</p>
+<p> <img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/04/05.png"></p>
+</li>
+<li><p>替换归档页面中不规范的部分</p>
+<p> 归档页面中，表达冗余，且英文叹号也不符合中文排版规范：</p>
+<p> <img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/04/06.png"></p>
+<p> 替换后：</p>
+<p> <img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/04/07.png"></p>
+</li>
+<li><p>替换文章信息中不规范的部分</p>
+<p> 这个单纯是我看中文逗号不顺眼，不能表达分类之间的层级关系：</p>
+<p> <img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/04/08.png"></p>
+<p> 替换后：</p>
+<p> <img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/04/09.png"></p>
+</li>
+<li><p>替换页脚中不规范的部分</p>
+<p> 这个也单纯是我看 copyright 字符不顺眼，有点矮：</p>
+<p> <img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/04/10.png"></p>
+<p> 替换后：</p>
+<p> <img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/04/11.png"></p>
+</li>
+<li><p>动画速度调整至 0.3s</p>
+ <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.animated</span> &#123;</span><br><span class="line">    <span class="attribute">animation-duration</span>: <span class="number">0.3s</span> <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>侧边栏字体从 <code>font-size-smaller</code> 调大至 <code>font-size-small</code></p>
+ <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.menu-item</span> &#123;</span><br><span class="line">    <span class="selector-tag">a</span> &#123;</span><br><span class="line">        <span class="attribute">font-size</span>: $font-size-small;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.links-of-author</span> &#123;</span><br><span class="line">    <span class="selector-tag">a</span> &#123;</span><br><span class="line">        <span class="attribute">font-size</span>: $font-size-small;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.site-state-item-name</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: $font-size-small;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="3-后记"><a href="#3-后记" class="headerlink" title="3 后记"></a>3 后记</h2><p>折腾告一段落，静下心来好好写些文章吧。</p>
+]]></content>
+      <categories>
+        <category>A01 - 生活随笔</category>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>Blog</tag>
+        <tag>Hexo</tag>
+        <tag>NexT</tag>
+      </tags>
+  </entry>
 </search>
