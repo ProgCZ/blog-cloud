@@ -1,7 +1,7 @@
 ---
 title:   LeetCode Weekly Contest 188 (1441 - 1444)
 date:    2020-05-10 15:14:53
-updated:
+updated: 2020-05-10 15:14:53
 categories:
     - A03 - LeetCode
     - LeetCode Weekly Contest

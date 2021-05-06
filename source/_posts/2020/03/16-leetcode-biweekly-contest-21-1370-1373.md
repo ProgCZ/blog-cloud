@@ -1,7 +1,7 @@
 ---
 title:   LeetCode Biweekly Contest 21 (1370 - 1373)
 date:    2020-03-16 10:24:00
-updated:
+updated: 2020-03-16 10:24:00
 categories:
     - A03 - LeetCode
     - LeetCode Biweekly Contest

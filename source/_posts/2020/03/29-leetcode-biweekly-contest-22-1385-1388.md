@@ -1,7 +1,7 @@
 ---
 title:   LeetCode Biweekly Contest 22 (1385 - 1388)
 date:    2020-03-29 10:24:00
-updated:
+updated: 2020-03-29 10:24:00
 categories:
     - A03 - LeetCode
     - LeetCode Biweekly Contest

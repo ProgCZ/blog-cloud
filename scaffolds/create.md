@@ -1,6 +1,7 @@
 ---
-title: [TITLE]
-date: [DATE]
+title:   [TITLE]
+date:    [DATE]
+updated: [DATE]
 categories:
     - [UNCAT]
 tags:

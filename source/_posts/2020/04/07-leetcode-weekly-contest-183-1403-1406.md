@@ -1,7 +1,7 @@
 ---
 title:   LeetCode Weekly Contest 183 (1403 - 1406)
 date:    2020-04-07 10:24:00
-updated:
+updated: 2020-04-07 10:24:00
 categories:
     - A03 - LeetCode
     - LeetCode Weekly Contest

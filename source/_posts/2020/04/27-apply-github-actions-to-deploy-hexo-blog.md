@@ -1,7 +1,7 @@
 ---
 title:   使用 GitHub Actions 实现 Hexo 博客的自动部署
 date:    2020-04-27 13:09:33
-updated:
+updated: 2020-04-27 13:09:33
 categories:
     - A01 - 生活随笔
     - 折腾

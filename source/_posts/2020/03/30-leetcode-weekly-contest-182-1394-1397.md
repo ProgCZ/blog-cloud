@@ -1,7 +1,7 @@
 ---
 title:   LeetCode Weekly Contest 182 (1394 - 1397)
 date:    2020-03-30 10:24:00
-updated:
+updated: 2020-03-30 10:24:00
 categories:
     - A03 - LeetCode
     - LeetCode Weekly Contest

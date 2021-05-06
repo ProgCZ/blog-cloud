@@ -1,7 +1,7 @@
 ---
 title:   记录使用 IFTTT + Telegram 订阅 RSS 的推送模板
 date:    2020-05-24 18:30:11
-updated:
+updated: 2020-05-24 18:30:11
 categories:
     - A01 - 生活随笔
     - 折腾

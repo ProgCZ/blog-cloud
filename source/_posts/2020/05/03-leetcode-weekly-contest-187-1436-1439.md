@@ -1,7 +1,7 @@
 ---
 title:   LeetCode Weekly Contest 187 (1436 - 1439)
 date:    2020-05-03 15:23:13
-updated:
+updated: 2020-05-03 15:23:13
 categories:
     - A03 - LeetCode
     - LeetCode Weekly Contest

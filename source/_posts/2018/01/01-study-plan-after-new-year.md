@@ -1,7 +1,7 @@
 ---
 title:   新年后的学习规划
 date:    2018-01-01 08:00:00
-updated:
+updated: 2018-01-01 08:00:00
 categories:
     - A00 - 总结与计划
 tags:

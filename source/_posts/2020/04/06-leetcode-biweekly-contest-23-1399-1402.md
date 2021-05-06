@@ -1,7 +1,7 @@
 ---
 title:   LeetCode Biweekly Contest 23 (1399 - 1402)
 date:    2020-04-06 10:24:00
-updated:
+updated: 2020-04-06 10:24:00
 categories:
     - A03 - LeetCode
     - LeetCode Biweekly Contest

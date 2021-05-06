@@ -1,7 +1,7 @@
 ---
 title:   LeetCode Biweekly Contest 25 (1431 - 1434)
 date:    2020-05-08 11:34:43
-updated:
+updated: 2020-05-08 11:34:43
 categories:
     - A03 - LeetCode
     - LeetCode Biweekly Contest
