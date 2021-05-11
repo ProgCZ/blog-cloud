@@ -2186,6 +2186,50 @@
       </tags>
   </entry>
   <entry>
+    <title>LeetCode Problem 2 - Add Two Numbers</title>
+    <url>/posts/leetcode-problem-add-two-numbers/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.com/problems/add-two-numbers/">https://leetcode.com/problems/add-two-numbers/</a></p>
+<h3 id="大意"><a href="#大意" class="headerlink" title="大意"></a>大意</h3><p>将两个数字的每一位，逆序地拆成两个链表 <code>l1</code> 和 <code>l2</code>，计算这两个数字的和，结果以同样顺序的链表表示。</p>
+<span id="more"></span>
+
+<h2 id="解法一：递归"><a href="#解法一：递归" class="headerlink" title="解法一：递归"></a>解法一：递归</h2><p>递归遍历两个输入链表，对应节点相加，<code>%10</code> 的值存入输出链表的对应节点，<code>/10</code> 的值存入输出链表的下一节点。</p>
+<p>边界条件：两个输入链表的对应节点都为空指针。</p>
+<div class="note info"><p>在边界条件下，需要根据下一节点的值是否为 0 而决定是否抛弃该下一节点。为了实现这一点，同时保持代码的 <code>neat</code> 性，传入递归函数的输出链表的对应节点，需要自带下一节点，这就是 C++ 实现中 <code>new ListNode(0, new ListNode(0))</code> 的由来。</p>
+</div>
+
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><p>空间：<code>O(n)</code></p>
+</li>
+<li><p>时间：<code>O(n)</code></p>
+</li>
+</ul>
+<h3 id="C-实现"><a href="#C-实现" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* root = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>, <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>));</span><br><span class="line">        <span class="built_in">helper</span>(l1, l2, root);</span><br><span class="line">        <span class="keyword">return</span> root-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(ListNode* l1, ListNode* l2, ListNode* node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!l1 &amp;&amp; !l2) &#123;</span><br><span class="line">            node-&gt;next = node-&gt;next-&gt;val ? node-&gt;next : <span class="literal">nullptr</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">        node = node-&gt;next;</span><br><span class="line">        <span class="keyword">int</span> sum = node-&gt;val +</span><br><span class="line">            (l1 ? l1-&gt;val : <span class="number">0</span>) + (l2 ? l2-&gt;val : <span class="number">0</span>);</span><br><span class="line">        node-&gt;val = sum % <span class="number">10</span>;</span><br><span class="line">        node-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(sum/<span class="number">10</span>);</span><br><span class="line">        l1 = l1 ? l1-&gt;next : <span class="literal">nullptr</span>;</span><br><span class="line">        l2 = l2 ? l2-&gt;next : <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">helper</span>(l1, l2, node);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解法二：循环"><a href="#解法二：循环" class="headerlink" title="解法二：循环"></a>解法二：循环</h2><p>思路基本上与<a href="#%E8%A7%A3%E6%B3%95%E4%B8%80%EF%BC%9A%E9%80%92%E5%BD%92">解法一</a>保持一致，只是将递归形式改为循环形式，同时写法上更加 neat。</p>
+<blockquote>
+<p>参考：<a href="https://leetcode.com/problems/add-two-numbers/discuss/997/c++-Sharing-my-11-line-c++-solution-can-someone-make-it-even-more-concise">https://leetcode.com/problems/add-two-numbers/discuss/997/c++-Sharing-my-11-line-c++-solution-can-someone-make-it-even-more-concise</a></p>
+</blockquote>
+<h3 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><p>空间：<code>O(n)</code></p>
+</li>
+<li><p>时间：<code>O(n)</code></p>
+</li>
+</ul>
+<h3 id="C-实现-1"><a href="#C-实现-1" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode root(0), *node = &amp;root;</span><br><span class="line">        <span class="keyword">int</span> extra = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (l1 || l2 || extra) &#123;</span><br><span class="line">            <span class="keyword">int</span> sum = extra + </span><br><span class="line">                (l1 ? l1-&gt;val : <span class="number">0</span>) + (l2 ? l2-&gt;val : <span class="number">0</span>);</span><br><span class="line">            extra = sum/<span class="number">10</span>;</span><br><span class="line">            node-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(sum%<span class="number">10</span>);</span><br><span class="line">            node = node-&gt;next;</span><br><span class="line">            l1 = l1 ? l1-&gt;next : l1;</span><br><span class="line">            l2 = l2 ? l2-&gt;next : l2;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>A03 - LeetCode</category>
+        <category>LeetCode Problems</category>
+      </categories>
+      <tags>
+        <tag>CPP</tag>
+        <tag>LeetCode</tag>
+        <tag>Linked List</tag>
+        <tag>Math</tag>
+        <tag>Recursion</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetCode Problem 1 - Two Sum</title>
     <url>/posts/leetcode-problem-two-sum/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.com/problems/two-sum/">https://leetcode.com/problems/two-sum/</a></p>
@@ -2243,50 +2287,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LeetCode Problem 2 - Add Two Numbers</title>
-    <url>/posts/leetcode-problem-add-two-numbers/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.com/problems/add-two-numbers/">https://leetcode.com/problems/add-two-numbers/</a></p>
-<h3 id="大意"><a href="#大意" class="headerlink" title="大意"></a>大意</h3><p>将两个数字的每一位，逆序地拆成两个链表 <code>l1</code> 和 <code>l2</code>，计算这两个数字的和，结果以同样顺序的链表表示。</p>
-<span id="more"></span>
-
-<h2 id="解法一：递归"><a href="#解法一：递归" class="headerlink" title="解法一：递归"></a>解法一：递归</h2><p>递归遍历两个输入链表，对应节点相加，<code>%10</code> 的值存入输出链表的对应节点，<code>/10</code> 的值存入输出链表的下一节点。</p>
-<p>边界条件：两个输入链表的对应节点都为空指针。</p>
-<div class="note info"><p>在边界条件下，需要根据下一节点的值是否为 0 而决定是否抛弃该下一节点。为了实现这一点，同时保持代码的 <code>neat</code> 性，传入递归函数的输出链表的对应节点，需要自带下一节点，这就是 C++ 实现中 <code>new ListNode(0, new ListNode(0))</code> 的由来。</p>
-</div>
-
-<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
-<li><p>空间：<code>O(n)</code></p>
-</li>
-<li><p>时间：<code>O(n)</code></p>
-</li>
-</ul>
-<h3 id="C-实现"><a href="#C-实现" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* root = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>, <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>));</span><br><span class="line">        <span class="built_in">helper</span>(l1, l2, root);</span><br><span class="line">        <span class="keyword">return</span> root-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(ListNode* l1, ListNode* l2, ListNode* node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!l1 &amp;&amp; !l2) &#123;</span><br><span class="line">            node-&gt;next = node-&gt;next-&gt;val ? node-&gt;next : <span class="literal">nullptr</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">        node = node-&gt;next;</span><br><span class="line">        <span class="keyword">int</span> sum = node-&gt;val +</span><br><span class="line">            (l1 ? l1-&gt;val : <span class="number">0</span>) + (l2 ? l2-&gt;val : <span class="number">0</span>);</span><br><span class="line">        node-&gt;val = sum % <span class="number">10</span>;</span><br><span class="line">        node-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(sum/<span class="number">10</span>);</span><br><span class="line">        l1 = l1 ? l1-&gt;next : <span class="literal">nullptr</span>;</span><br><span class="line">        l2 = l2 ? l2-&gt;next : <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">helper</span>(l1, l2, node);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="解法二：循环"><a href="#解法二：循环" class="headerlink" title="解法二：循环"></a>解法二：循环</h2><p>思路基本上与<a href="#%E8%A7%A3%E6%B3%95%E4%B8%80%EF%BC%9A%E9%80%92%E5%BD%92">解法一</a>保持一致，只是将递归形式改为循环形式，同时写法上更加 neat。</p>
-<blockquote>
-<p>参考：<a href="https://leetcode.com/problems/add-two-numbers/discuss/997/c++-Sharing-my-11-line-c++-solution-can-someone-make-it-even-more-concise">https://leetcode.com/problems/add-two-numbers/discuss/997/c++-Sharing-my-11-line-c++-solution-can-someone-make-it-even-more-concise</a></p>
-</blockquote>
-<h3 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
-<li><p>空间：<code>O(n)</code></p>
-</li>
-<li><p>时间：<code>O(n)</code></p>
-</li>
-</ul>
-<h3 id="C-实现-1"><a href="#C-实现-1" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode root(0), *node = &amp;root;</span><br><span class="line">        <span class="keyword">int</span> extra = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (l1 || l2 || extra) &#123;</span><br><span class="line">            <span class="keyword">int</span> sum = extra + </span><br><span class="line">                (l1 ? l1-&gt;val : <span class="number">0</span>) + (l2 ? l2-&gt;val : <span class="number">0</span>);</span><br><span class="line">            extra = sum/<span class="number">10</span>;</span><br><span class="line">            node-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(sum%<span class="number">10</span>);</span><br><span class="line">            node = node-&gt;next;</span><br><span class="line">            l1 = l1 ? l1-&gt;next : l1;</span><br><span class="line">            l2 = l2 ? l2-&gt;next : l2;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>A03 - LeetCode</category>
-        <category>LeetCode Problems</category>
-      </categories>
-      <tags>
-        <tag>CPP</tag>
-        <tag>LeetCode</tag>
-        <tag>Linked List</tag>
-        <tag>Math</tag>
-        <tag>Recursion</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LeetCode Problem 3 - Longest Substring Without Repeating Characters</title>
     <url>/posts/leetcode-problem-longest-substring-without-repeating-characters/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/">https://leetcode.com/problems/longest-substring-without-repeating-characters/</a></p>
@@ -2339,54 +2339,6 @@
         <tag>Hash Table</tag>
         <tag>Two Pointers</tag>
         <tag>Sliding Window</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode Problem 4 - Median of Two Sorted Arrays</title>
-    <url>/posts/leetcode-problem-median-of-two-sorted-arrays/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/">https://leetcode.com/problems/median-of-two-sorted-arrays/</a></p>
-<h3 id="大意"><a href="#大意" class="headerlink" title="大意"></a>大意</h3><p>给定两个排序后的数组 <code>nums1</code> 和 <code>nums2</code>，返回这两个数组合并后的中位值。</p>
-<span id="more"></span>
-
-<h2 id="解法一：暴力排序"><a href="#解法一：暴力排序" class="headerlink" title="解法一：暴力排序"></a>解法一：暴力排序</h2><p>合并两个数组之后进行排序，返回中位值。</p>
-<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
-<li><p>空间：<code>O(n)</code></p>
-</li>
-<li><p>时间：<code>O((m+n)log(m+n))</code></p>
-</li>
-</ul>
-<h3 id="C-实现"><a href="#C-实现" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums1, vector&lt;<span class="keyword">int</span>&gt;&amp; nums2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums1.<span class="built_in">size</span>() + nums2.<span class="built_in">size</span>();</span><br><span class="line">        nums1.<span class="built_in">insert</span>(nums1.<span class="built_in">end</span>(), nums2.<span class="built_in">begin</span>(), nums2.<span class="built_in">end</span>());</span><br><span class="line">        <span class="built_in">sort</span>(nums1.<span class="built_in">begin</span>(), nums1.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> (nums1[(n<span class="number">-1</span>)/<span class="number">2</span>] + nums1[n/<span class="number">2</span>]) / <span class="number">2.0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="解法二：二分查找"><a href="#解法二：二分查找" class="headerlink" title="解法二：二分查找"></a>解法二：二分查找</h2><blockquote>
-<p>参考：<a href="https://leetcode.com/problems/median-of-two-sorted-arrays/discuss/2471/Very-concise-O(log(min(MN)))-iterative-solution-with-detailed-explanation">https://leetcode.com/problems/median-of-two-sorted-arrays/discuss/2471/Very-concise-O(log(min(MN)))-iterative-solution-with-detailed-explanation</a></p>
-</blockquote>
-<p>如果可以将两个数组各自切成左右两部分，即 <code>nums1</code> -&gt; <code>nums1_left</code> 和 <code>nums1_right</code>，<code>nums2</code> -&gt; <code>nums2_left</code> 和 <code>nums2_right</code>，然后将两个 <code>left</code> 合并，两个 <code>right</code> 合并，如果两者长度相等，且 <code>left</code> 中最大的数字都要比 <code>right</code> 中最小的数字要小，那么就能得到中位数 <code>(max(left)+min(right))/2</code>。</p>
-<p>为了达成上述想法，需要在排序数组中找到切分的位置，自然引出二分查找。在使用二分查找的过程中，可以使用这样一个小技巧：</p>
-<p>将数组 <code>nums</code> 的每个元素之间都插入 <code>*</code>，比如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nums1: 1 3 4 7 11 -&gt; * 1 * 3 * 4 * 7 * 11 *</span><br><span class="line">nums2: 2 8 9 10   -&gt; * 2 * 8 * 9 * 10 *</span><br></pre></td></tr></table></figure>
-
-<p>数组 <code>nums</code> 的长度 <code>n -&gt; 2*n+1</code>，对应元素下标 <code>idx -&gt; 2*idx</code>。</p>
-<p>这样做的目的是，将 <code>nums</code> 转换为有奇数个元素的数组；这样做的好处是，对于新数组来说，需要切分的范围恒为奇数个元素，假定范围为 <code>[lo, hi]</code>（左右边界一定落在 <code>*</code> 上），那么切分的位置为 <code>c=(lo+hi)/2</code>，其左侧数字在原数组中的下标为 <code>(c-1)/2</code>，其右侧数字在原数组中的下标为 <code>c/2</code>；比如：</p>
-<p>待补例子</p>
-<h3 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
-<li><p>空间：<code>O(1)</code></p>
-</li>
-<li><p>时间：<code>O(log(min(m,n)))</code></p>
-</li>
-</ul>
-<h3 id="C-实现-1"><a href="#C-实现-1" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums1, vector&lt;<span class="keyword">int</span>&gt;&amp; nums2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n1 = nums1.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> n2 = nums2.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span> (n1 &lt; n2) <span class="keyword">return</span> <span class="built_in">findMedianSortedArrays</span>(nums2, nums1);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> lo = <span class="number">0</span>, hi = <span class="number">2</span> * n2;</span><br><span class="line">        <span class="keyword">while</span> (lo &lt;= hi) &#123;</span><br><span class="line">            <span class="keyword">int</span> c2 = (lo + hi) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">int</span> c1 = n1 + n2 - c2;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">int</span> l1 = (c1 == <span class="number">0</span>) ? INT_MIN : nums1[(c1<span class="number">-1</span>)/<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">int</span> l2 = (c2 == <span class="number">0</span>) ? INT_MIN : nums2[(c2<span class="number">-1</span>)/<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">int</span> r1 = (c1 == n1*<span class="number">2</span>) ? INT_MAX : nums1[c1/<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">int</span> r2 = (c2 == n2*<span class="number">2</span>) ? INT_MAX : nums2[c2/<span class="number">2</span>];</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (l1 &gt; r2) &#123;</span><br><span class="line">                lo = c2 + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l2 &gt; r1) &#123;</span><br><span class="line">                hi = c2 - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="built_in"><span class="keyword">return</span></span> (<span class="built_in">max</span>(l1, l2) + <span class="built_in">min</span>(r1, r2)) / <span class="number">2.0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>A03 - LeetCode</category>
-        <category>LeetCode Problems</category>
-      </categories>
-      <tags>
-        <tag>CPP</tag>
-        <tag>LeetCode</tag>
-        <tag>Array</tag>
-        <tag>Hash Table</tag>
-        <tag>Binary Search</tag>
-        <tag>Divide and Conquer</tag>
       </tags>
   </entry>
   <entry>
@@ -2462,6 +2414,88 @@
         <tag>Blog</tag>
         <tag>Hexo</tag>
         <tag>NexT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode Problem 4 - Median of Two Sorted Arrays</title>
+    <url>/posts/leetcode-problem-median-of-two-sorted-arrays/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/">https://leetcode.com/problems/median-of-two-sorted-arrays/</a></p>
+<h3 id="大意"><a href="#大意" class="headerlink" title="大意"></a>大意</h3><p>给定两个排序后的数组 <code>nums1</code> 和 <code>nums2</code>，返回这两个数组合并后的中位值。</p>
+<span id="more"></span>
+
+<h2 id="解法一：暴力排序"><a href="#解法一：暴力排序" class="headerlink" title="解法一：暴力排序"></a>解法一：暴力排序</h2><p>合并两个数组之后进行排序，返回中位值。</p>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><p>空间：<code>O(n)</code></p>
+</li>
+<li><p>时间：<code>O((m+n)log(m+n))</code></p>
+</li>
+</ul>
+<h3 id="C-实现"><a href="#C-实现" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums1, vector&lt;<span class="keyword">int</span>&gt;&amp; nums2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums1.<span class="built_in">size</span>() + nums2.<span class="built_in">size</span>();</span><br><span class="line">        nums1.<span class="built_in">insert</span>(nums1.<span class="built_in">end</span>(), nums2.<span class="built_in">begin</span>(), nums2.<span class="built_in">end</span>());</span><br><span class="line">        <span class="built_in">sort</span>(nums1.<span class="built_in">begin</span>(), nums1.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> (nums1[(n<span class="number">-1</span>)/<span class="number">2</span>] + nums1[n/<span class="number">2</span>]) / <span class="number">2.0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解法二：二分查找"><a href="#解法二：二分查找" class="headerlink" title="解法二：二分查找"></a>解法二：二分查找</h2><blockquote>
+<p>参考：<a href="https://leetcode.com/problems/median-of-two-sorted-arrays/discuss/2471/Very-concise-O(log(min(MN)))-iterative-solution-with-detailed-explanation">https://leetcode.com/problems/median-of-two-sorted-arrays/discuss/2471/Very-concise-O(log(min(MN)))-iterative-solution-with-detailed-explanation</a></p>
+</blockquote>
+<p>如果可以将两个数组各自切成左右两部分，即 <code>nums1</code> -&gt; <code>nums1_left</code> 和 <code>nums1_right</code>，<code>nums2</code> -&gt; <code>nums2_left</code> 和 <code>nums2_right</code>，然后将两个 <code>left</code> 合并，两个 <code>right</code> 合并，如果两者长度相等，且 <code>left</code> 中最大的数字都要比 <code>right</code> 中最小的数字要小，那么就能得到中位数 <code>(max(left)+min(right))/2</code>。</p>
+<p>为了达成上述想法，需要在排序数组中找到切分的位置，自然引出二分查找。在使用二分查找的过程中，可以使用这样一个小技巧：</p>
+<p>将数组 <code>nums</code> 的每个元素之间都插入 <code>*</code>，比如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nums1: 1 3 4 7 11 -&gt; * 1 * 3 * 4 * 7 * 11 *</span><br><span class="line">nums2: 2 8 9 10   -&gt; * 2 * 8 * 9 * 10 *</span><br></pre></td></tr></table></figure>
+
+<p>数组 <code>nums</code> 的长度 <code>n -&gt; 2*n+1</code>，对应元素下标 <code>idx -&gt; 2*idx</code>。</p>
+<p>这样做的目的是，将 <code>nums</code> 转换为有奇数个元素的数组；这样做的好处是，对于新数组来说，需要切分的范围恒为奇数个元素，假定范围为 <code>[lo, hi]</code>（左右边界一定落在 <code>*</code> 上），那么切分的位置为 <code>c=(lo+hi)/2</code>，其左侧数字在原数组中的下标为 <code>(c-1)/2</code>，其右侧数字在原数组中的下标为 <code>c/2</code>；比如：</p>
+<p>待补例子</p>
+<h3 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><p>空间：<code>O(1)</code></p>
+</li>
+<li><p>时间：<code>O(log(min(m,n)))</code></p>
+</li>
+</ul>
+<h3 id="C-实现-1"><a href="#C-实现-1" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums1, vector&lt;<span class="keyword">int</span>&gt;&amp; nums2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n1 = nums1.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> n2 = nums2.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span> (n1 &lt; n2) <span class="keyword">return</span> <span class="built_in">findMedianSortedArrays</span>(nums2, nums1);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> lo = <span class="number">0</span>, hi = <span class="number">2</span> * n2;</span><br><span class="line">        <span class="keyword">while</span> (lo &lt;= hi) &#123;</span><br><span class="line">            <span class="keyword">int</span> c2 = (lo + hi) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">int</span> c1 = n1 + n2 - c2;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">int</span> l1 = (c1 == <span class="number">0</span>) ? INT_MIN : nums1[(c1<span class="number">-1</span>)/<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">int</span> l2 = (c2 == <span class="number">0</span>) ? INT_MIN : nums2[(c2<span class="number">-1</span>)/<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">int</span> r1 = (c1 == n1*<span class="number">2</span>) ? INT_MAX : nums1[c1/<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">int</span> r2 = (c2 == n2*<span class="number">2</span>) ? INT_MAX : nums2[c2/<span class="number">2</span>];</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (l1 &gt; r2) &#123;</span><br><span class="line">                lo = c2 + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l2 &gt; r1) &#123;</span><br><span class="line">                hi = c2 - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="built_in"><span class="keyword">return</span></span> (<span class="built_in">max</span>(l1, l2) + <span class="built_in">min</span>(r1, r2)) / <span class="number">2.0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>A03 - LeetCode</category>
+        <category>LeetCode Problems</category>
+      </categories>
+      <tags>
+        <tag>CPP</tag>
+        <tag>LeetCode</tag>
+        <tag>Array</tag>
+        <tag>Hash Table</tag>
+        <tag>Binary Search</tag>
+        <tag>Divide and Conquer</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>从一封邮件谈谈我为什么不再想要评论系统</title>
+    <url>/posts/1620608429/</url>
+    <content><![CDATA[<p>在重建站点的过程中，我曾经挣扎过要不要重设评论系统。</p>
+<p>基础设施方面，适用于静态博客的各类评论系统都已经发展得比较成熟，比如独立服务的 <a href="https://blog.disqus.com/">Disqus</a>、依赖 GitHub Issues 的 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 和 <a href="https://github.com/utterance/utterances">Utterances</a>、依赖 LeanCloud 等的 <a href="https://github.com/xCss/Valine">Valine</a> 和 <a href="https://github.com/lizheming/waline">Waline</a>，选择颇多。</p>
+<p>对于博客而言，评论系统可以让读者更方便地给出反馈，和作者交流彼此的观点和看法。</p>
+<p>但是如你所见，我还是没有重设评论系统。</p>
+<p>真正促使我放弃的，根本原因是<strong>互联网中随处可见的，无知、无营养甚至充满恶意的评论。</strong></p>
+<p>而导火索则是这样一封邮件：</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/05/01.png"></p>
+<span id="more"></span>
+
+<h2 id="1-事情起因（我的猜测）"><a href="#1-事情起因（我的猜测）" class="headerlink" title="1 事情起因（我的猜测）"></a>1 事情起因（我的猜测）</h2><p>这位朋友曾经使用 Cloudflare 搭过 Google Scholar 的镜像网站，突然发现不可用了，于是在 Google 搜索相关信息，看到了我一年前写的这篇文章：<a href="https://progcz.com/posts/use-cf-workers-build-google-and-github-mirrors/">使用 Cloudflare Workers 搭建 Google 和 GitHub 镜像网站</a>，认为是我的分享和传播导致了 Cloudflare 不可用，怒不可遏的同时又看到了我的邮箱，于是就有了上面那封邮件。</p>
+<h2 id="2-我的看法"><a href="#2-我的看法" class="headerlink" title="2 我的看法"></a>2 我的看法</h2><p>这位朋友的核心观点在于：<strong>这样的知识，自己知道就好了，不要拿出来分享。</strong></p>
+<p>可以说是非常自私了，而且多少有点逻辑的人都能看出这里面的问题：<strong>如果每个人都不分享这样的知识，那这位朋友又是从哪里获取到的呢？靠自己顿悟吗？</strong></p>
+<p>我有时候也会很纳闷，为什么这么简单的道理，都没有出现在这类朋友的脑子里。</p>
+<p>如果是其他网民，我可能可以理解。因为根据<a href="https://finance.sina.com.cn/tech/2020-09-29/doc-iivhuipp7144597.shtml">这篇文章</a>，2020 年网民的规模达 9.40 亿，其中学历达到本科及以上的仅为 8.8％。没有经历过高等教育的话，认知是会受到一定限制。</p>
+<p>但是这位朋友提到了谷歌学术，说明至少已经到了高等教育的阶段，却依然这么狭隘，让我匪夷所思。</p>
+<p>当然，这种情况不止发生了一次，在评论量较大的博客、在我认为社区氛围很好的 B 站和豆瓣，我都会频繁地看到这类评论，不然我也不会对互联网的评论环境如此失望。</p>
+<h2 id="3-我的回复"><a href="#3-我的回复" class="headerlink" title="3 我的回复"></a>3 我的回复</h2><p>尽管无法理解，但我还是出于本能的 defence，回复了这封邮件：</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/05/02.png"></p>
+<p>看，这也是我不想要评论系统的原因之一，我不想为了这种事情 defence 啊。</p>
+<p>人生已经很累了，照顾好自己的情绪都是一件非常困难的事情，就更不想陷入这种本不该存在的争论之中了。</p>
+]]></content>
+      <categories>
+        <category>A01 - 生活随笔</category>
+        <category>感悟</category>
+      </categories>
+      <tags>
+        <tag>Blog</tag>
+        <tag>Mail</tag>
+        <tag>Comment</tag>
       </tags>
   </entry>
 </search>
