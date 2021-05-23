@@ -84,6 +84,7 @@ menu:
   archives: /archives/ || fa fa-archive
   categories: /categories/ || fa fa-folder
   tags: /tags/ || fa fa-tag
+  pieces: /pieces/ || fa fa-comment
   about: /about/ || fa fa-user
   #schedule: /schedule/ || fa fa-calendar
   #sitemap: /sitemap.xml || fa fa-sitemap
