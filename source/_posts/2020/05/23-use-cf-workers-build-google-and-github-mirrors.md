@@ -38,7 +38,7 @@ tags:
 
 ## 1 注册并登录 Cloudflare 账号
 
-这没啥好说的，前往 [Cloudflare 官网](<https://www.cloudflare.com/)自行注册并登录，然后**点击「Workers」。**
+这没啥好说的，前往 [Cloudflare 官网](https://www.cloudflare.com/)自行注册并登录，然后**点击「Workers」。**
 
 <img src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2020/05/06.png" style="zoom:100%"/>
 
