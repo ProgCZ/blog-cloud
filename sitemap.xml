@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://progcz.com/about/index.html</loc>
+    <loc>https://progcz.com/pieces/index.html</loc>
     
     <lastmod>2021-06-11</lastmod>
     
@@ -16,14 +16,14 @@
   </url>
   
   <url>
-    <loc>https://progcz.com/pieces/index.html</loc>
+    <loc>https://progcz.com/tags/index.html</loc>
     
     <lastmod>2021-06-11</lastmod>
     
   </url>
   
   <url>
-    <loc>https://progcz.com/tags/index.html</loc>
+    <loc>https://progcz.com/about/index.html</loc>
     
     <lastmod>2021-06-11</lastmod>
     
@@ -445,27 +445,6 @@
   </url>
   
   <url>
-    <loc>https://progcz.com/tags/Cloudflare/</loc>
-    <lastmod>2021-06-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/tags/Google/</loc>
-    <lastmod>2021-06-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/tags/Mirror/</loc>
-    <lastmod>2021-06-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://progcz.com/tags/IFTTT/</loc>
     <lastmod>2021-06-11</lastmod>
     <changefreq>daily</changefreq>
@@ -481,6 +460,27 @@
   
   <url>
     <loc>https://progcz.com/tags/RSS/</loc>
+    <lastmod>2021-06-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://progcz.com/tags/Cloudflare/</loc>
+    <lastmod>2021-06-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://progcz.com/tags/Google/</loc>
+    <lastmod>2021-06-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://progcz.com/tags/Mirror/</loc>
     <lastmod>2021-06-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -678,14 +678,14 @@
   </url>
   
   <url>
-    <loc>https://progcz.com/categories/A03-LeetCode/LeetCode-Weekly-Contest/</loc>
+    <loc>https://progcz.com/categories/A03-LeetCode/LeetCode-Biweekly-Contest/</loc>
     <lastmod>2021-06-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://progcz.com/categories/A03-LeetCode/LeetCode-Biweekly-Contest/</loc>
+    <loc>https://progcz.com/categories/A03-LeetCode/LeetCode-Weekly-Contest/</loc>
     <lastmod>2021-06-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
