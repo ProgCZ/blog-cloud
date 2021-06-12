@@ -27,4 +27,32 @@ iPhone 12 mini | https://zh.wikipedia.org/wiki/IPhone_12 | [2020.12 - 未知] �
 MacBook Pro 13 (2020) | https://zh.wikipedia.org/wiki/MacBook_Pro#%E7%AC%AC%E4%BA%94%E4%BB%A3_%EF%BC%88%E5%89%AA%E5%88%80%E5%BC%8F%E9%8D%B5%E7%9B%A4%EF%BC%89 | [2021.05 - 未知] 更轻便 | https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/06/08.png
 {% endlinkgrid %}
 
+## 图书
+
+{% linkgrid %}
+银河帝国 01-15 | https://book.douban.com/subject/32568108/ | [by 艾萨克·阿西莫夫] 包含基地七部曲、机器人五部曲、帝国三部曲，科幻圣经 | https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/06/09.png
+
+三体 1-3 | https://book.douban.com/subject/33420947/ | [by 刘慈欣] 中文科幻巅峰 | https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/06/10.png
+
+无人生还 | https://book.douban.com/subject/26840298/ | [by 阿加莎·克里斯蒂] 孤岛模式的开山之作 | https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/06/11.png
+
+东方快车谋杀案 | https://book.douban.com/subject/27064821/ | [by 阿加莎·克里斯蒂] 根本没猜到的结局 | https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/06/12.png
+
+解忧杂货店 | https://book.douban.com/subject/35000716/ | [by 东野圭吾] 治愈神作 | https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/06/13.png
+
+白夜行 | https://book.douban.com/subject/10554308/ | [by 东野圭吾] 「她一次都没有回头」 | https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/06/14.png
+
+嫌疑人 X 的献身 | https://book.douban.com/subject/25924253/ | [by 东野圭吾] 如数学般精妙的犯罪 | https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/06/15.png
+
+远山淡影 | https://book.douban.com/subject/5988624/ | [by 石黑一雄] 致郁神作 | https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/06/16.png
+
+挪威的森林 | https://book.douban.com/subject/27200257/ | [by 村上春树] 入坑神作，村上春树笔下尽是细腻 | https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/06/17.png
+
+海边的卡夫卡 | https://book.douban.com/subject/30144095/ | [by 村上春树] 「你必须成为世界上最顽强的十五岁少年」 | https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/06/18.png
+
+漫长的告别 | https://book.douban.com/subject/30316475/ | [by 雷蒙德·钱德勒] 「说一声再见，就是死去一点点」 | https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/06/19.png
+
+活着 | https://book.douban.com/subject/4913064/ | [by 余华] 活着才最需要勇气 | https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/06/20.png
+{% endlinkgrid %}
+
 ## 其他
