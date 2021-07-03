@@ -60,11 +60,7 @@ MacBook Pro 13 (2020) | https://zh.wikipedia.org/wiki/MacBook_Pro#%E7%AC%AC%E4%B
 {% linkgrid %}
 老友记 S01-S10 | https://movie.douban.com/subject/1393859/ | [1994 - 2003] 情景喜剧巅峰 | https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/06/21.png
 
-忠犬八公的故事 | https://movie.douban.com/subject/3011091/ | [2009] 看一次哭一次 | https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/06/22.png
-
 盗梦空间 | https://movie.douban.com/subject/3541415/ | [2010] 现实和梦境 | https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/06/23.png
-
-黑镜 S01-S05 | https://movie.douban.com/subject/7054120/ | [2011 - 2019] 颠覆脑洞 | https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/06/24.png
 {% endlinkgrid %}
 
 ## 其他
