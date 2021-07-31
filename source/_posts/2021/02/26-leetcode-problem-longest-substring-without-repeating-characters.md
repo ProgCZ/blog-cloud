@@ -3,8 +3,8 @@ title:   LeetCode Problem 3 - Longest Substring Without Repeating Characters
 date:    2021-02-26 09:08:46
 updated: 2021-03-03 08:07:21
 categories:
-    - A03 - LeetCode
-    - LeetCode Problems
+    - A3 - LeetCode
+    - B1 - LeetCode Problems
 tags:
     - LeetCode
     - CPP

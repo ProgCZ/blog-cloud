@@ -3,8 +3,8 @@ title:   记录一次「卖」微信公众号的经历
 date:    2020-05-14 16:44:03
 updated: 2020-05-14 16:44:03
 categories:
-    - A01 - 生活随笔
-    - 经历
+    - A1 - 生活随笔
+    - B1 - 经历
 tags:
     - WeChat
     - Life

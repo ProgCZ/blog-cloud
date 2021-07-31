@@ -3,8 +3,8 @@ title:   LeetCode Problem 2 - Add Two Numbers
 date:    2021-02-24 23:54:42
 updated: 2021-02-26 08:18:02
 categories:
-    - A03 - LeetCode
-    - LeetCode Problems
+    - A3 - LeetCode
+    - B1 - LeetCode Problems
 tags:
     - LeetCode
     - CPP

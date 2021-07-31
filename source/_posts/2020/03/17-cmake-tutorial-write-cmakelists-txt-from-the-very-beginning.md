@@ -3,8 +3,9 @@ title:   CMake 教程：从零开始编写 CMakeLists.txt
 date:    2020-03-17 10:24:00
 updated: 2020-03-17 10:24:00
 categories:
-    - A02 - 学习笔记
-    - 编程语言
+    - A2 - 学习笔记
+    - B2 - 编程语言
+    - C1 - CPP
 tags:
     - CMake
     - CMakeLists.txt

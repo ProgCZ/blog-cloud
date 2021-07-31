@@ -3,8 +3,8 @@ title:   LeetCode Weekly Contest 188 (1441 - 1444)
 date:    2020-05-10 15:14:53
 updated: 2020-05-10 15:14:53
 categories:
-    - A03 - LeetCode
-    - LeetCode Weekly Contest
+    - A3 - LeetCode
+    - B2 - LeetCode Weekly Contest
 tags:
     - Data Structure and Algorithm
     - LeetCode

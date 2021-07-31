@@ -3,8 +3,8 @@ title:   2020 May LeetCoding Challenge - Week 4
 date:    2020-05-22 19:55:57
 updated: 2020-05-28 19:24:36
 categories:
-    - A03 - LeetCode
-    - 2020 LeetCoding Challenge
+    - A3 - LeetCode
+    - B4 - 2020 LeetCoding Challenge
 tags:
     - Data Structure and Algorithm
     - LeetCode

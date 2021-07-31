@@ -3,8 +3,8 @@ title:   LeetCode Problem 1 - Two Sum
 date:    2021-02-17 23:48:43
 updated: 2021-02-19 23:49:15
 categories:
-    - A03 - LeetCode
-    - LeetCode Problems
+    - A3 - LeetCode
+    - B1 - LeetCode Problems
 tags:
     - LeetCode
     - CPP

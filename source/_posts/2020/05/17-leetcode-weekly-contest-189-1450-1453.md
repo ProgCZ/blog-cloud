@@ -3,8 +3,8 @@ title:   LeetCode Weekly Contest 189 (1450 - 1453)
 date:    2020-05-17 14:53:16
 updated: 2020-05-17 14:53:16
 categories:
-    - A03 - LeetCode
-    - LeetCode Weekly Contest
+    - A3 - LeetCode
+    - B2 - LeetCode Weekly Contest
 tags:
     - Data Structure and Algorithm
     - LeetCode

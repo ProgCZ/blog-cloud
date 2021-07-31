@@ -3,8 +3,8 @@ title:   我的工作桌面长啥样
 date:    2020-08-01 15:11:15
 updated: 2021-05-31 08:57:11
 categories:
-    - A01 - 生活随笔
-    - 折腾
+    - A1 - 生活随笔
+    - B2 - 折腾
 tags:
     - Work
     - Desktop

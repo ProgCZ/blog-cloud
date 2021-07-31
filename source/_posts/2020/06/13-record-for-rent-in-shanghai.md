@@ -3,8 +3,8 @@ title:   记录一次在上海租房的经历
 date:    2020-06-13 15:08:48
 updated: 2020-06-13 15:08:48
 categories:
-    - A01 - 生活随笔
-    - 经历
+    - A1 - 生活随笔
+    - B1 - 经历
 tags:
     - Shanghai
     - Rent
