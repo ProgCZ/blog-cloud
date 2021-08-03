@@ -6,7 +6,7 @@
   <link href="https://progcz.com/atom.xml" rel="self"/>
   
   <link href="https://progcz.com/"/>
-  <updated>2021-08-03T00:27:11.000Z</updated>
+  <updated>2021-08-03T00:49:59.000Z</updated>
   <id>https://progcz.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode Problem 7 - Reverse Integer</title>
+    <link href="https://progcz.com/posts/1627951198/"/>
+    <id>https://progcz.com/posts/1627951198/</id>
+    <published>2021-08-03T00:40:37.000Z</published>
+    <updated>2021-08-03T00:49:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.com/problems/reverse-integer/">https://leetcode.com/problems/reverse-integer/</a></p><h3 id="大意"><a href="#大意" class="headerlink" title="大意"></a>大意</h3><p>给定 32 位整数 <code>x</code>，返回反转后的数字，如果存在溢出，则返回 <code>0</code>。</p><span id="more"></span><h2 id="解法一：模运算"><a href="#解法一：模运算" class="headerlink" title="解法一：模运算"></a>解法一：模运算</h2><p>通过模运算来反转 <code>x</code> 即可。</p><p>需要注意的是，判断反转后的数字 <code>res</code> 是否会溢出，这个判断不能在每次模运算之后（因为如果溢出，此时已经溢出），而应该在每次模运算之前，判断 <code>res</code> 是否超出了 <code>INT_MAX/10</code>。</p><h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul><li><p>空间：<code>O(1)</code></p></li><li><p>时间：<code>O(n)</code></p></li></ul><h3 id="C-实现"><a href="#C-实现" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (x != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">abs</span>(res) &gt; INT_MAX/<span class="number">10</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            res = res * <span class="number">10</span> + x % <span class="number">10</span>;</span><br><span class="line">            x /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/reverse-integer/&quot;&gt;https://leetcode.com/problems/reverse-integer/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;大意&quot;&gt;&lt;a href=&quot;#大意&quot; class=&quot;headerlink&quot; title=&quot;大意&quot;&gt;&lt;/a&gt;大意&lt;/h3&gt;&lt;p&gt;给定 32 位整数 &lt;code&gt;x&lt;/code&gt;，返回反转后的数字，如果存在溢出，则返回 &lt;code&gt;0&lt;/code&gt;。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="A3 - LeetCode" scheme="https://progcz.com/categories/A3-LeetCode/"/>
+    
+    <category term="B1 - LeetCode Problems" scheme="https://progcz.com/categories/A3-LeetCode/B1-LeetCode-Problems/"/>
+    
+    
+    <category term="CPP" scheme="https://progcz.com/tags/CPP/"/>
+    
+    <category term="LeetCode" scheme="https://progcz.com/tags/LeetCode/"/>
+    
+    <category term="Math" scheme="https://progcz.com/tags/Math/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode Problem 5 - Longest Palindromic Substring</title>
@@ -585,35 +613,6 @@
     <category term="LeetCode" scheme="https://progcz.com/tags/LeetCode/"/>
     
     <category term="Challenge" scheme="https://progcz.com/tags/Challenge/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>记录一次「卖」微信公众号的经历</title>
-    <link href="https://progcz.com/posts/record-for-sell-wechat-official-account/"/>
-    <id>https://progcz.com/posts/record-for-sell-wechat-official-account/</id>
-    <published>2020-05-14T08:44:03.000Z</published>
-    <updated>2020-05-14T08:44:03.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>因为腾讯在两年前关闭了新注册微信公众号的「留言」功能，所以新注册微信公众号必须通过一些特殊方法才能拥有「留言」功能，「账号迁移」便是其中之一。</strong></p><p>刚好，我有一个闲置已久的微信公众号，于是联系到经办人将自己的微信公众号「卖」了出去。<strong>两个工作日</strong>的时间就把整个流程走完了，大部分手续都是经办人的事情，需要我来配合的地方并不多。</p><img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2020/05/03.png" style="zoom:100%"/><span id="more"></span><h2 id="0-事情起因"><a href="#0-事情起因" class="headerlink" title="0 事情起因"></a>0 事情起因</h2><p>几天前，在逛 V2EX 的时候，看到一个<a href="https://www.v2ex.com/t/668420">帖子</a>，里面讲到：</p><blockquote><p>做公众号，特别是近期注册的都想要留言功能。但是 2018 年 3 月 12 日之后注册的微信公众号默认没有留言功能。</p><p>新号想要留言功能，基本上就一条路花几千找人做迁移有留言功能的老号才行。</p></blockquote><p>巧合的是，在此之前的几天，我想起自己有个闲置已久的微信公众号，当时觉得没什么用了，于是申请了账号注销，七天后再次确认即可彻底注销。看到这个帖子之后，我立马终止了注销流程，开始琢磨怎么把它卖掉。</p><h2 id="1-迁移过程"><a href="#1-迁移过程" class="headerlink" title="1 迁移过程"></a>1 迁移过程</h2><p>简单搜索之后，我了解到腾讯关闭了新注册微信公众号的「留言」功能，想要开通的话需要一些特殊方法，具体可以参考<a href="https://zhuanlan.zhihu.com/p/63996356">微信公众号留言开通最全攻略</a>。</p><p>同时，我联系到一个专业的经办人，可以帮忙「卖」掉带有「留言」功能的微信公众号。</p><div class="note info"><p>接下来，从我的角度来描述一下大概的流程：</p><ol><li><p>第一天，经办人登录我的微信公众号，确认微信公众号的基本信息及违规记录。</p></li><li><p>随后，经办人要求我提供身份证正反面的照片，照片需要带有「公众号迁移」字样的水印。<strong>提供照片之后，经办人付给了我一半的费用。</strong></p></li><li><p>三个小时后，经办人要求我进行电子公证，此处需要进行人脸识别。</p></li><li><p>第二天，经办人再次登录我的微信公众号。</p></li><li><p>随后，经办人要求我扫码对「账号迁移」进行确认，此时微信需要对迁移申请进行审核。</p></li><li><p>四个小时后，微信对迁移申请的审核通过，经办人要求再次对「账号迁移」进行确认。<strong>最终确认之后，经办人付给了我另外一半的费用。</strong></p></li></ol></div><p>以上就是我需要做的事情，总体来说不算麻烦，何乐而不为。</p><h2 id="2-推广"><a href="#2-推广" class="headerlink" title="2 推广"></a>2 推广</h2><img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2020/05/04.png" style="zoom:100%"/><p><strong>如果你也有一个在 2018 年 03 月 12 日之前注册而又闲置的微信公众号，可以通过「下方的评论区」或「<a href="/about/">关于</a>页面的其他联系方式」联系到我，</strong>我可以把这个比较靠谱的经办人推荐给你。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;strong&gt;因为腾讯在两年前关闭了新注册微信公众号的「留言」功能，所以新注册微信公众号必须通过一些特殊方法才能拥有「留言」功能，「账号迁移」便是其中之一。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;刚好，我有一个闲置已久的微信公众号，于是联系到经办人将自己的微信公众号「卖」了出去。&lt;strong&gt;两个工作日&lt;/strong&gt;的时间就把整个流程走完了，大部分手续都是经办人的事情，需要我来配合的地方并不多。&lt;/p&gt;
-&lt;img data-src=&quot;https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2020/05/03.png&quot; style=&quot;zoom:100%&quot;/&gt;</summary>
-    
-    
-    
-    <category term="A1 - 生活随笔" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/"/>
-    
-    <category term="B1 - 经历" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/B1-%E7%BB%8F%E5%8E%86/"/>
-    
-    
-    <category term="WeChat" scheme="https://progcz.com/tags/WeChat/"/>
-    
-    <category term="Life" scheme="https://progcz.com/tags/Life/"/>
-    
-    <category term="Promotion" scheme="https://progcz.com/tags/Promotion/"/>
     
   </entry>
   
