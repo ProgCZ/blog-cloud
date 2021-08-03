@@ -2645,4 +2645,34 @@
         <tag>LeetCode</tag>
       </tags>
   </entry>
+  <entry>
+    <title>LeetCode Problem 5 - Longest Palindromic Substring</title>
+    <url>/posts/1627949478/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.com/problems/longest-palindromic-substring/">https://leetcode.com/problems/longest-palindromic-substring/</a></p>
+<h3 id="大意"><a href="#大意" class="headerlink" title="大意"></a>大意</h3><p>给定字符串 <code>s</code>，返回其中的最长回文子串。</p>
+<span id="more"></span>
+
+<h2 id="解法一：遍历扩散"><a href="#解法一：遍历扩散" class="headerlink" title="解法一：遍历扩散"></a>解法一：遍历扩散</h2><p>遍历字符串 <code>s</code>，从每个字符的位置 <code>i</code> 向外扩散，寻找最长回文子串。</p>
+<p>需要注意的是，回文子串的长度有奇偶之分，因此：对于奇数长度，从 <code>i</code> 扩散，对于偶数长度，从 <code>i</code> 和 <code>i+1</code> 向外扩散。</p>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><p>空间：<code>O(1)</code></p>
+</li>
+<li><p>时间：<code>O(n^2)</code></p>
+</li>
+</ul>
+<h3 id="C-实现"><a href="#C-实现" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">longestPalindrome</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.<span class="built_in">size</span>() &lt; <span class="number">2</span>) <span class="keyword">return</span> s;</span><br><span class="line">        <span class="keyword">int</span> n = s.<span class="built_in">size</span>(), ss_start = <span class="number">0</span>, ss_length = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="built_in">helper</span>(s, i, i, ss_start, ss_length);</span><br><span class="line">            <span class="built_in">helper</span>(s, i, i+<span class="number">1</span>, ss_start, ss_length);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.<span class="built_in">substr</span>(ss_start, ss_length);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(string&amp; s, <span class="keyword">int</span> left, <span class="keyword">int</span> right,</span></span></span><br><span class="line"><span class="function"><span class="params">                <span class="keyword">int</span>&amp; ss_start, <span class="keyword">int</span>&amp; ss_length)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">while</span> (left &gt;= <span class="number">0</span> &amp;&amp; right &lt; n &amp;&amp; s[left] == s[right]) &#123;</span><br><span class="line">            --left; ++right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (ss_length &lt; right - left - <span class="number">1</span>) &#123;</span><br><span class="line">            ss_start = left + <span class="number">1</span>;</span><br><span class="line">            ss_length = right - left - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解法二：马拉车算法"><a href="#解法二：马拉车算法" class="headerlink" title="解法二：马拉车算法"></a>解法二：马拉车算法</h2><p>以前写过，参见：<a href="/posts/apply-manacher-s-algorithm-to-solve-longest-palindromic-substring-problem/">使用马拉车算法解决最长回文子串问题</a></p>
+]]></content>
+      <categories>
+        <category>A3 - LeetCode</category>
+        <category>B1 - LeetCode Problems</category>
+      </categories>
+      <tags>
+        <tag>CPP</tag>
+        <tag>LeetCode</tag>
+        <tag>String</tag>
+        <tag>Dynamic Programming</tag>
+      </tags>
+  </entry>
 </search>
