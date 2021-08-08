@@ -4,7 +4,7 @@ date:    2020-08-01 15:37:02
 updated: 2020-08-08 11:31:37
 categories:
     - A3 - LeetCode
-    - B4 - 2020 LeetCoding Challenge
+    - B4 - LeetCoding Challenge
 tags:
     - Data Structure and Algorithm
     - LeetCode
