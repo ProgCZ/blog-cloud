@@ -2758,4 +2758,51 @@
         <tag>Math</tag>
       </tags>
   </entry>
+  <entry>
+    <title>2021 August LeetCoding Challenge - Week 2</title>
+    <url>/posts/1628470617/</url>
+    <content><![CDATA[<p>LeetCode 八月挑战专题，第二周，每日随缘更新。</p>
+<span id="more"></span>
+
+<h2 id="August-8th-Rank-Transform-of-a-Matrix"><a href="#August-8th-Rank-Transform-of-a-Matrix" class="headerlink" title="August 8th: Rank Transform of a Matrix"></a>August 8th: <a href="https://leetcode.com/explore/challenge/card/august-leetcoding-challenge-2021/614/week-2-august-8th-august-14th/3874/">Rank Transform of a Matrix</a></h2><h3 id="大意"><a href="#大意" class="headerlink" title="大意"></a>大意</h3><p>给定 <code>m*n</code> 的矩阵 <code>matrix</code>，返回矩阵中每个元素的 <code>rank</code>。</p>
+<p>其中，<code>rank</code> 遵循以下规则：</p>
+<ul>
+<li><p><code>rank</code> 从 <code>1</code> 开始。</p>
+</li>
+<li><p>对于在同一行或同一列的 <code>p</code> 和 <code>q</code>，</p>
+<ul>
+<li><p>如果 <code>p &lt; q</code>，那么 <code>rank(p) &lt; rank(q)</code>。</p>
+</li>
+<li><p>如果 <code>p == q</code>，那么 <code>rank(p) == rank(q)</code>。</p>
+</li>
+<li><p>如果 <code>p &gt; q</code>，那么 <code>rank(p) &gt; rank(q)</code>。</p>
+</li>
+</ul>
+</li>
+<li><p><code>rank</code> 应该尽可能地小。</p>
+</li>
+</ul>
+<h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><blockquote>
+<p>参考：<a href="https://leetcode.com/problems/rank-transform-of-a-matrix/discuss/1391380/C%2B%2BPython-HashMap-and-Sort-and-UnionFind-Visualize-picture-Clean-and-Concise">[C++/Python] HashMap &amp; Sort &amp; UnionFind - Visualize picture - Clean &amp; Concise</a></p>
+</blockquote>
+<p>首先，找到同一数字的所有位置。</p>
+<p>其次，在某个数字的所有位置中，找到在同一行和同一列的位置，以是否为同一 <code>rank</code> 聚合起来。</p>
+<p>最后，找到同一行和同一列中目前的最大值，<code>+1</code> 即可。</p>
+<h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><ul>
+<li><p>空间：<code>O(M*N*log(M*N))</code></p>
+</li>
+<li><p>时间：<code>O(M*N)</code></p>
+</li>
+</ul>
+<h4 id="C-实现"><a href="#C-实现" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UnionFind</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    unordered_map&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; parent;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (u == parent[u]) <span class="keyword">return</span> u;</span><br><span class="line">        <span class="keyword">return</span> parent[u] = <span class="built_in">Find</span>(parent[u]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Union</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (parent.<span class="built_in">count</span>(u) == <span class="number">0</span>) parent[u] = u;</span><br><span class="line">        <span class="keyword">if</span> (parent.<span class="built_in">count</span>(v) == <span class="number">0</span>) parent[v] = v;</span><br><span class="line">        <span class="keyword">int</span> pu = <span class="built_in">Find</span>(u), pv = <span class="built_in">Find</span>(v);</span><br><span class="line">        <span class="keyword">if</span> (pu != pv) parent[pu] = pv;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">matrixRankTransform</span>(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix) &#123;</span><br><span class="line">        <span class="keyword">int</span> m = matrix.<span class="built_in">size</span>(), n = matrix[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        map&lt;<span class="keyword">int</span>, vector&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt;&gt; groupByValue;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> r = <span class="number">0</span>; r &lt; m; ++r)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> c = <span class="number">0</span>; c &lt; n; ++c)</span><br><span class="line">                groupByValue[matrix[r][c]].<span class="built_in">push_back</span>(&#123;r, c&#125;);</span><br><span class="line"></span><br><span class="line">        <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">rank</span><span class="params">(m+n, <span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> <span class="keyword">const</span>&amp; [_, cells]  : groupByValue) &#123;</span><br><span class="line">            UnionFind uf;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> <span class="keyword">const</span>&amp; [r, c] : cells)</span><br><span class="line">                uf.<span class="built_in">Union</span>(r, c + m);</span><br><span class="line"></span><br><span class="line">            unordered_map&lt;<span class="keyword">int</span>, vector&lt;<span class="keyword">int</span>&gt;&gt; groups;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> <span class="keyword">const</span>&amp; [u, _] : uf.parent) &#123;</span><br><span class="line">                groups[uf.<span class="built_in">Find</span>(u)].<span class="built_in">push_back</span>(u);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> <span class="keyword">const</span>&amp; [_, group] : groups) &#123;</span><br><span class="line">                <span class="keyword">int</span> maxRank = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i : group) maxRank = <span class="built_in">max</span>(maxRank, rank[i]);</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i : group) rank[i] = maxRank + <span class="number">1</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> <span class="keyword">const</span>&amp; [r, c] : cells) matrix[r][c] = rank[r];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> matrix;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>A3 - LeetCode</category>
+        <category>B4 - LeetCoding Challenge</category>
+      </categories>
+      <tags>
+        <tag>CPP</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
 </search>
