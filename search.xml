@@ -2702,33 +2702,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LeetCode Problem 7 - Reverse Integer</title>
-    <url>/posts/1627951198/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.com/problems/reverse-integer/">https://leetcode.com/problems/reverse-integer/</a></p>
-<h3 id="大意"><a href="#大意" class="headerlink" title="大意"></a>大意</h3><p>给定 32 位整数 <code>x</code>，返回反转后的数字，如果存在溢出，则返回 <code>0</code>。</p>
-<span id="more"></span>
-
-<h2 id="解法一：模运算"><a href="#解法一：模运算" class="headerlink" title="解法一：模运算"></a>解法一：模运算</h2><p>通过模运算来反转 <code>x</code> 即可。</p>
-<p>需要注意的是，判断反转后的数字 <code>res</code> 是否会溢出，这个判断不能在每次模运算之后（因为如果溢出，此时已经溢出），而应该在每次模运算之前，判断 <code>res</code> 是否超出了 <code>INT_MAX/10</code>。</p>
-<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
-<li><p>空间：<code>O(1)</code></p>
-</li>
-<li><p>时间：<code>O(n)</code></p>
-</li>
-</ul>
-<h3 id="C-实现"><a href="#C-实现" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (x != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">abs</span>(res) &gt; INT_MAX/<span class="number">10</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            res = res * <span class="number">10</span> + x % <span class="number">10</span>;</span><br><span class="line">            x /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>A3 - LeetCode</category>
-        <category>B1 - LeetCode Problems</category>
-      </categories>
-      <tags>
-        <tag>CPP</tag>
-        <tag>LeetCode</tag>
-        <tag>Math</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LeetCode Problem 5 - Longest Palindromic Substring</title>
     <url>/posts/1627949478/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.com/problems/longest-palindromic-substring/">https://leetcode.com/problems/longest-palindromic-substring/</a></p>
@@ -2756,6 +2729,33 @@
         <tag>LeetCode</tag>
         <tag>String</tag>
         <tag>Dynamic Programming</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode Problem 7 - Reverse Integer</title>
+    <url>/posts/1627951198/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.com/problems/reverse-integer/">https://leetcode.com/problems/reverse-integer/</a></p>
+<h3 id="大意"><a href="#大意" class="headerlink" title="大意"></a>大意</h3><p>给定 32 位整数 <code>x</code>，返回反转后的数字，如果存在溢出，则返回 <code>0</code>。</p>
+<span id="more"></span>
+
+<h2 id="解法一：模运算"><a href="#解法一：模运算" class="headerlink" title="解法一：模运算"></a>解法一：模运算</h2><p>通过模运算来反转 <code>x</code> 即可。</p>
+<p>需要注意的是，判断反转后的数字 <code>res</code> 是否会溢出，这个判断不能在每次模运算之后（因为如果溢出，此时已经溢出），而应该在每次模运算之前，判断 <code>res</code> 是否超出了 <code>INT_MAX/10</code>。</p>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><p>空间：<code>O(1)</code></p>
+</li>
+<li><p>时间：<code>O(n)</code></p>
+</li>
+</ul>
+<h3 id="C-实现"><a href="#C-实现" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (x != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">abs</span>(res) &gt; INT_MAX/<span class="number">10</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            res = res * <span class="number">10</span> + x % <span class="number">10</span>;</span><br><span class="line">            x /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>A3 - LeetCode</category>
+        <category>B1 - LeetCode Problems</category>
+      </categories>
+      <tags>
+        <tag>CPP</tag>
+        <tag>LeetCode</tag>
+        <tag>Math</tag>
       </tags>
   </entry>
   <entry>
@@ -2854,6 +2854,18 @@
 </li>
 </ul>
 <h4 id="C-实现-5"><a href="#C-实现-5" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setZeroes</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = matrix.<span class="built_in">size</span>(), n = matrix[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        unordered_set&lt;<span class="keyword">int</span>&gt; rows, cols;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (matrix[i][j] != <span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">                rows.<span class="built_in">insert</span>(i); cols.<span class="built_in">insert</span>(j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> r : rows) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j) &#123;</span><br><span class="line">                matrix[r][j] = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> c : cols) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i) &#123;</span><br><span class="line">                matrix[i][c] = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="August-14th-Remove-Boxes"><a href="#August-14th-Remove-Boxes" class="headerlink" title="August 14th: Remove Boxes"></a>August 14th: <a href="https://leetcode.com/explore/challenge/card/august-leetcoding-challenge-2021/614/week-2-august-8th-august-14th/3889/">Remove Boxes</a></h2><h3 id="大意-6"><a href="#大意-6" class="headerlink" title="大意"></a>大意</h3><p>给定数组 <code>boxes</code>，元素都为正整数，每回合可以消除 <code>k</code> 个连续且相等的元素，可以得到 <code>k*k</code> 分，直到元素全部被消除掉，返回能够获取到的最高分。</p>
+<h3 id="解法-6"><a href="#解法-6" class="headerlink" title="解法"></a>解法</h3><blockquote>
+<p>参考：<a href="https://www.cnblogs.com/grandyang/p/6850657.html">[LeetCode] 546. Remove Boxes 移除盒子 - 刷尽天下</a></p>
+</blockquote>
+<h4 id="复杂度分析-6"><a href="#复杂度分析-6" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><ul>
+<li><p>空间：<code>O(n^4)</code>，不确定</p>
+</li>
+<li><p>时间：<code>O(n^3)</code></p>
+</li>
+</ul>
+<h4 id="C-实现-6"><a href="#C-实现-6" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">removeBoxes</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; boxes)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = boxes.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> dp[<span class="number">100</span>][<span class="number">100</span>][<span class="number">100</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">helper</span>(boxes, <span class="number">0</span>, n - <span class="number">1</span>, <span class="number">0</span>, dp);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">helper</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; boxes, <span class="keyword">int</span> i, <span class="keyword">int</span> j, <span class="keyword">int</span> k, <span class="keyword">int</span> dp[<span class="number">100</span>][<span class="number">100</span>][<span class="number">100</span>])</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (j &lt; i) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (dp[i][j][k] &gt; <span class="number">0</span>) <span class="keyword">return</span> dp[i][j][k];</span><br><span class="line">        <span class="keyword">int</span> res = (<span class="number">1</span> + k) * (<span class="number">1</span> + k) + <span class="built_in">helper</span>(boxes, i + <span class="number">1</span>, j, <span class="number">0</span>, dp);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> m = i + <span class="number">1</span>; m &lt;= j; ++m) &#123;</span><br><span class="line">            <span class="keyword">if</span> (boxes[m] == boxes[i]) &#123;</span><br><span class="line">                res = <span class="built_in">max</span>(res, <span class="built_in">helper</span>(boxes, i + <span class="number">1</span>, m - <span class="number">1</span>, <span class="number">0</span>, dp) + <span class="built_in">helper</span>(boxes, m, j, k + <span class="number">1</span>, dp));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[i][j][k] = res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>A3 - LeetCode</category>
