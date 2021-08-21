@@ -2103,37 +2103,6 @@
       </tags>
   </entry>
   <entry>
-    <title>2020 August LeetCoding Challenge - Week 2</title>
-    <url>/posts/2020-august-leetcoding-challenge-week-2/</url>
-    <content><![CDATA[<p>LeetCode 八月挑战专题每日随缘更新，点击类别 <a href="/categories/2020-August-LeetCoding-Challenge/">2020 August LeetCoding Challenge</a> 查看更多。</p>
-<span id="more"></span>
-
-<h2 id="August-8th-Path-Sum-III"><a href="#August-8th-Path-Sum-III" class="headerlink" title="August 8th: Path Sum III"></a>August 8th: <a href="https://leetcode.com/explore/challenge/card/august-leetcoding-challenge/550/week-2-august-8th-august-14th/3417/">Path Sum III</a></h2><p>You are given a binary tree in which each node contains an integer value.</p>
-<p>Find the number of paths that sum to a given value.</p>
-<p>The path does not need to start or end at the root or a leaf, but it must go downwards (traveling only from parent nodes to child nodes).</p>
-<p>The tree has no more than 1,000 nodes and the values are in the range -1,000,000 to 1,000,000.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root &#x3D; [10,5,-3,3,2,null,11,3,-2,null,1], sum &#x3D; 8</span><br><span class="line"></span><br><span class="line">      10</span><br><span class="line">     &#x2F;  \</span><br><span class="line">    5   -3</span><br><span class="line">   &#x2F; \    \</span><br><span class="line">  3   2   11</span><br><span class="line"> &#x2F; \   \</span><br><span class="line">3  -2   1</span><br><span class="line"></span><br><span class="line">Return 3. The paths that sum to 8 are:</span><br><span class="line"></span><br><span class="line">1.  5 -&gt; 3</span><br><span class="line">2.  5 -&gt; 2 -&gt; 1</span><br><span class="line">3. -3 -&gt; 11</span><br></pre></td></tr></table></figure>
-
-<h3 id="题目解析"><a href="#题目解析" class="headerlink" title="题目解析"></a>题目解析</h3><p>使用函数 <code>func</code> 对树进行深度优先搜索，对以 <code>node</code> 为起点且满足题目要求的路径进行计数。</p>
-<p><code>pathSum(root-&gt;left, sum)</code> 和 <code>pathSum(root-&gt;right, sum)</code> 则是分别给左右节点一次「重新开始」的机会。</p>
-<h4 id="C-实现"><a href="#C-实现" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">pathSum</span><span class="params">(TreeNode* root, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">func</span>(root, sum) + <span class="built_in">pathSum</span>(root-&gt;left, sum) + <span class="built_in">pathSum</span>(root-&gt;right, sum);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">func</span><span class="params">(TreeNode *node,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!node) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> ans = node-&gt;val==sum ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> ans + <span class="built_in">func</span>(node-&gt;left, sum-node-&gt;val) + <span class="built_in">func</span>(node-&gt;right, sum-node-&gt;val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>终究还是没能在工作日坚持下来，这个系列终止吧。</p>
-]]></content>
-      <categories>
-        <category>A3 - LeetCode</category>
-        <category>B4 - LeetCoding Challenge</category>
-      </categories>
-      <tags>
-        <tag>CPP</tag>
-        <tag>Data Structure and Algorithm</tag>
-        <tag>LeetCode</tag>
-        <tag>Challenge</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>充满仪式感的「全年总结」和不太可能坚持下去的「新年计划」</title>
     <url>/posts/summary-for-past-year-and-plan-for-new-year/</url>
     <content><![CDATA[<p>即使新建好了文档，我依然不知道到底该写些什么，但是「写」这个念头就像只怎么也赶不走的乌鸦，一直在我的头顶盘旋。</p>
@@ -2199,6 +2168,37 @@
         <tag>Plan</tag>
         <tag>Summary</tag>
         <tag>Happiness</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2020 August LeetCoding Challenge - Week 2</title>
+    <url>/posts/2020-august-leetcoding-challenge-week-2/</url>
+    <content><![CDATA[<p>LeetCode 八月挑战专题每日随缘更新，点击类别 <a href="/categories/2020-August-LeetCoding-Challenge/">2020 August LeetCoding Challenge</a> 查看更多。</p>
+<span id="more"></span>
+
+<h2 id="August-8th-Path-Sum-III"><a href="#August-8th-Path-Sum-III" class="headerlink" title="August 8th: Path Sum III"></a>August 8th: <a href="https://leetcode.com/explore/challenge/card/august-leetcoding-challenge/550/week-2-august-8th-august-14th/3417/">Path Sum III</a></h2><p>You are given a binary tree in which each node contains an integer value.</p>
+<p>Find the number of paths that sum to a given value.</p>
+<p>The path does not need to start or end at the root or a leaf, but it must go downwards (traveling only from parent nodes to child nodes).</p>
+<p>The tree has no more than 1,000 nodes and the values are in the range -1,000,000 to 1,000,000.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root &#x3D; [10,5,-3,3,2,null,11,3,-2,null,1], sum &#x3D; 8</span><br><span class="line"></span><br><span class="line">      10</span><br><span class="line">     &#x2F;  \</span><br><span class="line">    5   -3</span><br><span class="line">   &#x2F; \    \</span><br><span class="line">  3   2   11</span><br><span class="line"> &#x2F; \   \</span><br><span class="line">3  -2   1</span><br><span class="line"></span><br><span class="line">Return 3. The paths that sum to 8 are:</span><br><span class="line"></span><br><span class="line">1.  5 -&gt; 3</span><br><span class="line">2.  5 -&gt; 2 -&gt; 1</span><br><span class="line">3. -3 -&gt; 11</span><br></pre></td></tr></table></figure>
+
+<h3 id="题目解析"><a href="#题目解析" class="headerlink" title="题目解析"></a>题目解析</h3><p>使用函数 <code>func</code> 对树进行深度优先搜索，对以 <code>node</code> 为起点且满足题目要求的路径进行计数。</p>
+<p><code>pathSum(root-&gt;left, sum)</code> 和 <code>pathSum(root-&gt;right, sum)</code> 则是分别给左右节点一次「重新开始」的机会。</p>
+<h4 id="C-实现"><a href="#C-实现" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">pathSum</span><span class="params">(TreeNode* root, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">func</span>(root, sum) + <span class="built_in">pathSum</span>(root-&gt;left, sum) + <span class="built_in">pathSum</span>(root-&gt;right, sum);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">func</span><span class="params">(TreeNode *node,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!node) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> ans = node-&gt;val==sum ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> ans + <span class="built_in">func</span>(node-&gt;left, sum-node-&gt;val) + <span class="built_in">func</span>(node-&gt;right, sum-node-&gt;val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>终究还是没能在工作日坚持下来，这个系列终止吧。</p>
+]]></content>
+      <categories>
+        <category>A3 - LeetCode</category>
+        <category>B4 - LeetCoding Challenge</category>
+      </categories>
+      <tags>
+        <tag>CPP</tag>
+        <tag>Data Structure and Algorithm</tag>
+        <tag>LeetCode</tag>
+        <tag>Challenge</tag>
       </tags>
   </entry>
   <entry>
@@ -2732,33 +2732,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LeetCode Problem 7 - Reverse Integer</title>
-    <url>/posts/1627951198/</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.com/problems/reverse-integer/">https://leetcode.com/problems/reverse-integer/</a></p>
-<h3 id="大意"><a href="#大意" class="headerlink" title="大意"></a>大意</h3><p>给定 32 位整数 <code>x</code>，返回反转后的数字，如果存在溢出，则返回 <code>0</code>。</p>
-<span id="more"></span>
-
-<h2 id="解法一：模运算"><a href="#解法一：模运算" class="headerlink" title="解法一：模运算"></a>解法一：模运算</h2><p>通过模运算来反转 <code>x</code> 即可。</p>
-<p>需要注意的是，判断反转后的数字 <code>res</code> 是否会溢出，这个判断不能在每次模运算之后（因为如果溢出，此时已经溢出），而应该在每次模运算之前，判断 <code>res</code> 是否超出了 <code>INT_MAX/10</code>。</p>
-<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
-<li><p>空间：<code>O(1)</code></p>
-</li>
-<li><p>时间：<code>O(n)</code></p>
-</li>
-</ul>
-<h3 id="C-实现"><a href="#C-实现" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (x != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">abs</span>(res) &gt; INT_MAX/<span class="number">10</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            res = res * <span class="number">10</span> + x % <span class="number">10</span>;</span><br><span class="line">            x /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>A3 - LeetCode</category>
-        <category>B1 - LeetCode Problems</category>
-      </categories>
-      <tags>
-        <tag>CPP</tag>
-        <tag>LeetCode</tag>
-        <tag>Math</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2021 August LeetCoding Challenge - Week 2</title>
     <url>/posts/1628470617/</url>
     <content><![CDATA[<p>LeetCode 八月挑战专题，第二周，每日随缘更新。</p>
@@ -2877,6 +2850,33 @@
       </tags>
   </entry>
   <entry>
+    <title>LeetCode Problem 7 - Reverse Integer</title>
+    <url>/posts/1627951198/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.com/problems/reverse-integer/">https://leetcode.com/problems/reverse-integer/</a></p>
+<h3 id="大意"><a href="#大意" class="headerlink" title="大意"></a>大意</h3><p>给定 32 位整数 <code>x</code>，返回反转后的数字，如果存在溢出，则返回 <code>0</code>。</p>
+<span id="more"></span>
+
+<h2 id="解法一：模运算"><a href="#解法一：模运算" class="headerlink" title="解法一：模运算"></a>解法一：模运算</h2><p>通过模运算来反转 <code>x</code> 即可。</p>
+<p>需要注意的是，判断反转后的数字 <code>res</code> 是否会溢出，这个判断不能在每次模运算之后（因为如果溢出，此时已经溢出），而应该在每次模运算之前，判断 <code>res</code> 是否超出了 <code>INT_MAX/10</code>。</p>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><p>空间：<code>O(1)</code></p>
+</li>
+<li><p>时间：<code>O(n)</code></p>
+</li>
+</ul>
+<h3 id="C-实现"><a href="#C-实现" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (x != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">abs</span>(res) &gt; INT_MAX/<span class="number">10</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            res = res * <span class="number">10</span> + x % <span class="number">10</span>;</span><br><span class="line">            x /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>A3 - LeetCode</category>
+        <category>B1 - LeetCode Problems</category>
+      </categories>
+      <tags>
+        <tag>CPP</tag>
+        <tag>LeetCode</tag>
+        <tag>Math</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2021 August LeetCoding Challenge - Week 3</title>
     <url>/posts/1629077320/</url>
     <content><![CDATA[<p>LeetCode 八月挑战专题，第三周，每日随缘更新。</p>
@@ -2939,6 +2939,24 @@
 </li>
 </ul>
 <h4 id="C-实现-4"><a href="#C-实现-4" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> total = <span class="number">0</span>, res = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProduct</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        total = <span class="built_in">dfs</span>(root);</span><br><span class="line">        <span class="built_in">dfs</span>(root);</span><br><span class="line">        <span class="keyword">return</span> res % <span class="built_in"><span class="keyword">int</span></span>(<span class="number">1e9</span>+<span class="number">7</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(TreeNode* node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!node) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> cur_sum = <span class="built_in">dfs</span>(node-&gt;left) + <span class="built_in">dfs</span>(node-&gt;right) + node-&gt;val;</span><br><span class="line">        res = <span class="built_in">max</span>(res, (total-cur_sum)*cur_sum);</span><br><span class="line">        <span class="keyword">return</span> cur_sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="August-20th-Valid-Sudoku"><a href="#August-20th-Valid-Sudoku" class="headerlink" title="August 20th: Valid Sudoku"></a>August 20th: <a href="https://leetcode.com/explore/challenge/card/august-leetcoding-challenge-2021/615/week-3-august-15th-august-21st/3904/">Valid Sudoku</a></h2><h3 id="大意-5"><a href="#大意-5" class="headerlink" title="大意"></a>大意</h3><p>给定 <code>9*9</code> 的数独矩阵，判断当前是否合法。合法需要满足：</p>
+<ol>
+<li><p>同一行必须包含不重复的 <code>1-9</code> 之间的数字，可以有缺失</p>
+</li>
+<li><p>同一行必须包含不重复的 <code>1-9</code> 之间的数字，可以有缺失</p>
+</li>
+<li><p>同一小矩阵必须包含不重复的 <code>1-9</code> 之间的数字，可以有缺失</p>
+</li>
+</ol>
+<h3 id="解法-5"><a href="#解法-5" class="headerlink" title="解法"></a>解法</h3><p>使用 <code>set</code> 分别存储行、列、小矩阵中出现过的数字，如果 <code>insert</code> 失败，说明不合法，返回 <code>false</code> 即可。</p>
+<h4 id="复杂度分析-5"><a href="#复杂度分析-5" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><ul>
+<li><p>空间：<code>O(1)</code></p>
+</li>
+<li><p>时间：<code>O(1)</code></p>
+</li>
+</ul>
+<h4 id="C-实现-5"><a href="#C-实现-5" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValidSudoku</span><span class="params">(vector&lt;vector&lt;<span class="keyword">char</span>&gt;&gt;&amp; board)</span> </span>&#123;</span><br><span class="line">        unordered_set&lt;<span class="keyword">char</span>&gt; rows[<span class="number">9</span>], cols[<span class="number">9</span>], grids[<span class="number">9</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>; ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (board[i][j] == <span class="string">&#x27;.&#x27;</span>) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (!rows[i].<span class="built_in">insert</span>(board[i][j]).second ||</span><br><span class="line">                    !cols[j].<span class="built_in">insert</span>(board[i][j]).second ||</span><br><span class="line">                    !grids[<span class="number">3</span>*(i/<span class="number">3</span>)+j/<span class="number">3</span>].<span class="built_in">insert</span>(board[i][j]).second) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>A3 - LeetCode</category>
