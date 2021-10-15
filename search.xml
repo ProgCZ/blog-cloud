@@ -2987,4 +2987,127 @@
         <tag>LeetCode</tag>
       </tags>
   </entry>
+  <entry>
+    <title>常见排序算法的 C++ 实现、复杂度和稳定性分析</title>
+    <url>/posts/1633654398/</url>
+    <content><![CDATA[<p>以下是在 LeetCode Playground 完成的 C++ 实现及测试用例：</p>
+<ul>
+<li><a href="https://leetcode.com/playground/gZfypPAn">https://leetcode.com/playground/gZfypPAn</a></li>
+</ul>
+<p>以下是来自<a href="https://www.runoob.com/w3cnote/ten-sorting-algorithm.html">菜鸟教程</a>的表格，给出了时间复杂度、空间复杂度和稳定性分析：</p>
+<table>
+<thead>
+<tr>
+<th align="center">算法</th>
+<th align="center">时间复杂度 - 平均</th>
+<th align="center">时间复杂度 - 最好</th>
+<th align="center">时间复杂度 - 最坏</th>
+<th align="center">空间复杂度</th>
+<th align="center">稳定性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>冒泡排序</strong></td>
+<td align="center"><code>O(n^2)</code></td>
+<td align="center"><code>O(n)</code></td>
+<td align="center"><code>O(n^2)</code></td>
+<td align="center"><code>O(1)</code></td>
+<td align="center">稳定</td>
+</tr>
+<tr>
+<td align="center"><strong>插入排序</strong></td>
+<td align="center"><code>O(n^2)</code></td>
+<td align="center"><code>O(n)</code></td>
+<td align="center"><code>O(n^2)</code></td>
+<td align="center"><code>O(1)</code></td>
+<td align="center">稳定</td>
+</tr>
+<tr>
+<td align="center"><strong>选择排序</strong></td>
+<td align="center"><code>O(n^2)</code></td>
+<td align="center"><code>O(n^2)</code></td>
+<td align="center"><code>O(n^2)</code></td>
+<td align="center"><code>O(1)</code></td>
+<td align="center">不稳定</td>
+</tr>
+<tr>
+<td align="center"><strong>归并排序</strong></td>
+<td align="center"><code>O(nlogn)</code></td>
+<td align="center"><code>O(nlogn)</code></td>
+<td align="center"><code>O(nlogn)</code></td>
+<td align="center"><code>O(n)</code></td>
+<td align="center">稳定</td>
+</tr>
+<tr>
+<td align="center"><strong>快速排序</strong></td>
+<td align="center"><code>O(nlogn)</code></td>
+<td align="center"><code>O(nlogn)</code></td>
+<td align="center"><code>O(n^2)</code></td>
+<td align="center"><code>O(logn)</code></td>
+<td align="center">不稳定</td>
+</tr>
+<tr>
+<td align="center"><strong>计数排序</strong></td>
+<td align="center"><code>O(n+k)</code></td>
+<td align="center"><code>O(n+k)</code></td>
+<td align="center"><code>O(n+k)</code></td>
+<td align="center"><code>O(k)</code></td>
+<td align="center">稳定</td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+
+<h2 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1 冒泡排序"></a>1 冒泡排序</h2><h3 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h3><p>遍历数组 <code>nums</code>，对于遍历到的元素 <code>nums[i]</code>，如果 <code>nums[i] &gt; nums[i+1]</code>，那么交换 <code>nums[i]</code> 和 <code>nums[i+1]</code>，这样一轮下来，最后一位必然是 <code>nums</code> 中最大的数字，在下一轮遍历中可以避开这一元素。不断重复这一过程，直到无可遍历元素为止。</p>
+<p>可以参考来自<a href="https://www.runoob.com/w3cnote/bubble-sort.html">菜鸟教程</a>的动图：</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/10/15/01.gif"></p>
+<h3 id="C-实现"><a href="#C-实现" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble_sort</span><span class="params">(std::vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = n<span class="number">-1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">        <span class="keyword">bool</span> has_swap = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; ++j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] &gt; nums[j+<span class="number">1</span>]) &#123;</span><br><span class="line">                std::<span class="built_in">swap</span>(nums[j], nums[j+<span class="number">1</span>]);</span><br><span class="line">                has_swap = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!has_swap) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note info"><p>这里的实现，是在冒泡排序的基础实现之上，加了「早停」的思想，即：在一轮冒泡之后，如果没有发生交换，那么说明数组已经有序，直接退出即可。</p>
+<p>这也是为什么，冒泡排序的时间复杂度在最好的情况下是 <code>O(n)</code>，因为最好的情况就是数组已经有序，只需遍历一次即可。</p>
+</div>
+
+<h2 id="2-插入排序"><a href="#2-插入排序" class="headerlink" title="2 插入排序"></a>2 插入排序</h2><h3 id="基本思想-1"><a href="#基本思想-1" class="headerlink" title="基本思想"></a>基本思想</h3><p>遍历数组 <code>nums</code>，对于遍历到的元素 <code>nums[i]</code>，嵌套遍历并后移其前的元素，直到找到比 <code>nums[i]</code> 小的元素，将 <code>nums[i]</code> 插入其后即可。</p>
+<p>可以参考来自<a href="https://www.runoob.com/w3cnote/insertion-sort.html">菜鸟教程</a>的动图：</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/10/15/02.gif"></p>
+<h3 id="C-实现-1"><a href="#C-实现-1" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertion_sort</span><span class="params">(std::vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> val = nums[i], j = i<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (; j &gt;= <span class="number">0</span> &amp;&amp; nums[j] &gt; val; --j) &#123;</span><br><span class="line">            nums[j+<span class="number">1</span>] = nums[j];</span><br><span class="line">        &#125;</span><br><span class="line">        nums[j+<span class="number">1</span>] = val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-选择排序"><a href="#3-选择排序" class="headerlink" title="3 选择排序"></a>3 选择排序</h2><h3 id="基本思想-2"><a href="#基本思想-2" class="headerlink" title="基本思想"></a>基本思想</h3><p>遍历数组 <code>nums</code>，对于遍历到的元素 <code>nums[i]</code>，嵌套遍历其后的所有元素，找出其中的最小值 <code>nums[min_num_idx]</code>，将 <code>nums[i]</code> 与 <code>nums[min_num_idx]</code> 进行交换即可。</p>
+<p>可以参考来自<a href="https://www.runoob.com/w3cnote/selection-sort.html">菜鸟教程</a>的动图：</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/10/15/03.gif"></p>
+<h3 id="C-实现-2"><a href="#C-实现-2" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">selection_sort</span><span class="params">(std::vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> min_num_idx = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; n; ++j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] &lt; nums[min_num_idx]) &#123;</span><br><span class="line">                min_num_idx = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        std::<span class="built_in">swap</span>(nums[i], nums[min_num_idx]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-归并排序"><a href="#4-归并排序" class="headerlink" title="4 归并排序"></a>4 归并排序</h2><h3 id="基本思想-3"><a href="#基本思想-3" class="headerlink" title="基本思想"></a>基本思想</h3><p>将数组 <code>nums</code> 拆分为左右两个子数组，不断向下递归，直到无法拆分为止。拷贝左右两个子数组，使用两个指针不断比较，较小者放入原数组中，自此向上递归。</p>
+<p>可以参考来自<a href="https://www.runoob.com/w3cnote/merge-sort.html">菜鸟教程</a>的动图：</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/10/15/04.gif"></p>
+<h3 id="C-实现-3"><a href="#C-实现-3" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><p>递归版本：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_sort_recursive_core</span><span class="params">(std::vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> beg, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (beg &gt;= end) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = beg + (end - beg) / <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">merge_sort_recursive_core</span>(nums, beg, mid);</span><br><span class="line">    <span class="built_in">merge_sort_recursive_core</span>(nums, mid+<span class="number">1</span>, end);</span><br><span class="line">    <span class="function">std::vector&lt;<span class="keyword">int</span>&gt; <span class="title">left_sub_arr</span><span class="params">(nums.begin()+beg, nums.begin()+mid+<span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="function">std::vector&lt;<span class="keyword">int</span>&gt; <span class="title">right_sub_arr</span><span class="params">(nums.begin()+mid+<span class="number">1</span>, nums.begin()+end+<span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="keyword">int</span> i = beg, left_idx = <span class="number">0</span>, right_idx = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (left_idx &lt;= mid-beg &amp;&amp; right_idx &lt;= end-mid<span class="number">-1</span>) &#123;</span><br><span class="line">        nums[i++] = left_sub_arr[left_idx] &lt; right_sub_arr[right_idx] ?</span><br><span class="line">            left_sub_arr[left_idx++] : right_sub_arr[right_idx++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (left_idx &lt;= mid-beg) &#123;</span><br><span class="line">        nums[i++] = left_sub_arr[left_idx++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (right_idx &lt;= end-mid<span class="number">-1</span>) &#123;</span><br><span class="line">        nums[i++] = right_sub_arr[right_idx++];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_sort_recursive</span><span class="params">(std::vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">    <span class="built_in">merge_sort_recursive_core</span>(nums, <span class="number">0</span>, n<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>循环版本：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_sort_loop</span><span class="params">(std::vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> seg = <span class="number">1</span>; seg &lt; n; seg *= <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> beg = <span class="number">0</span>; beg &lt; n; beg += seg*<span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = <span class="built_in">min</span>(n<span class="number">-1</span>, beg+seg<span class="number">-1</span>), end = <span class="built_in">min</span>(n<span class="number">-1</span>, beg+seg*<span class="number">2</span><span class="number">-1</span>);</span><br><span class="line">            <span class="function">std::vector&lt;<span class="keyword">int</span>&gt; <span class="title">left_sub_arr</span><span class="params">(nums.begin()+beg, nums.begin()+mid+<span class="number">1</span>)</span></span>;</span><br><span class="line">            <span class="function">std::vector&lt;<span class="keyword">int</span>&gt; <span class="title">right_sub_arr</span><span class="params">(nums.begin()+mid+<span class="number">1</span>, nums.begin()+end+<span class="number">1</span>)</span></span>;</span><br><span class="line">            <span class="keyword">int</span> i = beg, left_idx = <span class="number">0</span>, right_idx = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (left_idx &lt;= mid-beg &amp;&amp; right_idx &lt;= end-mid<span class="number">-1</span>) &#123;</span><br><span class="line">                nums[i++] = left_sub_arr[left_idx] &lt; right_sub_arr[right_idx] ? left_sub_arr[left_idx++] : right_sub_arr[right_idx++];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span> (left_idx &lt;= mid-beg) &#123;</span><br><span class="line">                nums[i++] = left_sub_arr[left_idx++];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span> (right_idx &lt;= end-mid<span class="number">-1</span>) &#123;</span><br><span class="line">                nums[i++] = right_sub_arr[right_idx++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-快速排序"><a href="#5-快速排序" class="headerlink" title="5 快速排序"></a>5 快速排序</h2><h3 id="基本思想-4"><a href="#基本思想-4" class="headerlink" title="基本思想"></a>基本思想</h3><p>在数组 <code>nums</code> 中，挑选出一个基准数字 <code>pivot</code>，一般为数组头部的数字。使用两个指针 <code>beg</code> 和 <code>end</code> 分别从数组头部和尾部遍历，<code>nums[end]</code> 比 <code>pivot</code> 小者挪至 <code>beg</code> 处，<code>nums[beg]</code> 比 <code>pivot</code> 大者挪至 <code>end</code> 处，从而保证在 <code>beg</code> 和 <code>end</code> 相遇时，相遇位置左侧的所有元素均小于 <code>pivot</code>，相遇位置右侧的所有元素均大于 <code>pivot</code>。之后递归地处理左右两个子数组即可。</p>
+<p>可以参考来自<a href="https://www.runoob.com/w3cnote/quick-sort-2.html">菜鸟教程</a>的动图：</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/10/15/05.gif"></p>
+<h3 id="C-实现-4"><a href="#C-实现-4" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><p>递归版本：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">partition_recursive</span><span class="params">(std::vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> beg, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (beg &gt;= end) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> pivot = nums[beg], <span class="keyword">beg_t</span> = beg, <span class="keyword">end_t</span> = end;</span><br><span class="line">    <span class="keyword">while</span> (beg &lt; end) &#123;</span><br><span class="line">        <span class="keyword">while</span> (beg &lt; end &amp;&amp; nums[end] &gt; pivot) --end;</span><br><span class="line">        nums[beg] = nums[end];</span><br><span class="line">        <span class="keyword">while</span> (beg &lt; end &amp;&amp; nums[beg] &lt;= pivot) ++beg;</span><br><span class="line">        nums[end] = nums[beg];</span><br><span class="line">    &#125;</span><br><span class="line">    nums[beg] = pivot;</span><br><span class="line">    <span class="built_in">partition_recursive</span>(nums, <span class="keyword">beg_t</span>, beg<span class="number">-1</span>);</span><br><span class="line">    <span class="built_in">partition_recursive</span>(nums, beg+<span class="number">1</span>, <span class="keyword">end_t</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort_recursive</span><span class="params">(std::vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">    <span class="built_in">partition_recursive</span>(nums, <span class="number">0</span>, n<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>循环版本：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">partition_loop</span><span class="params">(std::vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> beg, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (beg &gt;= end) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">int</span> pivot = nums[beg], <span class="keyword">beg_t</span> = beg, <span class="keyword">end_t</span> = end;</span><br><span class="line">    <span class="keyword">while</span> (beg &lt; end) &#123;</span><br><span class="line">        <span class="keyword">while</span> (beg &lt; end &amp;&amp; nums[end] &gt; pivot) --end;</span><br><span class="line">        nums[beg] = nums[end];</span><br><span class="line">        <span class="keyword">while</span> (beg &lt; end &amp;&amp; nums[beg] &lt;= pivot) ++beg;</span><br><span class="line">        nums[end] = nums[beg];</span><br><span class="line">    &#125;</span><br><span class="line">    nums[beg] = pivot;</span><br><span class="line">    <span class="keyword">return</span> beg;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort_loop</span><span class="params">(std::vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">    std::stack&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; s;</span><br><span class="line">    s.<span class="built_in">push</span>(&#123;<span class="number">0</span>, n<span class="number">-1</span>&#125;);</span><br><span class="line">    <span class="keyword">while</span> (!s.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        <span class="keyword">auto</span> [beg, end] = s.<span class="built_in">top</span>(); s.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="keyword">int</span> idx = <span class="built_in">partition_loop</span>(nums, beg, end);</span><br><span class="line">        <span class="keyword">if</span> (idx == <span class="number">-1</span>) <span class="keyword">continue</span>;</span><br><span class="line">        s.<span class="built_in">push</span>(&#123;beg, idx<span class="number">-1</span>&#125;);</span><br><span class="line">        s.<span class="built_in">push</span>(&#123;idx+<span class="number">1</span>, end&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-计数排序"><a href="#6-计数排序" class="headerlink" title="6 计数排序"></a>6 计数排序</h2><h3 id="基本思想-5"><a href="#基本思想-5" class="headerlink" title="基本思想"></a>基本思想</h3><p>计数排序适用于：数据的范围不大，方差不大，且均为离散值。</p>
+<p>在数组 <code>nums</code> 中，找到最小值 <code>min_num</code> 和最大值 <code>max_num</code>，就可以得到 <code>nums</code> 中数字的范围，将这个范围表示为计数数组 <code>cnts</code>，将 <code>nums</code> 中数字在对应索引处进行计数，最后将 <code>cnts</code> 中的数字依次填回 <code>nums</code> 即可。</p>
+<p>可以参考来自<a href="https://www.runoob.com/w3cnote/counting-sort.html">菜鸟教程</a>的动图：</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/10/15/06.gif"></p>
+<h3 id="C-实现-5"><a href="#C-实现-5" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">counting_sort</span><span class="params">(std::vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (nums.<span class="built_in">empty</span>()) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> min_num = INT_MAX, max_num = INT_MIN;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> num : nums) &#123;</span><br><span class="line">        min_num = <span class="built_in">min</span>(min_num, num);</span><br><span class="line">        max_num = <span class="built_in">max</span>(max_num, num);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">cnts</span><span class="params">(max_num-min_num+<span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> num : nums) &#123;</span><br><span class="line">        ++cnts[num-min_num];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> idx = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; max_num-min_num+<span class="number">1</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = cnts[i]; j &gt; <span class="number">0</span>; --j) &#123;</span><br><span class="line">            nums[idx++] = min_num + i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>A2 - 学习笔记</category>
+        <category>B1 - 数据结构与算法</category>
+      </categories>
+      <tags>
+        <tag>CPP</tag>
+        <tag>Data Structure and Algorithm</tag>
+        <tag>Sort</tag>
+      </tags>
+  </entry>
 </search>
