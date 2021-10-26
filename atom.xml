@@ -46,6 +46,33 @@
   </entry>
   
   <entry>
+    <title>面试中常见的 C++ 问题汇总</title>
+    <link href="https://progcz.com/posts/1634567000/"/>
+    <id>https://progcz.com/posts/1634567000/</id>
+    <published>2021-10-18T15:07:20.000Z</published>
+    <updated>2021-10-26T01:54:03.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>以前秋招，整理过一版 C++ 问题汇总，这次社招，重新梳理一遍。</p><span id="more"></span><h2 id="1-语法基础"><a href="#1-语法基础" class="headerlink" title="1 语法基础"></a>1 语法基础</h2><h3 id="C-和-C-有什么区别？"><a href="#C-和-C-有什么区别？" class="headerlink" title="C++ 和 C 有什么区别？"></a>C++ 和 C 有什么区别？</h3><ul><li><p>C++ 是面向对象的语言，而 C 是面向过程的语言</p></li><li><p>C++ 引入类的概念，而 C 中没有</p></li><li><p>C++ 引入引用的概念，而 C 中没有</p></li><li><p>C++ 引入函数重载的特性，而 C 中没有</p></li><li><p>C++ 引入 <code>new/delete</code> 运算符，取代 C 中的 <code>malloc/free</code> 库函数</p></li></ul><h3 id="相比于-C-98，C-11-有哪些新特性？"><a href="#相比于-C-98，C-11-有哪些新特性？" class="headerlink" title="相比于 C++98，C++11 有哪些新特性？"></a>相比于 C++98，C++11 有哪些新特性？</h3><ul><li><p>引入 Lambda 表达式用于创建匿名函数</p></li><li><p>引入自动类型推导 <code>auto</code> 和 <code>decltype</code></p></li><li><p>引入 <code>= default</code> 生成默认构造函数，<code>= delete</code> 禁止使用拷贝构造函数</p></li><li><p>引入 <code>nullptr</code> 关键字，用于解决 <code>NULL</code> 的二义性问题</p></li><li><p>引入范围 <code>for</code> 循环</p></li><li><p>引入列表初始化</p></li><li><p>引入 <code>shared_ptr</code>、<code>unique_ptr</code> 等智能指针</p></li><li><p>引入右值引用，将引用绑定到右值，如临时对象或字面量</p></li><li><p>引入线程库</p></li></ul><h3 id="struct-和-class-有什么区别？"><a href="#struct-和-class-有什么区别？" class="headerlink" title="struct 和 class 有什么区别？"></a><code>struct</code> 和 <code>class</code> 有什么区别？</h3><ul><li><p>成员的默认访问权限：<code>struct</code> 的成员默认为 <code>public</code> 权限，<code>class</code> 的成员默认为 <code>private</code> 权限</p></li><li><p>默认继承权限：<code>struct</code> 的继承按照 <code>public</code> 处理，<code>class</code> 的继承按照 <code>private</code> 处理</p></li></ul><h3 id="对于一个频繁使用的短小函数，应该使用什么来实现？有什么优缺点？"><a href="#对于一个频繁使用的短小函数，应该使用什么来实现？有什么优缺点？" class="headerlink" title="对于一个频繁使用的短小函数，应该使用什么来实现？有什么优缺点？"></a>对于一个频繁使用的短小函数，应该使用什么来实现？有什么优缺点？</h3><p>应该使用 <code>inline</code> 内联函数，即编译器将 <code>inline</code> 内联函数内的代码替换到函数被调用的地方。</p><p>优点：</p><ul><li><p>在内联函数被调用的地方进行代码展开，省去函数调用的时间，从而提高程序运行效率</p></li><li><p>相比于宏函数，内联函数在代码展开时，编译器会进行语法安全检查或数据类型转换，使用更加安全</p></li></ul><p>缺点：</p><ul><li><p>代码膨胀，产生更多的开销</p></li><li><p>如果内联函数内代码块的执行时间比调用时间长得多，那么效率的提升并没有那么大</p></li><li><p>如果修改内联函数，那么所有调用该函数的代码文件都需要重新编译</p></li><li><p>内联声明只是建议，是否内联由编译器决定，所以实际并不可控</p></li></ul><h3 id="define-和-inline-有什么区别？"><a href="#define-和-inline-有什么区别？" class="headerlink" title="#define 和 inline 有什么区别？"></a><code>#define</code> 和 <code>inline</code> 有什么区别？</h3><ul><li><p><code>#define</code> 宏函数在预处理阶段展开，而 <code>inline</code> 内联函数在编译阶段展开</p></li><li><p><code>#define</code> 宏函数不检查参数类型，而 <code>inline</code> 内联函数检查参数类型，使用更加安全</p></li></ul><h3 id="const-关键字有什么作用？"><a href="#const-关键字有什么作用？" class="headerlink" title="const 关键字有什么作用？"></a><code>const</code> 关键字有什么作用？</h3><ul><li><p>修饰变量时，表示该变量的值在其生命周期内只读，不能被改变</p></li><li><p>修饰指针：<code>int * const</code></p></li><li><p>修饰指针所指向的对象：<code>const int *</code></p></li><li><p>修饰引用所绑定的对象：<code>const int &amp;</code></p></li><li><p>修饰函数的引用形参时，可以保护实参不被函数修改</p></li><li><p>修饰非静态成员变量时，不能在类定义处初始化，必须通过构造函数初始化列表进行初始化</p></li><li><p>修饰静态成员变量时，不能在类内部初始化，一般在类外部进行初始化</p></li><li><p>修饰成员函数时，表示该函数不应修改非静态成员，但并不可靠，因为指针所指对象可能会被修改</p></li></ul><h3 id="define-和-const-有什么区别？"><a href="#define-和-const-有什么区别？" class="headerlink" title="#define 和 const 有什么区别？"></a><code>#define</code> 和 <code>const</code> 有什么区别？</h3><ul><li><p>编译器处理方式不同：<code>#define</code> 宏是在预处理阶段展开，不能对宏定义进行调试，而 <code>const</code> 常量是在编译阶段使用</p></li><li><p>类型和安全检查不同：<code>#define</code> 宏没有类型，不做任何类型检查，仅仅是代码展开，可能产生边际效应等错误，而 <code>const</code> 常量有具体类型，在编译阶段会执行类型检查</p></li><li><p>存储方式不同：<code>#define</code> 宏仅仅是代码展开，在多个地方进行字符串替换，不会分配内存，存储于程序的代码段中，而 <code>const</code> 常量会分配内存，但只维持一份拷贝，存储于程序的数据段中</p></li><li><p>定义域不同：<code>#define</code> 宏不受定义域限制，而 <code>const</code> 常量只在定义域内有效</p></li></ul><h3 id="explicit-关键字有什么作用？"><a href="#explicit-关键字有什么作用？" class="headerlink" title="explicit 关键字有什么作用？"></a><code>explicit</code> 关键字有什么作用？</h3><p>可以用单个实参来调用的构造函数都定义了从形参类型到实参类型的隐式转换，这种转换往往都是非预期的，所以使用 <code>explicit</code> 关键字对构造函数进行修饰，从而避免由构造函数定义的隐式转换。</p><h3 id="extern关键字有什么作用？"><a href="#extern关键字有什么作用？" class="headerlink" title="extern关键字有什么作用？"></a><code>extern</code>关键字有什么作用？</h3><ul><li><p>当 <code>extern</code> 修饰变量或函数时，表示变量或函数的定义在其他文件中，提示编译器在其他模块中寻找其定义</p></li><li><p>当 <code>extern C</code> 时，提示编译器在编译函数时按照 C 的规则去翻译相应的函数名，如果按照 C++ 的规则，函数名会被翻译得变得面目全非，因为 C++ 支持函数的重载。</p></li></ul><h3 id="static关键字有什么作用？"><a href="#static关键字有什么作用？" class="headerlink" title="static关键字有什么作用？"></a><code>static</code>关键字有什么作用？</h3><ul><li><p>修饰局部变量时，使得该变量在静态存储区分配内存；只能在首次函数调用中进行首次初始化，之后的函数调用不再进行初始化；其生命周期与程序相同，但其作用域为局部作用域，并不能一直被访问</p></li><li><p>修饰全局变量时，使得该变量在静态存储区分配内存；在声明该变量的整个文件中都是可见的，而在文件外是不可见的</p></li><li><p>修饰函数时，在声明该函数的整个文件中都是可见的，而在文件外是不可见的，从而可以在多人协作时避免同名的函数冲突</p></li><li><p>修饰成员变量时，所有的对象都只维持一份拷贝，可以实现不同对象间的数据共享；不需要实例化对象即可访问；不能在类内部初始化，一般在类外部初始化，并且初始化时不加 <code>static</code></p></li><li><p>修饰成员函数时，该函数不接受 <code>this</code> 指针，只能访问类的静态成员；不需要实例化对象即可访问</p></li></ul><h3 id="sizeof-和-strlen-之间有什么区别？"><a href="#sizeof-和-strlen-之间有什么区别？" class="headerlink" title="sizeof 和 strlen 之间有什么区别？"></a><code>sizeof</code> 和 <code>strlen</code> 之间有什么区别？</h3><ul><li><p><code>sizeof</code> 属于运算符，不是库函数，其结果在编译时期计算得到，因此不能用来得到动态分配的内存大小，而 <code>strlen</code> 属于库函数，其结果在运行期间计算得到</p></li><li><p><code>sizeof</code> 参数可以是任何数据或数据类型，而 <code>strlen</code> 的参数只能是字符指针，且该指针指向结尾为 <code>\0</code> 的字符串</p></li></ul><h3 id="assert-有什么用处？"><a href="#assert-有什么用处？" class="headerlink" title="assert 有什么用处？"></a><code>assert</code> 有什么用处？</h3><p><code>assert</code> 是一种仅在 debug 版本中使用的宏函数，用于检查不该发生的情况，可以看作是一种在任何系统状态下都可以安全使用的无害测试手段；可以通过 <code>#define NDEBUG</code> 来关闭 <code>assert</code>，放在 <code>&lt;cassert&gt;</code> 头文件之前。</p><h3 id="变量的声明和定义有什么区别？"><a href="#变量的声明和定义有什么区别？" class="headerlink" title="变量的声明和定义有什么区别？"></a>变量的声明和定义有什么区别？</h3><ul><li><p>声明仅仅是把变量类型等信息提供给编译器，并不为其分配内存空间，而定义需要为变量分配内存空间</p></li><li><p>变量可以在多处声明，如外部变量 <code>extern</code>，但只能在一处定义</p></li></ul><h3 id="指针和引用有什么区别？"><a href="#指针和引用有什么区别？" class="headerlink" title="指针和引用有什么区别？"></a>指针和引用有什么区别？</h3><ul><li><p>指针是一种对象，用来存放某个对象的地址，占用内存空间，而引用是一种别名，不占用内存空间</p></li><li><p>指针可以声明为空，之后进行初始化，普通指针可以随时更换所指对象，而引用必须在声明的时候初始化，而且初始化后不可改变</p></li><li><p>指针包含指向常量的指针和常量指针，而引用不包含常量引用，但包含对常量的引用</p></li></ul><h2 id="3-面向对象"><a href="#3-面向对象" class="headerlink" title="3 面向对象"></a>3 面向对象</h2><h3 id="public-成员、protected-成员、private-成员有什么区别？"><a href="#public-成员、protected-成员、private-成员有什么区别？" class="headerlink" title="public 成员、protected 成员、private 成员有什么区别？"></a><code>public</code> 成员、<code>protected</code> 成员、<code>private</code> 成员有什么区别？</h3><ul><li><p><code>public</code> 成员可以被本类及本类对象、友元类及友元类对象、子类及子类对象访问</p></li><li><p><code>protected</code> 成员可以被本类、友元类、子类访问，不能被任何对象访问</p></li><li><p><code>private</code> 成员只可以被本类访问</p></li></ul><h3 id="public-继承、protected-继承、private-继承有什么区别？"><a href="#public-继承、protected-继承、private-继承有什么区别？" class="headerlink" title="public 继承、protected 继承、private 继承有什么区别？"></a><code>public</code> 继承、<code>protected</code> 继承、<code>private</code> 继承有什么区别？</h3><p>不管哪类继承，子类都可以访问父类的 <code>public</code> 成员、<code>protected</code> 成员，但是继承之后，成员属性会发生变化：</p><table><thead><tr><th>父类成员</th><th><code>public</code> 继承后子类成员</th><th><code>protected</code> 继承后子类成员</th><th><code>private</code> 继承后子类成员</th></tr></thead><tbody><tr><td><code>public</code></td><td><code>public</code></td><td><code>protected</code></td><td><code>private</code></td></tr><tr><td><code>protected</code></td><td><code>protected</code></td><td><code>protected</code></td><td><code>private</code></td></tr><tr><td><code>private</code></td><td>无法继承</td><td>无法继承</td><td>无法继承</td></tr></tbody></table>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;以前秋招，整理过一版 C++ 问题汇总，这次社招，重新梳理一遍。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="A2 - 学习笔记" scheme="https://progcz.com/categories/A2-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="B2 - 编程语言" scheme="https://progcz.com/categories/A2-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/B2-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    
+    <category term="C1 - CPP" scheme="https://progcz.com/categories/A2-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/B2-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C1-CPP/"/>
+    
+    
+    <category term="CPP" scheme="https://progcz.com/tags/CPP/"/>
+    
+    <category term="面试" scheme="https://progcz.com/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>常见排序算法的 C++ 实现、复杂度和稳定性分析</title>
     <link href="https://progcz.com/posts/1633654398/"/>
     <id>https://progcz.com/posts/1633654398/</id>
@@ -638,35 +665,6 @@
     <category term="Shanghai" scheme="https://progcz.com/tags/Shanghai/"/>
     
     <category term="Rent" scheme="https://progcz.com/tags/Rent/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>记录使用 IFTTT + Telegram 订阅 RSS 的推送模板</title>
-    <link href="https://progcz.com/posts/record-use-ifttt-tg-sub-rss-push-template/"/>
-    <id>https://progcz.com/posts/record-use-ifttt-tg-sub-rss-push-template/</id>
-    <published>2020-05-24T10:30:11.000Z</published>
-    <updated>2020-05-24T10:30:11.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>对于大部分使用 RSS 的人来说，RSS 最大的优势便是能够提供<strong>「聚合阅读」</strong>的功能，也就是在一个地方阅读多篇不同来源的文章，而且可以自主选择订阅源，拒绝推荐引擎的「投喂」。然而对于我来说，RSS 还有一个重要的作用在于能够提供<strong>「即时通知」</strong>的功能，也就是<strong>「一旦发生了什么，请立刻通知我」</strong>。</p><p>所以，为了实现<strong>「即时通知」</strong>的功能，<strong>可以使用 IFTTT 将 RSS 订阅内容推送至 Telegram 的对话、群组或公开频道，形成属于自己的「信息流」。</strong></p><img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2020/05/10.png" style="zoom:100%"/><span id="more"></span><h2 id="0-写在前面"><a href="#0-写在前面" class="headerlink" title="0 写在前面"></a>0 写在前面</h2><p>本文不介绍具体教程，只记录其中使用的推送模板，留作以后参考。</p><p><strong>如果你想了解具体教程，推荐参考<a href="https://sword.studio/157.html">这篇文章</a>。</strong></p><p>另外，<strong>如果你也使用 <a href="https://docs.rsshub.app/">RSSHub</a>，推荐参考<a href="https://docs.rsshub.app/install/#bu-shu-dao-vercel-zeit-now">官方文档</a>将其部署至 <a href="https://vercel.com/">Vercel</a>，</strong>从而搭建属于自己的订阅引擎。</p><h2 id="1-应用场景"><a href="#1-应用场景" class="headerlink" title="1 应用场景"></a>1 应用场景</h2><p>在 Telegram 中，我创建了两个公开频道，分别是：</p><ul><li><p><strong><a href="https://t.me/ProgCZChannel">ProgCZ’s Blog - Channel</a> 用于同步本博客更新的文章。</strong></p></li><li><p><strong><a href="https://t.me/ProgCZFlow">ProgCZ’s Flow</a> 用于建立专属于自己的信息流。</strong></p></li></ul><h2 id="2-推送模板"><a href="#2-推送模板" class="headerlink" title="2 推送模板"></a>2 推送模板</h2><p>在 IFTTT 中，需要设置推送模板，分为两种情况：</p><ul><li><p><strong>对于内容较多的订阅源（比如博客文章），只是推送其标题、链接和来源，</strong>模板如下：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">标题：&lt;b&gt;&#123;&#123;EntryTitle&#125;&#125;&lt;&#x2F;b&gt;&lt;br&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">链接：&lt;b&gt;&#123;&#123;EntryUrl&#125;&#125;&lt;&#x2F;b&gt;&lt;br&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">来自：&lt;a href&#x3D;&quot;&#123;&#123;FeedUrl&#125;&#125;&quot;&gt;&#123;&#123;FeedTitle&#125;&#125;&lt;&#x2F;a&gt;&lt;br&gt;</span><br></pre></td></tr></table></figure><p>同时，<strong>开启「网页预览」功能。</strong></p></li><li><p><strong>对于内容较少的订阅源（比如购物优惠），推送其标题、内容、链接和来源，</strong>模板如下：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">标题：&lt;b&gt;&#123;&#123;EntryTitle&#125;&#125;&lt;&#x2F;b&gt;&lt;br&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">&#123;&#123;EntryContent&#125;&#125;&lt;br&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">链接：&lt;b&gt;&#123;&#123;EntryUrl&#125;&#125;&lt;&#x2F;b&gt;&lt;br&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">来自：&lt;a href&#x3D;&quot;&#123;&#123;FeedUrl&#125;&#125;&quot;&gt;&#123;&#123;FeedTitle&#125;&#125;&lt;&#x2F;a&gt;&lt;br&gt;</span><br></pre></td></tr></table></figure><p>同时，<strong>关闭「网页预览」功能。</strong></p></li></ul><h2 id="3-预览效果"><a href="#3-预览效果" class="headerlink" title="3 预览效果"></a>3 预览效果</h2><p>如果你想预览效果，可以在科学环境中访问 <a href="https://t.me/s/ProgCZChannel">ProgCZ’s Blog - Channel</a> 和 <a href="https://t.me/s/ProgCZFlow">ProgCZ’s Flow</a>。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;对于大部分使用 RSS 的人来说，RSS 最大的优势便是能够提供&lt;strong&gt;「聚合阅读」&lt;/strong&gt;的功能，也就是在一个地方阅读多篇不同来源的文章，而且可以自主选择订阅源，拒绝推荐引擎的「投喂」。然而对于我来说，RSS 还有一个重要的作用在于能够提供&lt;strong&gt;「即时通知」&lt;/strong&gt;的功能，也就是&lt;strong&gt;「一旦发生了什么，请立刻通知我」&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;所以，为了实现&lt;strong&gt;「即时通知」&lt;/strong&gt;的功能，&lt;strong&gt;可以使用 IFTTT 将 RSS 订阅内容推送至 Telegram 的对话、群组或公开频道，形成属于自己的「信息流」。&lt;/strong&gt;&lt;/p&gt;
-&lt;img data-src=&quot;https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2020/05/10.png&quot; style=&quot;zoom:100%&quot;/&gt;</summary>
-    
-    
-    
-    <category term="A1 - 生活随笔" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/"/>
-    
-    <category term="B2 - 折腾" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/B2-%E6%8A%98%E8%85%BE/"/>
-    
-    
-    <category term="IFTTT" scheme="https://progcz.com/tags/IFTTT/"/>
-    
-    <category term="Telegram" scheme="https://progcz.com/tags/Telegram/"/>
-    
-    <category term="RSS" scheme="https://progcz.com/tags/RSS/"/>
     
   </entry>
   

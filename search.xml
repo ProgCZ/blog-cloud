@@ -1220,44 +1220,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LeetCode Weekly Contest 188 (1441 - 1444)</title>
-    <url>/posts/leetcode-weekly-contest-188-1441-1444/</url>
-    <content><![CDATA[<p>LeetCode 周赛专题每周随缘更新，点击类别 <a href="/categories/LeetCode-Weekly-Contest/">LeetCode Weekly Contest</a> 查看更多。</p>
-<p>本次比赛通过 <code>3</code> 题，时间为 <code>1:14:56</code>，排名为 <code>2375/12715</code>。</p>
-<span id="more"></span>
-
-<h2 id="1441-Build-an-Array-With-Stack-Operations-Easy"><a href="#1441-Build-an-Array-With-Stack-Operations-Easy" class="headerlink" title="1441. Build an Array With Stack Operations #Easy"></a><a href="https://leetcode.com/contest/weekly-contest-188/problems/build-an-array-with-stack-operations/">1441. Build an Array With Stack Operations</a> #Easy</h2><h3 id="题目解析"><a href="#题目解析" class="headerlink" title="题目解析"></a>题目解析</h3><p>首先，遍历 <code>target</code>，在 <code>res</code> 中添加 <code>&quot;Push&quot;</code>。</p>
-<p>其次，累加 <code>num</code>，如果遍历到的数字与 <code>num</code> 不同，那么在 <code>res</code> 中添加 <code>&quot;Pop&quot;</code>，同时将遍历下标 <code>i</code> 停在当前位置。</p>
-<h4 id="C-实现"><a href="#C-实现" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;string&gt; <span class="title">buildArray</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; target, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        vector&lt;string&gt; res;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; target.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            res.<span class="built_in">push_back</span>(<span class="string">&quot;Push&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span> (num != target[i]) &#123;</span><br><span class="line">                res.<span class="built_in">push_back</span>(<span class="string">&quot;Pop&quot;</span>);</span><br><span class="line">                --i;</span><br><span class="line">            &#125;</span><br><span class="line">            ++num;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="1442-Count-Triplets-That-Can-Form-Two-Arrays-of-Equal-XOR-Medium"><a href="#1442-Count-Triplets-That-Can-Form-Two-Arrays-of-Equal-XOR-Medium" class="headerlink" title="1442. Count Triplets That Can Form Two Arrays of Equal XOR #Medium"></a><a href="https://leetcode.com/contest/weekly-contest-188/problems/count-triplets-that-can-form-two-arrays-of-equal-xor">1442. Count Triplets That Can Form Two Arrays of Equal XOR</a> #Medium</h2><h3 id="题目解析-1"><a href="#题目解析-1" class="headerlink" title="题目解析"></a>题目解析</h3><div class="note info"><p>需要明白的是，异或运算具备一个重要性质：如果　<code>a ^ b ^ c ^ d = e</code>，那么　<code>c ^ d = e ^ (a ^ b)</code>。</p>
-</div>
-
-<p>首先，使用 <code>vec</code> 存放每个数字与之前所有数字异或运算的结果。</p>
-<p>其次，根据异或运算的性质，计算 <code>[i, j-1]</code> 之间数字异或运算的结果，只需计算 <code>vec[j-1] ^ vec[i-1]</code>。</p>
-<p>同理，计算 <code>[j, k]</code> 之间数字异或运算的结果，只需计算 <code>vec[k] ^ vec[j-1]</code>。</p>
-<h4 id="C-实现-1"><a href="#C-实现-1" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">countTriplets</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; vec = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            vec.<span class="built_in">push_back</span>(vec.<span class="built_in">back</span>() ^ arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; vec.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i+<span class="number">1</span>; j &lt; vec.<span class="built_in">size</span>(); ++j) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = j; k &lt; vec.<span class="built_in">size</span>(); ++k) &#123;</span><br><span class="line">                    <span class="keyword">if</span> ((vec[j<span class="number">-1</span>] ^ vec[i<span class="number">-1</span>]) == (vec[k] ^ vec[j<span class="number">-1</span>])) &#123;</span><br><span class="line">                        ++res;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="1443-Minimum-Time-to-Collect-All-Apples-in-a-Tree-Medium"><a href="#1443-Minimum-Time-to-Collect-All-Apples-in-a-Tree-Medium" class="headerlink" title="1443. Minimum Time to Collect All Apples in a Tree #Medium"></a><a href="https://leetcode.com/contest/weekly-contest-188/problems/minimum-time-to-collect-all-apples-in-a-tree/">1443. Minimum Time to Collect All Apples in a Tree</a> #Medium</h2><h3 id="题目解析-2"><a href="#题目解析-2" class="headerlink" title="题目解析"></a>题目解析</h3><p>首先，使用 <code>map&lt;int, vector&lt;int&gt;&gt; m</code> 记录每个节点的所有子节点。</p>
-<p>其次，使用深度优先搜索算法遍历所有的节点，返回到达某个节点及其之后节点所需要的时间步。其边界条件是遍历到叶子节点，如果叶子节点包含苹果，因为往返这个节点需要 <code>2</code> 个时间步，所以返回 <code>2</code>，否则返回 <code>0</code>。</p>
-<p>然后，对于遍历到的节点，需要遍历其所有子节点，同时使用 <code>sum</code> 累加子节点返回的值，如果该节点不为根节点，而且其子节点之和不为 <code>0</code>（表明其子树包含苹果）或者节点本身包含苹果，那么必然需要往返该节点，<code>sum</code> 累加 <code>2</code>。</p>
-<h4 id="C-实现-2"><a href="#C-实现-2" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minTime</span><span class="params">(<span class="keyword">int</span> n, vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; edges, vector&lt;<span class="keyword">bool</span>&gt;&amp; hasApple)</span> </span>&#123;</span><br><span class="line">        map&lt;<span class="keyword">int</span>, vector&lt;<span class="keyword">int</span>&gt;&gt; m;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> vi : edges) m[vi[<span class="number">0</span>]].<span class="built_in">push_back</span>(vi[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">func</span>(<span class="number">0</span>, m, hasApple);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> idx, map&lt;<span class="keyword">int</span>, vector&lt;<span class="keyword">int</span>&gt;&gt; &amp;m, vector&lt;<span class="keyword">bool</span>&gt; &amp;hasApple)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!m.<span class="built_in">count</span>(idx)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (hasApple[idx]) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : m[idx]) sum += <span class="built_in">func</span>(i, m, hasApple);</span><br><span class="line">        <span class="keyword">if</span> (idx != <span class="number">0</span> &amp;&amp; (sum != <span class="number">0</span> || hasApple[idx])) sum += <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="1444-Number-of-Ways-of-Cutting-a-Pizza-Hard"><a href="#1444-Number-of-Ways-of-Cutting-a-Pizza-Hard" class="headerlink" title="1444. Number of Ways of Cutting a Pizza #Hard"></a><a href="https://leetcode.com/contest/weekly-contest-188/problems/number-of-ways-of-cutting-a-pizza/">1444. Number of Ways of Cutting a Pizza</a> #Hard</h2><h3 id="题目解析-3"><a href="#题目解析-3" class="headerlink" title="题目解析"></a>题目解析</h3><p>参考：<a href="https://leetcode.com/problems/number-of-ways-of-cutting-a-pizza/discuss/623732/JavaC%2B%2B-DP-%2B-PrefixSum-in-Matrix-Clean-code">[Java/C++] DP + PrefixSum in Matrix - Clean code</a></p>
-<p>放弃治疗系列，直接看大佬的解法吧。</p>
-<h4 id="C-实现-3"><a href="#C-实现-3" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">ways</span><span class="params">(vector&lt;string&gt;&amp; pizza, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = pizza.<span class="built_in">size</span>(), n = pizza[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        vector&lt;vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&gt; <span class="built_in">dp</span>(k, <span class="built_in">vector</span>(m, <span class="built_in">vector</span>(n, <span class="number">-1</span>)));</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">preSum</span>(m+<span class="number">1</span>, <span class="built_in">vector</span>(n+<span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> r = m - <span class="number">1</span>; r &gt;= <span class="number">0</span>; --r) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> c = n - <span class="number">1</span>; c &gt;= <span class="number">0</span>; --c) &#123;</span><br><span class="line">                preSum[r][c] = preSum[r][c+<span class="number">1</span>] + preSum[r+<span class="number">1</span>][c] - preSum[r+<span class="number">1</span>][c+<span class="number">1</span>];</span><br><span class="line">                preSum[r][c] += (pizza[r][c] == <span class="string">&#x27;A&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">dfs</span>(m, n, k<span class="number">-1</span>, <span class="number">0</span>, <span class="number">0</span>, dp, preSum);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n, <span class="keyword">int</span> k, <span class="keyword">int</span> r, <span class="keyword">int</span> c,</span></span></span><br><span class="line"><span class="function"><span class="params">            vector&lt;vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&gt; &amp;dp, vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; &amp;preSum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (preSum[r][c] == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (k == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (dp[k][r][c] != <span class="number">-1</span>) <span class="keyword">return</span> dp[k][r][c];</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>, mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> nr = r + <span class="number">1</span>; nr &lt; m; ++nr) &#123;</span><br><span class="line">            <span class="keyword">if</span> (preSum[r][c] - preSum[nr][c] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                ans = (ans + <span class="built_in">dfs</span>(m, n, k<span class="number">-1</span>, nr, c, dp, preSum)) % mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> nc = c + <span class="number">1</span>; nc &lt; n; ++nc) &#123;</span><br><span class="line">            <span class="keyword">if</span> (preSum[r][c] - preSum[r][nc] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                ans = (ans + <span class="built_in">dfs</span>(m, n, k<span class="number">-1</span>, r, nc, dp, preSum)) % mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[k][r][c] = ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>A3 - LeetCode</category>
-        <category>B2 - LeetCode Weekly Contest</category>
-      </categories>
-      <tags>
-        <tag>CPP</tag>
-        <tag>Data Structure and Algorithm</tag>
-        <tag>LeetCode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>记录一次「卖」微信公众号的经历</title>
     <url>/posts/record-for-sell-wechat-official-account/</url>
     <content><![CDATA[<p><strong>因为腾讯在两年前关闭了新注册微信公众号的「留言」功能，所以新注册微信公众号必须通过一些特殊方法才能拥有「留言」功能，「账号迁移」便是其中之一。</strong></p>
@@ -1727,6 +1689,44 @@
         <tag>Cloudflare</tag>
         <tag>Google</tag>
         <tag>Mirror</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode Weekly Contest 188 (1441 - 1444)</title>
+    <url>/posts/leetcode-weekly-contest-188-1441-1444/</url>
+    <content><![CDATA[<p>LeetCode 周赛专题每周随缘更新，点击类别 <a href="/categories/LeetCode-Weekly-Contest/">LeetCode Weekly Contest</a> 查看更多。</p>
+<p>本次比赛通过 <code>3</code> 题，时间为 <code>1:14:56</code>，排名为 <code>2375/12715</code>。</p>
+<span id="more"></span>
+
+<h2 id="1441-Build-an-Array-With-Stack-Operations-Easy"><a href="#1441-Build-an-Array-With-Stack-Operations-Easy" class="headerlink" title="1441. Build an Array With Stack Operations #Easy"></a><a href="https://leetcode.com/contest/weekly-contest-188/problems/build-an-array-with-stack-operations/">1441. Build an Array With Stack Operations</a> #Easy</h2><h3 id="题目解析"><a href="#题目解析" class="headerlink" title="题目解析"></a>题目解析</h3><p>首先，遍历 <code>target</code>，在 <code>res</code> 中添加 <code>&quot;Push&quot;</code>。</p>
+<p>其次，累加 <code>num</code>，如果遍历到的数字与 <code>num</code> 不同，那么在 <code>res</code> 中添加 <code>&quot;Pop&quot;</code>，同时将遍历下标 <code>i</code> 停在当前位置。</p>
+<h4 id="C-实现"><a href="#C-实现" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;string&gt; <span class="title">buildArray</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; target, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        vector&lt;string&gt; res;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; target.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            res.<span class="built_in">push_back</span>(<span class="string">&quot;Push&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span> (num != target[i]) &#123;</span><br><span class="line">                res.<span class="built_in">push_back</span>(<span class="string">&quot;Pop&quot;</span>);</span><br><span class="line">                --i;</span><br><span class="line">            &#125;</span><br><span class="line">            ++num;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1442-Count-Triplets-That-Can-Form-Two-Arrays-of-Equal-XOR-Medium"><a href="#1442-Count-Triplets-That-Can-Form-Two-Arrays-of-Equal-XOR-Medium" class="headerlink" title="1442. Count Triplets That Can Form Two Arrays of Equal XOR #Medium"></a><a href="https://leetcode.com/contest/weekly-contest-188/problems/count-triplets-that-can-form-two-arrays-of-equal-xor">1442. Count Triplets That Can Form Two Arrays of Equal XOR</a> #Medium</h2><h3 id="题目解析-1"><a href="#题目解析-1" class="headerlink" title="题目解析"></a>题目解析</h3><div class="note info"><p>需要明白的是，异或运算具备一个重要性质：如果　<code>a ^ b ^ c ^ d = e</code>，那么　<code>c ^ d = e ^ (a ^ b)</code>。</p>
+</div>
+
+<p>首先，使用 <code>vec</code> 存放每个数字与之前所有数字异或运算的结果。</p>
+<p>其次，根据异或运算的性质，计算 <code>[i, j-1]</code> 之间数字异或运算的结果，只需计算 <code>vec[j-1] ^ vec[i-1]</code>。</p>
+<p>同理，计算 <code>[j, k]</code> 之间数字异或运算的结果，只需计算 <code>vec[k] ^ vec[j-1]</code>。</p>
+<h4 id="C-实现-1"><a href="#C-实现-1" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">countTriplets</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; vec = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            vec.<span class="built_in">push_back</span>(vec.<span class="built_in">back</span>() ^ arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; vec.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i+<span class="number">1</span>; j &lt; vec.<span class="built_in">size</span>(); ++j) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = j; k &lt; vec.<span class="built_in">size</span>(); ++k) &#123;</span><br><span class="line">                    <span class="keyword">if</span> ((vec[j<span class="number">-1</span>] ^ vec[i<span class="number">-1</span>]) == (vec[k] ^ vec[j<span class="number">-1</span>])) &#123;</span><br><span class="line">                        ++res;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1443-Minimum-Time-to-Collect-All-Apples-in-a-Tree-Medium"><a href="#1443-Minimum-Time-to-Collect-All-Apples-in-a-Tree-Medium" class="headerlink" title="1443. Minimum Time to Collect All Apples in a Tree #Medium"></a><a href="https://leetcode.com/contest/weekly-contest-188/problems/minimum-time-to-collect-all-apples-in-a-tree/">1443. Minimum Time to Collect All Apples in a Tree</a> #Medium</h2><h3 id="题目解析-2"><a href="#题目解析-2" class="headerlink" title="题目解析"></a>题目解析</h3><p>首先，使用 <code>map&lt;int, vector&lt;int&gt;&gt; m</code> 记录每个节点的所有子节点。</p>
+<p>其次，使用深度优先搜索算法遍历所有的节点，返回到达某个节点及其之后节点所需要的时间步。其边界条件是遍历到叶子节点，如果叶子节点包含苹果，因为往返这个节点需要 <code>2</code> 个时间步，所以返回 <code>2</code>，否则返回 <code>0</code>。</p>
+<p>然后，对于遍历到的节点，需要遍历其所有子节点，同时使用 <code>sum</code> 累加子节点返回的值，如果该节点不为根节点，而且其子节点之和不为 <code>0</code>（表明其子树包含苹果）或者节点本身包含苹果，那么必然需要往返该节点，<code>sum</code> 累加 <code>2</code>。</p>
+<h4 id="C-实现-2"><a href="#C-实现-2" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minTime</span><span class="params">(<span class="keyword">int</span> n, vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; edges, vector&lt;<span class="keyword">bool</span>&gt;&amp; hasApple)</span> </span>&#123;</span><br><span class="line">        map&lt;<span class="keyword">int</span>, vector&lt;<span class="keyword">int</span>&gt;&gt; m;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> vi : edges) m[vi[<span class="number">0</span>]].<span class="built_in">push_back</span>(vi[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">func</span>(<span class="number">0</span>, m, hasApple);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> idx, map&lt;<span class="keyword">int</span>, vector&lt;<span class="keyword">int</span>&gt;&gt; &amp;m, vector&lt;<span class="keyword">bool</span>&gt; &amp;hasApple)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!m.<span class="built_in">count</span>(idx)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (hasApple[idx]) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : m[idx]) sum += <span class="built_in">func</span>(i, m, hasApple);</span><br><span class="line">        <span class="keyword">if</span> (idx != <span class="number">0</span> &amp;&amp; (sum != <span class="number">0</span> || hasApple[idx])) sum += <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1444-Number-of-Ways-of-Cutting-a-Pizza-Hard"><a href="#1444-Number-of-Ways-of-Cutting-a-Pizza-Hard" class="headerlink" title="1444. Number of Ways of Cutting a Pizza #Hard"></a><a href="https://leetcode.com/contest/weekly-contest-188/problems/number-of-ways-of-cutting-a-pizza/">1444. Number of Ways of Cutting a Pizza</a> #Hard</h2><h3 id="题目解析-3"><a href="#题目解析-3" class="headerlink" title="题目解析"></a>题目解析</h3><p>参考：<a href="https://leetcode.com/problems/number-of-ways-of-cutting-a-pizza/discuss/623732/JavaC%2B%2B-DP-%2B-PrefixSum-in-Matrix-Clean-code">[Java/C++] DP + PrefixSum in Matrix - Clean code</a></p>
+<p>放弃治疗系列，直接看大佬的解法吧。</p>
+<h4 id="C-实现-3"><a href="#C-实现-3" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">ways</span><span class="params">(vector&lt;string&gt;&amp; pizza, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = pizza.<span class="built_in">size</span>(), n = pizza[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        vector&lt;vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&gt; <span class="built_in">dp</span>(k, <span class="built_in">vector</span>(m, <span class="built_in">vector</span>(n, <span class="number">-1</span>)));</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">preSum</span>(m+<span class="number">1</span>, <span class="built_in">vector</span>(n+<span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> r = m - <span class="number">1</span>; r &gt;= <span class="number">0</span>; --r) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> c = n - <span class="number">1</span>; c &gt;= <span class="number">0</span>; --c) &#123;</span><br><span class="line">                preSum[r][c] = preSum[r][c+<span class="number">1</span>] + preSum[r+<span class="number">1</span>][c] - preSum[r+<span class="number">1</span>][c+<span class="number">1</span>];</span><br><span class="line">                preSum[r][c] += (pizza[r][c] == <span class="string">&#x27;A&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">dfs</span>(m, n, k<span class="number">-1</span>, <span class="number">0</span>, <span class="number">0</span>, dp, preSum);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n, <span class="keyword">int</span> k, <span class="keyword">int</span> r, <span class="keyword">int</span> c,</span></span></span><br><span class="line"><span class="function"><span class="params">            vector&lt;vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&gt; &amp;dp, vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; &amp;preSum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (preSum[r][c] == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (k == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (dp[k][r][c] != <span class="number">-1</span>) <span class="keyword">return</span> dp[k][r][c];</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>, mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> nr = r + <span class="number">1</span>; nr &lt; m; ++nr) &#123;</span><br><span class="line">            <span class="keyword">if</span> (preSum[r][c] - preSum[nr][c] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                ans = (ans + <span class="built_in">dfs</span>(m, n, k<span class="number">-1</span>, nr, c, dp, preSum)) % mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> nc = c + <span class="number">1</span>; nc &lt; n; ++nc) &#123;</span><br><span class="line">            <span class="keyword">if</span> (preSum[r][c] - preSum[r][nc] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                ans = (ans + <span class="built_in">dfs</span>(m, n, k<span class="number">-1</span>, r, nc, dp, preSum)) % mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[k][r][c] = ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>A3 - LeetCode</category>
+        <category>B2 - LeetCode Weekly Contest</category>
+      </categories>
+      <tags>
+        <tag>CPP</tag>
+        <tag>Data Structure and Algorithm</tag>
+        <tag>LeetCode</tag>
       </tags>
   </entry>
   <entry>
@@ -3108,6 +3108,191 @@
         <tag>CPP</tag>
         <tag>Data Structure and Algorithm</tag>
         <tag>Sort</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面试中常见的 C++ 问题汇总</title>
+    <url>/posts/1634567000/</url>
+    <content><![CDATA[<p>以前秋招，整理过一版 C++ 问题汇总，这次社招，重新梳理一遍。</p>
+<span id="more"></span>
+
+<h2 id="1-语法基础"><a href="#1-语法基础" class="headerlink" title="1 语法基础"></a>1 语法基础</h2><h3 id="C-和-C-有什么区别？"><a href="#C-和-C-有什么区别？" class="headerlink" title="C++ 和 C 有什么区别？"></a>C++ 和 C 有什么区别？</h3><ul>
+<li><p>C++ 是面向对象的语言，而 C 是面向过程的语言</p>
+</li>
+<li><p>C++ 引入类的概念，而 C 中没有</p>
+</li>
+<li><p>C++ 引入引用的概念，而 C 中没有</p>
+</li>
+<li><p>C++ 引入函数重载的特性，而 C 中没有</p>
+</li>
+<li><p>C++ 引入 <code>new/delete</code> 运算符，取代 C 中的 <code>malloc/free</code> 库函数</p>
+</li>
+</ul>
+<h3 id="相比于-C-98，C-11-有哪些新特性？"><a href="#相比于-C-98，C-11-有哪些新特性？" class="headerlink" title="相比于 C++98，C++11 有哪些新特性？"></a>相比于 C++98，C++11 有哪些新特性？</h3><ul>
+<li><p>引入 Lambda 表达式用于创建匿名函数</p>
+</li>
+<li><p>引入自动类型推导 <code>auto</code> 和 <code>decltype</code></p>
+</li>
+<li><p>引入 <code>= default</code> 生成默认构造函数，<code>= delete</code> 禁止使用拷贝构造函数</p>
+</li>
+<li><p>引入 <code>nullptr</code> 关键字，用于解决 <code>NULL</code> 的二义性问题</p>
+</li>
+<li><p>引入范围 <code>for</code> 循环</p>
+</li>
+<li><p>引入列表初始化</p>
+</li>
+<li><p>引入 <code>shared_ptr</code>、<code>unique_ptr</code> 等智能指针</p>
+</li>
+<li><p>引入右值引用，将引用绑定到右值，如临时对象或字面量</p>
+</li>
+<li><p>引入线程库</p>
+</li>
+</ul>
+<h3 id="struct-和-class-有什么区别？"><a href="#struct-和-class-有什么区别？" class="headerlink" title="struct 和 class 有什么区别？"></a><code>struct</code> 和 <code>class</code> 有什么区别？</h3><ul>
+<li><p>成员的默认访问权限：<code>struct</code> 的成员默认为 <code>public</code> 权限，<code>class</code> 的成员默认为 <code>private</code> 权限</p>
+</li>
+<li><p>默认继承权限：<code>struct</code> 的继承按照 <code>public</code> 处理，<code>class</code> 的继承按照 <code>private</code> 处理</p>
+</li>
+</ul>
+<h3 id="对于一个频繁使用的短小函数，应该使用什么来实现？有什么优缺点？"><a href="#对于一个频繁使用的短小函数，应该使用什么来实现？有什么优缺点？" class="headerlink" title="对于一个频繁使用的短小函数，应该使用什么来实现？有什么优缺点？"></a>对于一个频繁使用的短小函数，应该使用什么来实现？有什么优缺点？</h3><p>应该使用 <code>inline</code> 内联函数，即编译器将 <code>inline</code> 内联函数内的代码替换到函数被调用的地方。</p>
+<p>优点：</p>
+<ul>
+<li><p>在内联函数被调用的地方进行代码展开，省去函数调用的时间，从而提高程序运行效率</p>
+</li>
+<li><p>相比于宏函数，内联函数在代码展开时，编译器会进行语法安全检查或数据类型转换，使用更加安全</p>
+</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li><p>代码膨胀，产生更多的开销</p>
+</li>
+<li><p>如果内联函数内代码块的执行时间比调用时间长得多，那么效率的提升并没有那么大</p>
+</li>
+<li><p>如果修改内联函数，那么所有调用该函数的代码文件都需要重新编译</p>
+</li>
+<li><p>内联声明只是建议，是否内联由编译器决定，所以实际并不可控</p>
+</li>
+</ul>
+<h3 id="define-和-inline-有什么区别？"><a href="#define-和-inline-有什么区别？" class="headerlink" title="#define 和 inline 有什么区别？"></a><code>#define</code> 和 <code>inline</code> 有什么区别？</h3><ul>
+<li><p><code>#define</code> 宏函数在预处理阶段展开，而 <code>inline</code> 内联函数在编译阶段展开</p>
+</li>
+<li><p><code>#define</code> 宏函数不检查参数类型，而 <code>inline</code> 内联函数检查参数类型，使用更加安全</p>
+</li>
+</ul>
+<h3 id="const-关键字有什么作用？"><a href="#const-关键字有什么作用？" class="headerlink" title="const 关键字有什么作用？"></a><code>const</code> 关键字有什么作用？</h3><ul>
+<li><p>修饰变量时，表示该变量的值在其生命周期内只读，不能被改变</p>
+</li>
+<li><p>修饰指针：<code>int * const</code></p>
+</li>
+<li><p>修饰指针所指向的对象：<code>const int *</code></p>
+</li>
+<li><p>修饰引用所绑定的对象：<code>const int &amp;</code></p>
+</li>
+<li><p>修饰函数的引用形参时，可以保护实参不被函数修改</p>
+</li>
+<li><p>修饰非静态成员变量时，不能在类定义处初始化，必须通过构造函数初始化列表进行初始化</p>
+</li>
+<li><p>修饰静态成员变量时，不能在类内部初始化，一般在类外部进行初始化</p>
+</li>
+<li><p>修饰成员函数时，表示该函数不应修改非静态成员，但并不可靠，因为指针所指对象可能会被修改</p>
+</li>
+</ul>
+<h3 id="define-和-const-有什么区别？"><a href="#define-和-const-有什么区别？" class="headerlink" title="#define 和 const 有什么区别？"></a><code>#define</code> 和 <code>const</code> 有什么区别？</h3><ul>
+<li><p>编译器处理方式不同：<code>#define</code> 宏是在预处理阶段展开，不能对宏定义进行调试，而 <code>const</code> 常量是在编译阶段使用</p>
+</li>
+<li><p>类型和安全检查不同：<code>#define</code> 宏没有类型，不做任何类型检查，仅仅是代码展开，可能产生边际效应等错误，而 <code>const</code> 常量有具体类型，在编译阶段会执行类型检查</p>
+</li>
+<li><p>存储方式不同：<code>#define</code> 宏仅仅是代码展开，在多个地方进行字符串替换，不会分配内存，存储于程序的代码段中，而 <code>const</code> 常量会分配内存，但只维持一份拷贝，存储于程序的数据段中</p>
+</li>
+<li><p>定义域不同：<code>#define</code> 宏不受定义域限制，而 <code>const</code> 常量只在定义域内有效</p>
+</li>
+</ul>
+<h3 id="explicit-关键字有什么作用？"><a href="#explicit-关键字有什么作用？" class="headerlink" title="explicit 关键字有什么作用？"></a><code>explicit</code> 关键字有什么作用？</h3><p>可以用单个实参来调用的构造函数都定义了从形参类型到实参类型的隐式转换，这种转换往往都是非预期的，所以使用 <code>explicit</code> 关键字对构造函数进行修饰，从而避免由构造函数定义的隐式转换。</p>
+<h3 id="extern关键字有什么作用？"><a href="#extern关键字有什么作用？" class="headerlink" title="extern关键字有什么作用？"></a><code>extern</code>关键字有什么作用？</h3><ul>
+<li><p>当 <code>extern</code> 修饰变量或函数时，表示变量或函数的定义在其他文件中，提示编译器在其他模块中寻找其定义</p>
+</li>
+<li><p>当 <code>extern C</code> 时，提示编译器在编译函数时按照 C 的规则去翻译相应的函数名，如果按照 C++ 的规则，函数名会被翻译得变得面目全非，因为 C++ 支持函数的重载。</p>
+</li>
+</ul>
+<h3 id="static关键字有什么作用？"><a href="#static关键字有什么作用？" class="headerlink" title="static关键字有什么作用？"></a><code>static</code>关键字有什么作用？</h3><ul>
+<li><p>修饰局部变量时，使得该变量在静态存储区分配内存；只能在首次函数调用中进行首次初始化，之后的函数调用不再进行初始化；其生命周期与程序相同，但其作用域为局部作用域，并不能一直被访问</p>
+</li>
+<li><p>修饰全局变量时，使得该变量在静态存储区分配内存；在声明该变量的整个文件中都是可见的，而在文件外是不可见的</p>
+</li>
+<li><p>修饰函数时，在声明该函数的整个文件中都是可见的，而在文件外是不可见的，从而可以在多人协作时避免同名的函数冲突</p>
+</li>
+<li><p>修饰成员变量时，所有的对象都只维持一份拷贝，可以实现不同对象间的数据共享；不需要实例化对象即可访问；不能在类内部初始化，一般在类外部初始化，并且初始化时不加 <code>static</code></p>
+</li>
+<li><p>修饰成员函数时，该函数不接受 <code>this</code> 指针，只能访问类的静态成员；不需要实例化对象即可访问</p>
+</li>
+</ul>
+<h3 id="sizeof-和-strlen-之间有什么区别？"><a href="#sizeof-和-strlen-之间有什么区别？" class="headerlink" title="sizeof 和 strlen 之间有什么区别？"></a><code>sizeof</code> 和 <code>strlen</code> 之间有什么区别？</h3><ul>
+<li><p><code>sizeof</code> 属于运算符，不是库函数，其结果在编译时期计算得到，因此不能用来得到动态分配的内存大小，而 <code>strlen</code> 属于库函数，其结果在运行期间计算得到</p>
+</li>
+<li><p><code>sizeof</code> 参数可以是任何数据或数据类型，而 <code>strlen</code> 的参数只能是字符指针，且该指针指向结尾为 <code>\0</code> 的字符串</p>
+</li>
+</ul>
+<h3 id="assert-有什么用处？"><a href="#assert-有什么用处？" class="headerlink" title="assert 有什么用处？"></a><code>assert</code> 有什么用处？</h3><p><code>assert</code> 是一种仅在 debug 版本中使用的宏函数，用于检查不该发生的情况，可以看作是一种在任何系统状态下都可以安全使用的无害测试手段；可以通过 <code>#define NDEBUG</code> 来关闭 <code>assert</code>，放在 <code>&lt;cassert&gt;</code> 头文件之前。</p>
+<h3 id="变量的声明和定义有什么区别？"><a href="#变量的声明和定义有什么区别？" class="headerlink" title="变量的声明和定义有什么区别？"></a>变量的声明和定义有什么区别？</h3><ul>
+<li><p>声明仅仅是把变量类型等信息提供给编译器，并不为其分配内存空间，而定义需要为变量分配内存空间</p>
+</li>
+<li><p>变量可以在多处声明，如外部变量 <code>extern</code>，但只能在一处定义</p>
+</li>
+</ul>
+<h3 id="指针和引用有什么区别？"><a href="#指针和引用有什么区别？" class="headerlink" title="指针和引用有什么区别？"></a>指针和引用有什么区别？</h3><ul>
+<li><p>指针是一种对象，用来存放某个对象的地址，占用内存空间，而引用是一种别名，不占用内存空间</p>
+</li>
+<li><p>指针可以声明为空，之后进行初始化，普通指针可以随时更换所指对象，而引用必须在声明的时候初始化，而且初始化后不可改变</p>
+</li>
+<li><p>指针包含指向常量的指针和常量指针，而引用不包含常量引用，但包含对常量的引用</p>
+</li>
+</ul>
+<h2 id="3-面向对象"><a href="#3-面向对象" class="headerlink" title="3 面向对象"></a>3 面向对象</h2><h3 id="public-成员、protected-成员、private-成员有什么区别？"><a href="#public-成员、protected-成员、private-成员有什么区别？" class="headerlink" title="public 成员、protected 成员、private 成员有什么区别？"></a><code>public</code> 成员、<code>protected</code> 成员、<code>private</code> 成员有什么区别？</h3><ul>
+<li><p><code>public</code> 成员可以被本类及本类对象、友元类及友元类对象、子类及子类对象访问</p>
+</li>
+<li><p><code>protected</code> 成员可以被本类、友元类、子类访问，不能被任何对象访问</p>
+</li>
+<li><p><code>private</code> 成员只可以被本类访问</p>
+</li>
+</ul>
+<h3 id="public-继承、protected-继承、private-继承有什么区别？"><a href="#public-继承、protected-继承、private-继承有什么区别？" class="headerlink" title="public 继承、protected 继承、private 继承有什么区别？"></a><code>public</code> 继承、<code>protected</code> 继承、<code>private</code> 继承有什么区别？</h3><p>不管哪类继承，子类都可以访问父类的 <code>public</code> 成员、<code>protected</code> 成员，但是继承之后，成员属性会发生变化：</p>
+<table>
+<thead>
+<tr>
+<th>父类成员</th>
+<th><code>public</code> 继承后子类成员</th>
+<th><code>protected</code> 继承后子类成员</th>
+<th><code>private</code> 继承后子类成员</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>public</code></td>
+<td><code>public</code></td>
+<td><code>protected</code></td>
+<td><code>private</code></td>
+</tr>
+<tr>
+<td><code>protected</code></td>
+<td><code>protected</code></td>
+<td><code>protected</code></td>
+<td><code>private</code></td>
+</tr>
+<tr>
+<td><code>private</code></td>
+<td>无法继承</td>
+<td>无法继承</td>
+<td>无法继承</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>A2 - 学习笔记</category>
+        <category>B2 - 编程语言</category>
+        <category>C1 - CPP</category>
+      </categories>
+      <tags>
+        <tag>CPP</tag>
+        <tag>面试</tag>
       </tags>
   </entry>
   <entry>
