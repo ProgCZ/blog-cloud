@@ -1,4 +1,4 @@
-<script>
+<script data-pjax>
 
 function whenDOMReady() {
   /* 替换站点标题中不规范的部分 */
@@ -44,7 +44,5 @@ function whenDOMReady() {
   }
 };
 whenDOMReady();
-var pjax = new Pjax();
-document.addEventListener("pjax:send", whenDOMReady);
 
 </script>
