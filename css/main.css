@@ -3031,9 +3031,9 @@ mark.search-keyword {
     margin-bottom: 10px;
   }
 }
-/* 动画速度调整至 0.3s */
+/* 动画时长调整至 0.25s */
 .animated {
-  animation-duration: 0.3s !important;
+  animation-duration: 0.25s !important;
 }
 /* 菜单字体调大 */
 .menu-item a {
