@@ -3,14 +3,14 @@ title:   使用 GitHub Actions 实现 Hexo 博客的自动部署
 date:    2020-04-27 13:09:33
 updated: 2020-04-27 13:09:33
 categories:
-    - A1 - 生活随笔
+    - A1 - 生活
     - B2 - 折腾
 tags:
-    - Tutorial
+    - 教程
     - GitHub
     - GitHub Actions
     - Hexo
-    - Blog
+    - 博客
 ---
 
 GitHub Actions 是 GitHub 推出的持续集成服务，可以用于自动执行「代码测试」、「项目部署」等重复劳动，自然也可以用于 Hexo 等静态博客的生成、部署过程，从而不依赖于本地环境，便于迁移。

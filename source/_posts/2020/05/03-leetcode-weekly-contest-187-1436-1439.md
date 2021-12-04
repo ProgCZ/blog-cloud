@@ -3,10 +3,10 @@ title:   LeetCode Weekly Contest 187 (1436 - 1439)
 date:    2020-05-03 15:23:13
 updated: 2020-05-03 15:23:13
 categories:
-    - A3 - LeetCode
+    - A4 - LeetCode
     - B2 - LeetCode Weekly Contest
 tags:
-    - Data Structure and Algorithm
+    - 数据结构与算法
     - LeetCode
     - CPP
 ---

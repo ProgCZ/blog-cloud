@@ -5,12 +5,12 @@ updated: 2018-01-01 08:00:00
 categories:
     - A0 - 总结与计划
 tags:
-    - Plan
+    - 计划
     - CPP
     - Python
     - Linux
-    - Machine Learning
-    - Blog
+    - 机器学习
+    - 博客
 ---
 
 这是一份不知道能不能实现的学习规划，希望自己能成为更好的自己。

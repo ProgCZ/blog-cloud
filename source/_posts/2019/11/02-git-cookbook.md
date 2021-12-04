@@ -3,7 +3,7 @@ title:   Git Cookbook
 date:    2019-11-02 10:24:00
 updated: 2020-06-26 16:01:07
 categories:
-    - A2 - 学习笔记
+    - A3 - 技术
     - B3 - 开发基础
 tags:
     - Cookbook

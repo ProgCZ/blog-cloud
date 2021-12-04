@@ -3,10 +3,10 @@ title:   使用马拉车算法解决最长回文子串问题
 date:    2020-01-05 10:24:00
 updated: 2020-01-05 10:24:00
 categories:
-    - A2 - 学习笔记
+    - A3 - 技术
     - B1 - 数据结构与算法
 tags:
-    - Data Structure and Algorithm
+    - 数据结构与算法
     - LeetCode
     - CPP
     - String

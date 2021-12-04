@@ -3,7 +3,7 @@ title:   使用 Cloudflare Workers 搭建 Google 和 GitHub 镜像网站
 date:    2020-05-23 21:32:58
 updated: 2020-05-23 21:32:58
 categories:
-    - A1 - 生活随笔
+    - A1 - 生活
     - B2 - 折腾
 tags:
     - Cloudflare

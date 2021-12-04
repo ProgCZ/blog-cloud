@@ -3,10 +3,10 @@ title:   LeetCode Biweekly Contest 23 (1399 - 1402)
 date:    2020-04-06 10:24:00
 updated: 2020-04-06 10:24:00
 categories:
-    - A3 - LeetCode
+    - A4 - LeetCode
     - B3 - LeetCode Biweekly Contest
 tags:
-    - Data Structure and Algorithm
+    - 数据结构与算法
     - LeetCode
     - CPP
 ---

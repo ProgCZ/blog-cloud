@@ -3,11 +3,10 @@ title:   Linux 系统中 socket 编程的入门必知
 date:    2020-04-27 15:01:49
 updated: 2020-04-27 15:01:49
 categories:
-    - A2 - 学习笔记
+    - A3 - 技术
     - B3 - 开发基础
 tags:
     - Linux
-    - Network Programming
     - CPP
 ---
 

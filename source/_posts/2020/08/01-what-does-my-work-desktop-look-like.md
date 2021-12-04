@@ -3,12 +3,12 @@ title:   我的工作桌面长啥样
 date:    2020-08-01 15:11:15
 updated: 2021-05-31 08:57:11
 categories:
-    - A1 - 生活随笔
+    - A1 - 生活
     - B2 - 折腾
 tags:
-    - Work
-    - Desktop
+    - 桌面
     - MacBook Pro
+    - AirPods Pro
 ---
 
 不知不觉，已经入职两个月了。

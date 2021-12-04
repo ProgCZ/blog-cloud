@@ -3,10 +3,10 @@ title:   2020 August LeetCoding Challenge - Week 2
 date:    2020-08-08 23:36:56
 updated: 2020-08-16 10:42:26
 categories:
-    - A3 - LeetCode
+    - A4 - LeetCode
     - B4 - LeetCoding Challenge
 tags:
-    - Data Structure and Algorithm
+    - 数据结构与算法
     - LeetCode
     - CPP
     - Challenge
