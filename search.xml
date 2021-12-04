@@ -60,12 +60,12 @@
         <category>A0 - 总结与计划</category>
       </categories>
       <tags>
-        <tag>Plan</tag>
+        <tag>计划</tag>
         <tag>CPP</tag>
         <tag>Python</tag>
         <tag>Linux</tag>
-        <tag>Machine Learning</tag>
-        <tag>Blog</tag>
+        <tag>机器学习</tag>
+        <tag>博客</tag>
       </tags>
   </entry>
   <entry>
@@ -133,7 +133,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch -D dev</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A2 - 学习笔记</category>
+        <category>A3 - 技术</category>
         <category>B3 - 开发基础</category>
       </categories>
       <tags>
@@ -211,12 +211,12 @@
 </ul>
 ]]></content>
       <categories>
-        <category>A2 - 学习笔记</category>
+        <category>A3 - 技术</category>
         <category>B1 - 数据结构与算法</category>
       </categories>
       <tags>
         <tag>CPP</tag>
-        <tag>Data Structure and Algorithm</tag>
+        <tag>数据结构与算法</tag>
         <tag>LeetCode</tag>
         <tag>String</tag>
       </tags>
@@ -249,12 +249,12 @@
 <h4 id="C-实现-3"><a href="#C-实现-3" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSumBST</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">helper1</span>(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    array&lt;int, 3&gt; helper1(TreeNode *node, int &amp;res) &#123;</span><br><span class="line">        <span class="keyword">auto</span> l = node-&gt;left ? <span class="built_in">helper1</span>(node-&gt;left, res)</span><br><span class="line">                            : array&lt;<span class="keyword">int</span>, <span class="number">3</span>&gt;&#123;<span class="number">0</span>, node-&gt;val, INT_MIN&#125;;</span><br><span class="line">        <span class="keyword">auto</span> r = node-&gt;right ? <span class="built_in">helper1</span>(node-&gt;right, res)</span><br><span class="line">                             : array&lt;<span class="keyword">int</span>, <span class="number">3</span>&gt;&#123;<span class="number">0</span>, INT_MAX, node-&gt;val&#125;;</span><br><span class="line">        <span class="keyword">if</span> (l[<span class="number">2</span>] &lt; node-&gt;val &amp;&amp; node-&gt;val &lt; r[<span class="number">1</span>]) &#123;</span><br><span class="line">            res = <span class="built_in">max</span>(res, node-&gt;val+l[<span class="number">0</span>]+r[<span class="number">0</span>]);</span><br><span class="line">            <span class="keyword">return</span> &#123;node-&gt;val+l[<span class="number">0</span>]+r[<span class="number">0</span>], l[<span class="number">1</span>], r[<span class="number">2</span>]&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;<span class="number">0</span>, INT_MIN, INT_MAX&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B3 - LeetCode Biweekly Contest</category>
       </categories>
       <tags>
         <tag>CPP</tag>
-        <tag>Data Structure and Algorithm</tag>
+        <tag>数据结构与算法</tag>
         <tag>LeetCode</tag>
         <tag>String</tag>
       </tags>
@@ -418,16 +418,16 @@
 <h2 id="4-写在最后"><a href="#4-写在最后" class="headerlink" title="4 写在最后"></a>4 写在最后</h2><p>未来一段时间可能会找一些优秀的 C++ 项目源码来阅读，学习编码技巧的同时也能进一步了解如何编写项目的 <code>CMakeLists.txt</code>。</p>
 ]]></content>
       <categories>
-        <category>A2 - 学习笔记</category>
+        <category>A3 - 技术</category>
         <category>B2 - 编程语言</category>
         <category>C1 - CPP</category>
       </categories>
       <tags>
         <tag>CPP</tag>
         <tag>Linux</tag>
+        <tag>教程</tag>
         <tag>CMake</tag>
         <tag>CMakeLists.txt</tag>
-        <tag>Tutorial</tag>
       </tags>
   </entry>
   <entry>
@@ -454,12 +454,12 @@
 <h4 id="C-实现-3"><a href="#C-实现-3" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">longestPrefix</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> h1 = <span class="number">0</span>, h2 = <span class="number">0</span>, mul = <span class="number">1</span>, len = <span class="number">0</span>, mod = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, j = s.<span class="built_in">size</span>()<span class="number">-1</span>; j &gt; <span class="number">0</span>; ++i, --j) &#123;</span><br><span class="line">            <span class="keyword">int</span> first = s[i] - <span class="string">&#x27;a&#x27;</span>, last = s[j] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">            h1 = (h1 * <span class="number">26</span> + first) % mod;</span><br><span class="line">            h2 = (h2 + last * mul) % mod;</span><br><span class="line">            mul = mul * <span class="number">26</span> % mod;</span><br><span class="line">            <span class="keyword">if</span> (h1 == h2) len = i + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.<span class="built_in">substr</span>(<span class="number">0</span>, len);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B2 - LeetCode Weekly Contest</category>
       </categories>
       <tags>
         <tag>CPP</tag>
-        <tag>Data Structure and Algorithm</tag>
+        <tag>数据结构与算法</tag>
         <tag>LeetCode</tag>
         <tag>String</tag>
       </tags>
@@ -498,12 +498,12 @@
 <h4 id="C-实现-3"><a href="#C-实现-3" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSizeSlices</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; slices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(<span class="built_in">helper1</span>(slices, <span class="number">0</span>), <span class="built_in">helper1</span>(slices, <span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">helper1</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; slices, <span class="keyword">int</span> start)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = slices.<span class="built_in">size</span>();</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">dp</span>(n+<span class="number">2</span>, vector&lt;<span class="keyword">int</span>&gt;(n/<span class="number">3</span>+<span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n/<span class="number">3</span>; ++j) &#123;</span><br><span class="line">                dp[i][j] = <span class="built_in">max</span>(dp[i<span class="number">-1</span>][j], dp[i<span class="number">-2</span>][j<span class="number">-1</span>]+slices[i<span class="number">-2</span>+start]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n][n/<span class="number">3</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B3 - LeetCode Biweekly Contest</category>
       </categories>
       <tags>
         <tag>CPP</tag>
-        <tag>Data Structure and Algorithm</tag>
+        <tag>数据结构与算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -537,12 +537,12 @@
 <h4 id="C-实现-3"><a href="#C-实现-3" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findGoodStrings</span><span class="params">(<span class="keyword">int</span> n, string s1, string s2, string evil)</span> </span>&#123;</span><br><span class="line">        vector&lt;vector&lt;vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&gt;&gt; memo = <span class="built_in">vector</span>(n+<span class="number">1</span>, <span class="built_in">vector</span>(evil.<span class="built_in">size</span>()+<span class="number">1</span>, <span class="built_in">vector</span>(<span class="number">2</span>, <span class="built_in">vector</span>(<span class="number">2</span>, <span class="number">-1</span>)))); </span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">dfs</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="literal">true</span>, <span class="literal">true</span>,</span><br><span class="line">            n, s1, s2, evil, <span class="built_in">computeLPS</span>(evil), memo);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> matchEvilLen, <span class="keyword">bool</span> useBoundS1, <span class="keyword">bool</span> useBoundS2,</span></span></span><br><span class="line"><span class="function"><span class="params">            <span class="keyword">int</span> n, string&amp; s1, string&amp; s2, string&amp; evil, <span class="keyword">const</span> vector&lt;<span class="keyword">int</span>&gt;&amp; lps, vector&lt;vector&lt;vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&gt;&gt;&amp; memo)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (matchEvilLen == evil.<span class="built_in">size</span>()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (i == n) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (memo[i][matchEvilLen][useBoundS1][useBoundS2] != <span class="number">-1</span>) <span class="keyword">return</span> memo[i][matchEvilLen][useBoundS1][useBoundS2];</span><br><span class="line">        <span class="keyword">char</span> from = useBoundS1 ? s1[i] : <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="keyword">char</span> to = useBoundS2 ? s2[i] : <span class="string">&#x27;z&#x27;</span>;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> mod = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c = from; c &lt;= to; c++) &#123;</span><br><span class="line">            <span class="keyword">int</span> j = matchEvilLen;</span><br><span class="line">            <span class="keyword">while</span> (j &gt; <span class="number">0</span> &amp;&amp; evil[j] != c) j = lps[j - <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (c == evil[j]) j++;</span><br><span class="line">            res += <span class="built_in">dfs</span>(i + <span class="number">1</span>, j, useBoundS1 &amp;&amp; (c == from), useBoundS2 &amp;&amp; (c == to),</span><br><span class="line">                    n, s1, s2, evil, lps, memo);</span><br><span class="line">            res %= mod;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> memo[i][matchEvilLen][useBoundS1][useBoundS2] = res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">computeLPS</span><span class="params">(<span class="keyword">const</span> string&amp; str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = str.<span class="built_in">size</span>();</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; lps = vector&lt;<span class="keyword">int</span>&gt;(n);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">while</span> (j &gt; <span class="number">0</span> &amp;&amp; str[i] != str[j]) j = lps[j - <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (str[i] == str[j]) lps[i] = ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lps;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B2 - LeetCode Weekly Contest</category>
       </categories>
       <tags>
         <tag>CPP</tag>
-        <tag>Data Structure and Algorithm</tag>
+        <tag>数据结构与算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -576,12 +576,12 @@
 <h4 id="C-实现-3"><a href="#C-实现-3" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSatisfaction</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; satisfaction)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">sort</span>(satisfaction.<span class="built_in">rbegin</span>(), satisfaction.<span class="built_in">rend</span>());</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>, total = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; satisfaction.<span class="built_in">size</span>() &amp;&amp; satisfaction[i] &gt; -total; ++i) &#123;</span><br><span class="line">            total += satisfaction[i];</span><br><span class="line">            res += total;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B3 - LeetCode Biweekly Contest</category>
       </categories>
       <tags>
         <tag>CPP</tag>
-        <tag>Data Structure and Algorithm</tag>
+        <tag>数据结构与算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -620,12 +620,12 @@
 <h4 id="C-实现-3"><a href="#C-实现-3" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">stoneGameIII</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; stoneValue)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = stoneValue.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">dp</span><span class="params">(n, INT_MIN)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>, take = <span class="number">0</span>; j &lt; <span class="number">3</span> &amp;&amp; i + j &lt; n; ++j) &#123;</span><br><span class="line">                take += stoneValue[i + j];</span><br><span class="line">                dp[i] = <span class="built_in">max</span>(dp[i], take - (i + j + <span class="number">1</span> &lt; n ? dp[i + j + <span class="number">1</span>] : <span class="number">0</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (dp[<span class="number">0</span>] &gt; <span class="number">0</span>) <span class="keyword">return</span> <span class="string">&quot;Alice&quot;</span>;</span><br><span class="line">        <span class="keyword">if</span> (dp[<span class="number">0</span>] &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="string">&quot;Bob&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Tie&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B2 - LeetCode Weekly Contest</category>
       </categories>
       <tags>
         <tag>CPP</tag>
-        <tag>Data Structure and Algorithm</tag>
+        <tag>数据结构与算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -660,12 +660,12 @@
 <h4 id="C-实现-3"><a href="#C-实现-3" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">constrainedSubsetSum</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        deque&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">        <span class="keyword">int</span> res = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            nums[i] += q.<span class="built_in">size</span>() ? q.<span class="built_in">front</span>() : <span class="number">0</span>;</span><br><span class="line">            res = <span class="built_in">max</span>(res, nums[i]);</span><br><span class="line">            <span class="keyword">while</span> (q.<span class="built_in">size</span>() &amp;&amp; nums[i] &gt; q.<span class="built_in">back</span>()) &#123;</span><br><span class="line">                q.<span class="built_in">pop_back</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] &gt; <span class="number">0</span>) q.<span class="built_in">push_back</span>(nums[i]);</span><br><span class="line">            <span class="keyword">if</span> (i &gt;= k &amp;&amp; q.<span class="built_in">size</span>() &amp;&amp; q.<span class="built_in">front</span>() == nums[i-k]) &#123;</span><br><span class="line">                q.<span class="built_in">pop_front</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B2 - LeetCode Weekly Contest</category>
       </categories>
       <tags>
         <tag>CPP</tag>
-        <tag>Data Structure and Algorithm</tag>
+        <tag>数据结构与算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -749,13 +749,13 @@
 <p>只要 GitHub 没有警告版本过期，上述方案就可以一直使用下去，即使 GitHub 警告版本过期，也可以尝试更改版本号，一般都会向下兼容，所以目测支撑个四五年应该没有问题。</p>
 ]]></content>
       <categories>
-        <category>A1 - 生活随笔</category>
+        <category>A1 - 生活</category>
         <category>B2 - 折腾</category>
       </categories>
       <tags>
-        <tag>Blog</tag>
+        <tag>博客</tag>
         <tag>GitHub</tag>
-        <tag>Tutorial</tag>
+        <tag>教程</tag>
         <tag>GitHub Actions</tag>
         <tag>Hexo</tag>
       </tags>
@@ -834,13 +834,12 @@
 <h3 id="2-2-客户端代码-client-cpp"><a href="#2-2-客户端代码-client-cpp" class="headerlink" title="2.2 客户端代码 client.cpp"></a>2.2 客户端代码 <code>client.cpp</code></h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;arpa/inet.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 创建套接字</span></span><br><span class="line">    <span class="keyword">int</span> sock = <span class="built_in">socket</span>(AF_INET, SOCK_STREAM, <span class="number">0</span>);</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 向服务端发送请求</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">serv_addr</span>;</span></span><br><span class="line">    <span class="built_in">memset</span>(&amp;serv_addr, <span class="number">0</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(serv_addr));</span><br><span class="line">    serv_addr.sin_family = AF_INET;</span><br><span class="line">    serv_addr.sin_addr.s_addr = <span class="built_in">inet_addr</span>(<span class="string">&quot;127.0.0.1&quot;</span>);</span><br><span class="line">    serv_addr.sin_port = <span class="built_in">htons</span>(<span class="number">1234</span>);</span><br><span class="line">    <span class="built_in">connect</span>(sock, (struct sockaddr*)&amp;serv_addr, <span class="built_in"><span class="keyword">sizeof</span></span>(serv_addr));</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 读取服务端传回的数据</span></span><br><span class="line">    <span class="keyword">char</span> buffer[<span class="number">40</span>];</span><br><span class="line">    <span class="built_in">read</span>(sock, buffer, <span class="built_in"><span class="keyword">sizeof</span></span>(buffer)<span class="number">-1</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Massage: %s\n&quot;</span>, buffer);</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 关闭套接字</span></span><br><span class="line">    <span class="built_in">close</span>(sock);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A2 - 学习笔记</category>
+        <category>A3 - 技术</category>
         <category>B3 - 开发基础</category>
       </categories>
       <tags>
         <tag>CPP</tag>
         <tag>Linux</tag>
-        <tag>Network Programming</tag>
       </tags>
   </entry>
   <entry>
@@ -966,12 +965,12 @@
 <h4 id="C-实现-6"><a href="#C-实现-6" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isCousins</span><span class="params">(TreeNode* root, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        queue&lt;TreeNode*&gt; q;</span><br><span class="line">        q.<span class="built_in">push</span>(root);</span><br><span class="line">        <span class="keyword">while</span> (!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            queue&lt;TreeNode*&gt; t;</span><br><span class="line">            map&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; m;</span><br><span class="line">            <span class="keyword">int</span> idx = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">                <span class="keyword">auto</span> node = q.<span class="built_in">front</span>(); q.<span class="built_in">pop</span>();</span><br><span class="line">                <span class="keyword">if</span> (node-&gt;left) &#123;</span><br><span class="line">                    t.<span class="built_in">push</span>(node-&gt;left);</span><br><span class="line">                    m[node-&gt;left-&gt;val] = idx;</span><br><span class="line">                &#125;</span><br><span class="line">                ++idx;</span><br><span class="line">                <span class="keyword">if</span> (node-&gt;right) &#123;</span><br><span class="line">                    t.<span class="built_in">push</span>(node-&gt;right);</span><br><span class="line">                    m[node-&gt;right-&gt;val] = idx;</span><br><span class="line">                &#125;</span><br><span class="line">                ++idx;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (m.<span class="built_in">find</span>(x) != m.<span class="built_in">end</span>() &amp;&amp; m.<span class="built_in">find</span>(y) != m.<span class="built_in">end</span>() &amp;&amp;</span><br><span class="line">                (<span class="built_in">abs</span>(m[x]-m[y]) != <span class="number">1</span> || <span class="built_in">min</span>(m[x],m[y]) % <span class="number">2</span> != <span class="number">1</span>)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            q = t;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B4 - LeetCoding Challenge</category>
       </categories>
       <tags>
         <tag>CPP</tag>
-        <tag>Data Structure and Algorithm</tag>
+        <tag>数据结构与算法</tag>
         <tag>LeetCode</tag>
         <tag>Challenge</tag>
       </tags>
@@ -1007,12 +1006,12 @@
 <h4 id="C-实现-3"><a href="#C-实现-3" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">kthSmallest</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; mat, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; vec = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; mat.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            vector&lt;<span class="keyword">int</span>&gt; tmp;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; mat[<span class="number">0</span>].<span class="built_in">size</span>(); ++j) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> t = <span class="number">0</span>; t &lt; vec.<span class="built_in">size</span>(); ++t) &#123;</span><br><span class="line">                    tmp.<span class="built_in">push_back</span>(mat[i][j]+vec[t]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">sort</span>(tmp.<span class="built_in">begin</span>(), tmp.<span class="built_in">end</span>());</span><br><span class="line">            <span class="keyword">int</span> limit = <span class="built_in">min</span>(k, <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(tmp.<span class="built_in">size</span>()));</span><br><span class="line">            vec = vector&lt;<span class="keyword">int</span>&gt;(tmp.<span class="built_in">begin</span>(), tmp.<span class="built_in">begin</span>()+limit);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> vec[k<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B2 - LeetCode Weekly Contest</category>
       </categories>
       <tags>
         <tag>CPP</tag>
-        <tag>Data Structure and Algorithm</tag>
+        <tag>数据结构与算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -1179,12 +1178,12 @@
 <h4 id="C-实现-6"><a href="#C-实现-6" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Trie</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    set&lt;string&gt; s;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line">    <span class="built_in">Trie</span>() &#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Inserts a word into the trie. */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(string word)</span> </span>&#123;</span><br><span class="line">        s.<span class="built_in">insert</span>(word);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Returns if the word is in the trie. */</span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">search</span><span class="params">(string word)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> s.<span class="built_in">count</span>(word);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Returns if there is any word in the trie that starts with the given prefix. */</span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">startsWith</span><span class="params">(string prefix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> iter = s.<span class="built_in">begin</span>();</span><br><span class="line">        <span class="keyword">while</span> (iter != s.<span class="built_in">end</span>() &amp;&amp; *iter &lt; prefix) ++iter;</span><br><span class="line">        <span class="keyword">return</span> iter != s.<span class="built_in">end</span>() &amp;&amp; prefix == iter-&gt;<span class="built_in">substr</span>(<span class="number">0</span>, prefix.<span class="built_in">size</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your Trie object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * Trie* obj = new Trie();</span></span><br><span class="line"><span class="comment"> * obj-&gt;insert(word);</span></span><br><span class="line"><span class="comment"> * bool param_2 = obj-&gt;search(word);</span></span><br><span class="line"><span class="comment"> * bool param_3 = obj-&gt;startsWith(prefix);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B4 - LeetCoding Challenge</category>
       </categories>
       <tags>
         <tag>CPP</tag>
-        <tag>Data Structure and Algorithm</tag>
+        <tag>数据结构与算法</tag>
         <tag>LeetCode</tag>
         <tag>Challenge</tag>
       </tags>
@@ -1210,12 +1209,12 @@
 <h4 id="C-实现-3"><a href="#C-实现-3" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">numberWays</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; hats)</span> </span>&#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">persons</span>(<span class="number">40</span>);</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> n = hats.<span class="built_in">size</span>(), mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">masks</span><span class="params">(<span class="number">1</span> &lt;&lt; n)</span></span>;</span><br><span class="line">        masks[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">int</span> &amp;h: hats[i]) &#123;</span><br><span class="line">                persons[h - <span class="number">1</span>].<span class="built_in">emplace_back</span>(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">40</span>; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = (<span class="number">1</span> &lt;&lt; n) - <span class="number">1</span>; j &gt;= <span class="number">0</span>; --j) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">int</span> &amp;p: persons[i]) &#123;</span><br><span class="line">                    <span class="keyword">if</span> ((j &amp; (<span class="number">1</span> &lt;&lt; p)) == <span class="number">0</span>) &#123;</span><br><span class="line">                        masks[j | (<span class="number">1</span> &lt;&lt; p)] += masks[j];</span><br><span class="line">                        masks[j | (<span class="number">1</span> &lt;&lt; p)] %= mod;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> masks[(<span class="number">1</span> &lt;&lt; n) - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B3 - LeetCode Biweekly Contest</category>
       </categories>
       <tags>
         <tag>CPP</tag>
-        <tag>Data Structure and Algorithm</tag>
+        <tag>数据结构与算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -1248,12 +1247,12 @@
 <h4 id="C-实现-3"><a href="#C-实现-3" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">ways</span><span class="params">(vector&lt;string&gt;&amp; pizza, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = pizza.<span class="built_in">size</span>(), n = pizza[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        vector&lt;vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&gt; <span class="built_in">dp</span>(k, <span class="built_in">vector</span>(m, <span class="built_in">vector</span>(n, <span class="number">-1</span>)));</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">preSum</span>(m+<span class="number">1</span>, <span class="built_in">vector</span>(n+<span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> r = m - <span class="number">1</span>; r &gt;= <span class="number">0</span>; --r) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> c = n - <span class="number">1</span>; c &gt;= <span class="number">0</span>; --c) &#123;</span><br><span class="line">                preSum[r][c] = preSum[r][c+<span class="number">1</span>] + preSum[r+<span class="number">1</span>][c] - preSum[r+<span class="number">1</span>][c+<span class="number">1</span>];</span><br><span class="line">                preSum[r][c] += (pizza[r][c] == <span class="string">&#x27;A&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">dfs</span>(m, n, k<span class="number">-1</span>, <span class="number">0</span>, <span class="number">0</span>, dp, preSum);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n, <span class="keyword">int</span> k, <span class="keyword">int</span> r, <span class="keyword">int</span> c,</span></span></span><br><span class="line"><span class="function"><span class="params">            vector&lt;vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&gt; &amp;dp, vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; &amp;preSum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (preSum[r][c] == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (k == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (dp[k][r][c] != <span class="number">-1</span>) <span class="keyword">return</span> dp[k][r][c];</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>, mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> nr = r + <span class="number">1</span>; nr &lt; m; ++nr) &#123;</span><br><span class="line">            <span class="keyword">if</span> (preSum[r][c] - preSum[nr][c] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                ans = (ans + <span class="built_in">dfs</span>(m, n, k<span class="number">-1</span>, nr, c, dp, preSum)) % mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> nc = c + <span class="number">1</span>; nc &lt; n; ++nc) &#123;</span><br><span class="line">            <span class="keyword">if</span> (preSum[r][c] - preSum[r][nc] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                ans = (ans + <span class="built_in">dfs</span>(m, n, k<span class="number">-1</span>, r, nc, dp, preSum)) % mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[k][r][c] = ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B2 - LeetCode Weekly Contest</category>
       </categories>
       <tags>
         <tag>CPP</tag>
-        <tag>Data Structure and Algorithm</tag>
+        <tag>数据结构与算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -1297,13 +1296,12 @@
 <p><strong>如果你也有一个在 2018 年 03 月 12 日之前注册而又闲置的微信公众号，可以通过「下方的评论区」或「<a href="/about/">关于</a>页面的其他联系方式」联系到我，</strong>我可以把这个比较靠谱的经办人推荐给你。</p>
 ]]></content>
       <categories>
-        <category>A1 - 生活随笔</category>
+        <category>A1 - 生活</category>
         <category>B1 - 经历</category>
       </categories>
       <tags>
-        <tag>WeChat</tag>
-        <tag>Life</tag>
-        <tag>Promotion</tag>
+        <tag>微信公众号</tag>
+        <tag>推广</tag>
       </tags>
   </entry>
   <entry>
@@ -1464,12 +1462,12 @@
 <h4 id="C-实现-6"><a href="#C-实现-6" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">countSquares</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = matrix.<span class="built_in">size</span>(), n = matrix[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">vec</span>(m+<span class="number">1</span>, vector&lt;<span class="keyword">int</span>&gt;(n+<span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (matrix[i<span class="number">-1</span>][j<span class="number">-1</span>] == <span class="number">1</span>) &#123;</span><br><span class="line">                    vec[i][j] = <span class="built_in">min</span>(vec[i<span class="number">-1</span>][j<span class="number">-1</span>],</span><br><span class="line">                                    <span class="built_in">min</span>(vec[i][j<span class="number">-1</span>], vec[i<span class="number">-1</span>][j])) + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                res += vec[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B4 - LeetCoding Challenge</category>
       </categories>
       <tags>
         <tag>CPP</tag>
-        <tag>Data Structure and Algorithm</tag>
+        <tag>数据结构与算法</tag>
         <tag>LeetCode</tag>
         <tag>Challenge</tag>
       </tags>
@@ -1496,12 +1494,12 @@
 <h4 id="C-实现-3"><a href="#C-实现-3" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">numPoints</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; points, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = points.<span class="built_in">size</span>();</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">double</span>&gt;&gt; <span class="built_in">dist</span>(n, vector&lt;<span class="keyword">double</span>&gt;(n));</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j) &#123;</span><br><span class="line">                dist[i][j] = dist[j][i] = <span class="built_in">sqrt</span>((points[i][<span class="number">0</span>] - points[j][<span class="number">0</span>]) * (points[i][<span class="number">0</span>] - points[j][<span class="number">0</span>]) +</span><br><span class="line">                                               (points[i][<span class="number">1</span>] - points[j][<span class="number">1</span>]) * (points[i][<span class="number">1</span>] - points[j][<span class="number">1</span>]));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            vector&lt;pair&lt;<span class="keyword">double</span>, <span class="keyword">bool</span>&gt;&gt; angles;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (j != i &amp;&amp; dist[i][j] &lt;= <span class="number">2</span> * r) &#123;</span><br><span class="line">                    <span class="keyword">double</span> A = <span class="built_in">atan2</span>(points[j][<span class="number">1</span>] - points[i][<span class="number">1</span>], points[j][<span class="number">0</span>] - points[i][<span class="number">0</span>]);</span><br><span class="line">                    <span class="keyword">double</span> B = <span class="built_in">acos</span>(dist[i][j] / (<span class="number">2.0</span> * r));</span><br><span class="line">                    <span class="keyword">double</span> alpha = A - B;</span><br><span class="line">                    <span class="keyword">double</span> beta = A + B;</span><br><span class="line">                    angles.<span class="built_in">push_back</span>(<span class="built_in">make_pair</span>(alpha, <span class="literal">false</span>));</span><br><span class="line">                    angles.<span class="built_in">push_back</span>(<span class="built_in">make_pair</span>(beta, <span class="literal">true</span>));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">sort</span>(angles.<span class="built_in">begin</span>(), angles.<span class="built_in">end</span>());</span><br><span class="line">            <span class="keyword">int</span> cnt = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> it = angles.<span class="built_in">begin</span>(); it != angles.<span class="built_in">end</span>(); ++it) &#123;</span><br><span class="line">                <span class="keyword">if</span> ((*it).second == <span class="literal">false</span>) ++cnt;</span><br><span class="line">                <span class="keyword">else</span> --cnt;</span><br><span class="line">                res = <span class="built_in">max</span>(res, cnt);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B2 - LeetCode Weekly Contest</category>
       </categories>
       <tags>
         <tag>CPP</tag>
-        <tag>Data Structure and Algorithm</tag>
+        <tag>数据结构与算法</tag>
         <tag>LeetCode</tag>
       </tags>
   </entry>
@@ -1663,12 +1661,12 @@
 <h4 id="C-实现-6"><a href="#C-实现-6" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">countBits</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; res = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= num; ++i) &#123;</span><br><span class="line">            res.<span class="built_in">push_back</span>(res[i&gt;&gt;<span class="number">1</span>]+(i&amp;<span class="number">0x1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B4 - LeetCoding Challenge</category>
       </categories>
       <tags>
         <tag>CPP</tag>
-        <tag>Data Structure and Algorithm</tag>
+        <tag>数据结构与算法</tag>
         <tag>LeetCode</tag>
         <tag>Challenge</tag>
       </tags>
@@ -1719,7 +1717,7 @@
 <p>比如，对于 GitHub 来说，我们只需要<strong>将 <code>upstream</code>、<code>upstream_mobile</code> 和 <code>replace_dict</code> 中的 <code>google.com</code> 修改为 <code>github.com</code> 即可。</strong></p>
 ]]></content>
       <categories>
-        <category>A1 - 生活随笔</category>
+        <category>A1 - 生活</category>
         <category>B2 - 折腾</category>
       </categories>
       <tags>
@@ -1764,7 +1762,7 @@
 <h2 id="3-预览效果"><a href="#3-预览效果" class="headerlink" title="3 预览效果"></a>3 预览效果</h2><p>如果你想预览效果，可以在科学环境中访问 <a href="https://t.me/s/ProgCZChannel">ProgCZ’s Blog - Channel</a> 和 <a href="https://t.me/s/ProgCZFlow">ProgCZ’s Flow</a>。</p>
 ]]></content>
       <categories>
-        <category>A1 - 生活随笔</category>
+        <category>A1 - 生活</category>
         <category>B2 - 折腾</category>
       </categories>
       <tags>
@@ -1851,13 +1849,12 @@
 </ul>
 ]]></content>
       <categories>
-        <category>A1 - 生活随笔</category>
+        <category>A1 - 生活</category>
         <category>B1 - 经历</category>
       </categories>
       <tags>
-        <tag>Life</tag>
-        <tag>Shanghai</tag>
-        <tag>Rent</tag>
+        <tag>上海</tag>
+        <tag>租房</tag>
       </tags>
   </entry>
   <entry>
@@ -1990,12 +1987,12 @@
 <h4 id="C-实现-6"><a href="#C-实现-6" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">verticalTraversal</span>(TreeNode* root) &#123;</span><br><span class="line">        map&lt;<span class="keyword">int</span>, map&lt;<span class="keyword">int</span>, vector&lt;<span class="keyword">int</span>&gt;, greater&lt;<span class="keyword">int</span>&gt;&gt;&gt; m;</span><br><span class="line">        <span class="built_in">func</span>(root, <span class="number">0</span>, <span class="number">0</span>, m);</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> imp : m) &#123;</span><br><span class="line">            vector&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> ivp : imp.second) &#123;</span><br><span class="line">                <span class="built_in">sort</span>(ivp.second.<span class="built_in">begin</span>(), ivp.second.<span class="built_in">end</span>());</span><br><span class="line">                v.<span class="built_in">insert</span>(v.<span class="built_in">end</span>(), ivp.second.<span class="built_in">begin</span>(), ivp.second.<span class="built_in">end</span>());</span><br><span class="line">            &#125;</span><br><span class="line">            res.<span class="built_in">push_back</span>(v);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(TreeNode *node, <span class="keyword">int</span> x, <span class="keyword">int</span> y,</span></span></span><br><span class="line"><span class="function"><span class="params">              map&lt;<span class="keyword">int</span>, map&lt;<span class="keyword">int</span>, vector&lt;<span class="keyword">int</span>&gt;, greater&lt;<span class="keyword">int</span>&gt;&gt;&gt; &amp;m)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!node) <span class="keyword">return</span>;</span><br><span class="line">        m[x][y].<span class="built_in">push_back</span>(node-&gt;val);</span><br><span class="line">        <span class="built_in">func</span>(node-&gt;left, x<span class="number">-1</span>, y<span class="number">-1</span>, m);</span><br><span class="line">        <span class="built_in">func</span>(node-&gt;right, x+<span class="number">1</span>, y<span class="number">-1</span>, m);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B4 - LeetCoding Challenge</category>
       </categories>
       <tags>
         <tag>CPP</tag>
-        <tag>Data Structure and Algorithm</tag>
+        <tag>数据结构与算法</tag>
         <tag>LeetCode</tag>
         <tag>Challenge</tag>
       </tags>
@@ -2093,13 +2090,13 @@
 </ul>
 ]]></content>
       <categories>
-        <category>A1 - 生活随笔</category>
+        <category>A1 - 生活</category>
         <category>B2 - 折腾</category>
       </categories>
       <tags>
-        <tag>Work</tag>
-        <tag>Desktop</tag>
+        <tag>桌面</tag>
         <tag>MacBook Pro</tag>
+        <tag>AirPods Pro</tag>
       </tags>
   </entry>
   <entry>
@@ -2123,12 +2120,12 @@
 <p>终究还是没能在工作日坚持下来，这个系列终止吧。</p>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B4 - LeetCoding Challenge</category>
       </categories>
       <tags>
         <tag>CPP</tag>
-        <tag>Data Structure and Algorithm</tag>
+        <tag>数据结构与算法</tag>
         <tag>LeetCode</tag>
         <tag>Challenge</tag>
       </tags>
@@ -2196,9 +2193,8 @@
         <category>A0 - 总结与计划</category>
       </categories>
       <tags>
-        <tag>Plan</tag>
-        <tag>Summary</tag>
-        <tag>Happiness</tag>
+        <tag>计划</tag>
+        <tag>总结</tag>
       </tags>
   </entry>
   <entry>
@@ -2248,7 +2244,7 @@
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        unordered_map&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; um;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (um.<span class="built_in">find</span>(nums[i]) != um.<span class="built_in">end</span>()) &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;um[nums[i]], i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            um[target-nums[i]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B1 - LeetCode Problems</category>
       </categories>
       <tags>
@@ -2291,7 +2287,7 @@
 <h3 id="C-实现-1"><a href="#C-实现-1" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode root(0), *node = &amp;root;</span><br><span class="line">        <span class="keyword">int</span> extra = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (l1 || l2 || extra) &#123;</span><br><span class="line">            <span class="keyword">int</span> sum = extra + </span><br><span class="line">                (l1 ? l1-&gt;val : <span class="number">0</span>) + (l2 ? l2-&gt;val : <span class="number">0</span>);</span><br><span class="line">            extra = sum/<span class="number">10</span>;</span><br><span class="line">            node-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(sum%<span class="number">10</span>);</span><br><span class="line">            node = node-&gt;next;</span><br><span class="line">            l1 = l1 ? l1-&gt;next : l1;</span><br><span class="line">            l2 = l2 ? l2-&gt;next : l2;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B1 - LeetCode Problems</category>
       </categories>
       <tags>
@@ -2345,7 +2341,7 @@
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        array&lt;<span class="keyword">int</span>, 256&gt; arr; arr.<span class="built_in">fill</span>(<span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>, loc = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="comment">// 等号右边的 `loc`，就是解法中提到的「前一次出现的下标」</span></span><br><span class="line">            <span class="comment">// 等号右边的 `arr[s[i]]`，就是当前字符的「前一次出现的下标」</span></span><br><span class="line">            <span class="comment">// 两者取最大，更新 `loc`，同时 `loc` 也就是：</span></span><br><span class="line">            <span class="comment">// 对于当前字符来说的，最长不重复子串起点的下标减一</span></span><br><span class="line">            loc = <span class="built_in">max</span>(loc, arr[s[i]]);</span><br><span class="line">            <span class="comment">// 计算：对于当前字符来说的，最长不重复子串的长度</span></span><br><span class="line">            res = <span class="built_in">max</span>(res, i-loc);</span><br><span class="line">            <span class="comment">// 更新 `arr[s[i]]`</span></span><br><span class="line">            arr[s[i]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B1 - LeetCode Problems</category>
       </categories>
       <tags>
@@ -2423,11 +2419,11 @@
 <h2 id="3-后记"><a href="#3-后记" class="headerlink" title="3 后记"></a>3 后记</h2><p>折腾告一段落，静下心来好好写些文章吧。</p>
 ]]></content>
       <categories>
-        <category>A1 - 生活随笔</category>
+        <category>A1 - 生活</category>
         <category>B2 - 折腾</category>
       </categories>
       <tags>
-        <tag>Blog</tag>
+        <tag>博客</tag>
         <tag>Hexo</tag>
         <tag>NexT</tag>
       </tags>
@@ -2457,13 +2453,11 @@
 <p>人生已经很累了，照顾好自己的情绪都是一件非常困难的事情，就更不想陷入这种本不该存在的争论之中了。</p>
 ]]></content>
       <categories>
-        <category>A1 - 生活随笔</category>
+        <category>A1 - 生活</category>
         <category>B2 - 折腾</category>
       </categories>
       <tags>
-        <tag>Blog</tag>
-        <tag>Mail</tag>
-        <tag>Comment</tag>
+        <tag>博客</tag>
       </tags>
   </entry>
   <entry>
@@ -2531,8 +2525,8 @@
 <h2 id="5-后记"><a href="#5-后记" class="headerlink" title="5 后记"></a>5 后记</h2><p>这不是朝朝宝的软文（招行也不至于卑贱到来找我写软文），单纯只是我想分享一下好的理财产品。不构成理财建议，但是如果对你有所帮助，那就再好不过了。也祝自己早日暴富！</p>
 ]]></content>
       <categories>
-        <category>A1 - 生活随笔</category>
-        <category>B3 - 理财</category>
+        <category>A2 - 投资</category>
+        <category>B1 - 银行理财</category>
       </categories>
       <tags>
         <tag>招商银行</tag>
@@ -2594,7 +2588,7 @@
 <p>晚饭在创极速光轮附近的星露台餐厅，钢铁侠牛肉汉堡非常难吃，不放图了。</p>
 ]]></content>
       <categories>
-        <category>A1 - 生活随笔</category>
+        <category>A1 - 生活</category>
         <category>B1 - 经历</category>
       </categories>
       <tags>
@@ -2693,7 +2687,7 @@
 <h4 id="C-实现-6"><a href="#C-实现-6" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minCut</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.<span class="built_in">empty</span>()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">bool</span>&gt;&gt; <span class="built_in">p</span>(n, vector&lt;<span class="keyword">bool</span>&gt;(n));</span><br><span class="line">        <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">dp</span><span class="params">(n)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            dp[i] = i;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= i; ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (s[i] == s[j] &amp;&amp; (i - j &lt; <span class="number">2</span> || p[j + <span class="number">1</span>][i - <span class="number">1</span>])) &#123;</span><br><span class="line">                    p[j][i] = <span class="literal">true</span>;</span><br><span class="line">                    dp[i] = (j == <span class="number">0</span>) ? <span class="number">0</span> : <span class="built_in">min</span>(dp[i], dp[j - <span class="number">1</span>] + <span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B4 - LeetCoding Challenge</category>
       </categories>
       <tags>
@@ -2721,7 +2715,7 @@
 <h2 id="解法二：马拉车算法"><a href="#解法二：马拉车算法" class="headerlink" title="解法二：马拉车算法"></a>解法二：马拉车算法</h2><p>以前写过，参见：<a href="/posts/apply-manacher-s-algorithm-to-solve-longest-palindromic-substring-problem/">使用马拉车算法解决最长回文子串问题</a></p>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B1 - LeetCode Problems</category>
       </categories>
       <tags>
@@ -2749,7 +2743,7 @@
 <h3 id="C-实现"><a href="#C-实现" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (x != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">abs</span>(res) &gt; INT_MAX/<span class="number">10</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            res = res * <span class="number">10</span> + x % <span class="number">10</span>;</span><br><span class="line">            x /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B1 - LeetCode Problems</category>
       </categories>
       <tags>
@@ -2868,7 +2862,7 @@
 <h4 id="C-实现-6"><a href="#C-实现-6" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">removeBoxes</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; boxes)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = boxes.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> dp[<span class="number">100</span>][<span class="number">100</span>][<span class="number">100</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">helper</span>(boxes, <span class="number">0</span>, n - <span class="number">1</span>, <span class="number">0</span>, dp);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">helper</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; boxes, <span class="keyword">int</span> i, <span class="keyword">int</span> j, <span class="keyword">int</span> k, <span class="keyword">int</span> dp[<span class="number">100</span>][<span class="number">100</span>][<span class="number">100</span>])</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (j &lt; i) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (dp[i][j][k] &gt; <span class="number">0</span>) <span class="keyword">return</span> dp[i][j][k];</span><br><span class="line">        <span class="keyword">int</span> res = (<span class="number">1</span> + k) * (<span class="number">1</span> + k) + <span class="built_in">helper</span>(boxes, i + <span class="number">1</span>, j, <span class="number">0</span>, dp);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> m = i + <span class="number">1</span>; m &lt;= j; ++m) &#123;</span><br><span class="line">            <span class="keyword">if</span> (boxes[m] == boxes[i]) &#123;</span><br><span class="line">                res = <span class="built_in">max</span>(res, <span class="built_in">helper</span>(boxes, i + <span class="number">1</span>, m - <span class="number">1</span>, <span class="number">0</span>, dp) + <span class="built_in">helper</span>(boxes, m, j, k + <span class="number">1</span>, dp));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[i][j][k] = res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B4 - LeetCoding Challenge</category>
       </categories>
       <tags>
@@ -2979,7 +2973,7 @@
 <h4 id="C-实现-6"><a href="#C-实现-6" class="headerlink" title="C++ 实现"></a>C++ 实现</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">solveSudoku</span><span class="params">(vector&lt;vector&lt;<span class="keyword">char</span>&gt;&gt;&amp; board)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">helper</span>(board, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">helper</span><span class="params">(vector&lt;vector&lt;<span class="keyword">char</span>&gt;&gt;&amp; board, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">9</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (j &gt;= <span class="number">9</span>) <span class="keyword">return</span> <span class="built_in">helper</span>(board, i + <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span> (board[i][j] != <span class="string">&#x27;.&#x27;</span>) <span class="keyword">return</span> <span class="built_in">helper</span>(board, i, j + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c = <span class="string">&#x27;1&#x27;</span>; c &lt;= <span class="string">&#x27;9&#x27;</span>; ++c) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!<span class="built_in">isValid</span>(board, i , j, c)) <span class="keyword">continue</span>;</span><br><span class="line">            board[i][j] = c;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">helper</span>(board, i, j + <span class="number">1</span>)) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            board[i][j] = <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValid</span><span class="params">(vector&lt;vector&lt;<span class="keyword">char</span>&gt;&gt;&amp; board, <span class="keyword">int</span> i, <span class="keyword">int</span> j, <span class="keyword">char</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">0</span>; x &lt; <span class="number">9</span>; ++x) &#123;</span><br><span class="line">            <span class="keyword">if</span> (board[x][j] == val) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> y = <span class="number">0</span>; y &lt; <span class="number">9</span>; ++y) &#123;</span><br><span class="line">            <span class="keyword">if</span> (board[i][y] == val) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> row = i - i % <span class="number">3</span>, col = j - j % <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">0</span>; x &lt; <span class="number">3</span>; ++x) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> y = <span class="number">0</span>; y &lt; <span class="number">3</span>; ++y) &#123;</span><br><span class="line">                <span class="keyword">if</span> (board[x + row][y + col] == val) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A3 - LeetCode</category>
+        <category>A4 - LeetCode</category>
         <category>B4 - LeetCoding Challenge</category>
       </categories>
       <tags>
@@ -3101,12 +3095,12 @@
 <h3 id="C-实现-5"><a href="#C-实现-5" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">counting_sort</span><span class="params">(std::vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (nums.<span class="built_in">empty</span>()) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> min_num = INT_MAX, max_num = INT_MIN;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> num : nums) &#123;</span><br><span class="line">        min_num = <span class="built_in">min</span>(min_num, num);</span><br><span class="line">        max_num = <span class="built_in">max</span>(max_num, num);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">cnts</span><span class="params">(max_num-min_num+<span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> num : nums) &#123;</span><br><span class="line">        ++cnts[num-min_num];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> idx = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; max_num-min_num+<span class="number">1</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = cnts[i]; j &gt; <span class="number">0</span>; --j) &#123;</span><br><span class="line">            nums[idx++] = min_num + i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A2 - 学习笔记</category>
+        <category>A3 - 技术</category>
         <category>B1 - 数据结构与算法</category>
       </categories>
       <tags>
         <tag>CPP</tag>
-        <tag>Data Structure and Algorithm</tag>
+        <tag>数据结构与算法</tag>
         <tag>Sort</tag>
       </tags>
   </entry>
@@ -3594,7 +3588,7 @@
 </ul>
 ]]></content>
       <categories>
-        <category>A2 - 学习笔记</category>
+        <category>A3 - 技术</category>
         <category>B2 - 编程语言</category>
         <category>C1 - CPP</category>
       </categories>
@@ -3651,12 +3645,12 @@
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">sortList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!head) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="built_in">quick_sort</span>(head, <span class="literal">nullptr</span>);</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(ListNode* left, ListNode* right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (left == right || left-&gt;next == right) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode* mid = <span class="built_in">partition</span>(left, right);</span><br><span class="line">        <span class="built_in">quick_sort</span>(left, mid);</span><br><span class="line">        <span class="built_in">quick_sort</span>(mid-&gt;next, right);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">ListNode* <span class="title">partition</span><span class="params">(ListNode* left, ListNode* right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> pivot = left-&gt;val;</span><br><span class="line">        ListNode* pre = left, *cur = left-&gt;next;</span><br><span class="line">        <span class="keyword">while</span> (cur != right) &#123;</span><br><span class="line">            <span class="keyword">if</span> (cur-&gt;val &lt; pivot) &#123;</span><br><span class="line">                pre = pre-&gt;next;</span><br><span class="line">                <span class="built_in">swap_pointer</span>(pre, cur);</span><br><span class="line">            &#125;</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">swap_pointer</span>(left, pre);</span><br><span class="line">        <span class="keyword">return</span> pre;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">swap_pointer</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> v = l1-&gt;val;</span><br><span class="line">        l1-&gt;val = l2-&gt;val;</span><br><span class="line">        l2-&gt;val = v;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A2 - 学习笔记</category>
+        <category>A3 - 技术</category>
         <category>B1 - 数据结构与算法</category>
       </categories>
       <tags>
         <tag>CPP</tag>
-        <tag>Data Structure and Algorithm</tag>
+        <tag>数据结构与算法</tag>
         <tag>Linked List</tag>
         <tag>面试</tag>
       </tags>
@@ -3727,12 +3721,12 @@
 <h3 id="C-实现-8"><a href="#C-实现-8" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">kthSmallest</span><span class="params">(TreeNode* root, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> order = <span class="number">1</span>, val = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">travel</span>(root, k, order, val);</span><br><span class="line">        <span class="keyword">return</span> val;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">travel</span><span class="params">(TreeNode* node, <span class="keyword">int</span> k, <span class="keyword">int</span>&amp; order, <span class="keyword">int</span>&amp; val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!node) <span class="keyword">return</span>;</span><br><span class="line">        <span class="built_in">travel</span>(node-&gt;left, k, order, val);</span><br><span class="line">        <span class="keyword">if</span> (order++ == k) val = node-&gt;val;</span><br><span class="line">        <span class="keyword">if</span> (order &gt; k) <span class="keyword">return</span>;</span><br><span class="line">        <span class="built_in">travel</span>(node-&gt;right, k, order, val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>A2 - 学习笔记</category>
+        <category>A3 - 技术</category>
         <category>B1 - 数据结构与算法</category>
       </categories>
       <tags>
         <tag>CPP</tag>
-        <tag>Data Structure and Algorithm</tag>
+        <tag>数据结构与算法</tag>
         <tag>面试</tag>
         <tag>Binary Tree</tag>
       </tags>
