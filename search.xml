@@ -3793,7 +3793,7 @@
   <details class="note info"><summary><p>面试过程中，推荐使用 LeetCode 的 <a href="https://leetcode.com/playground/">Playground</a> 编写代码，相比 <a href="https://codeshare.io/">Codeshare</a>，Playground 可以在线编译并运行，测试起来非常方便<strong>（微软的面试官都非常注重测试）</strong>。</p>
 </summary>
 <p>比如，我在<a href="/posts/1633654398/">常见排序算法的 C++ 实现、复杂度和稳定性分析</a>中给出的 <a href="https://leetcode.com/playground/gZfypPAn">Playground</a>：</p>
-<p><img data-src="https://tva1.sinaimg.cn/large/008i3skNly1gx225elstyj31c00u0wia.jpg"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/12/07/04.png"></p>
 
 </details></li>
 </ul>
