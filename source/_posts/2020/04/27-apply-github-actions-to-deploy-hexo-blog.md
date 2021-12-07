@@ -37,18 +37,18 @@ GitHub Actions 入门教程：<https://p3terx.com/archives/github-actions-starte
 
 1. **工作流由 `source` 分支的 `push` 操作触发。**
 
-  {% note warning %}
-  之前我把工作流文件放在 `master` 分支下，希望通过
+    {% note warning %}
+    之前我把工作流文件放在 `master` 分支下，希望通过
 
-  ```yaml
-  on:
-    push:
-      branches:
-        - source
-  ```
+    ```yaml
+    on:
+      push:
+        branches:
+          - source
+    ```
 
-  来触发工作流，但是一直没能成功，所以这里建议将工作流文件放在 `source` 分支下。
-  {% endnote %}
+    来触发工作流，但是一直没能成功，所以这里建议将工作流文件放在 `source` 分支下。
+    {% endnote %}
 
 2. **配置工作流环境（与本地保持一致）：系统为 Ubuntu 16.04，Node.js 版本为 12.x。**
 
@@ -58,77 +58,77 @@ GitHub Actions 入门教程：<https://p3terx.com/archives/github-actions-starte
 
 5. **安装插件，依赖文件为 `blog-source-ws/package.json`。**
 
-  {% note warning %}
-  为了使插件保持稳定，我把所有版本号前的 `^` 全部删除，因为 `^` 表示将插件更新到当前 major version（也就是第一位数字）中的最新版本。
+    {% note warning %}
+    为了使插件保持稳定，我把所有版本号前的 `^` 全部删除，因为 `^` 表示将插件更新到当前 major version（也就是第一位数字）中的最新版本。
 
-  完整依赖文件如下所示：
+    完整依赖文件如下所示：
 
-  ```json code https://github.com/ProgCZ/progcz.github.io/blob/source/package.json package.json
-  {
-    "name": "hexo-site",
-    "version": "0.0.0",
-    "private": true,
-    "scripts": {
-      "build": "hexo generate",
-      "clean": "hexo clean",
-      "deploy": "hexo deploy",
-      "server": "hexo server"
-    },
-    "hexo": {
-      "version": "4.2.0"
-    },
-    "dependencies": {
-      "hexo": "4.2.0",
-      "hexo-generator-archive": "1.0.0",
-      "hexo-generator-category": "1.0.0",
-      "hexo-generator-index": "1.0.0",
-      "hexo-generator-feed": "2.2.0",
-      "hexo-generator-sitemap": "2.0.0",
-      "hexo-generator-searchdb": "1.3.0",
-      "hexo-generator-tag": "1.0.0",
-      "hexo-html-minifier": "1.0.0",
-      "hexo-renderer-ejs": "1.0.0",
-      "hexo-renderer-stylus": "1.1.0",
-      "hexo-renderer-marked": "2.0.0",
-      "hexo-server": "1.0.0"
+    ```json code https://github.com/ProgCZ/progcz.github.io/blob/source/package.json package.json
+    {
+      "name": "hexo-site",
+      "version": "0.0.0",
+      "private": true,
+      "scripts": {
+        "build": "hexo generate",
+        "clean": "hexo clean",
+        "deploy": "hexo deploy",
+        "server": "hexo server"
+      },
+      "hexo": {
+        "version": "4.2.0"
+      },
+      "dependencies": {
+        "hexo": "4.2.0",
+        "hexo-generator-archive": "1.0.0",
+        "hexo-generator-category": "1.0.0",
+        "hexo-generator-index": "1.0.0",
+        "hexo-generator-feed": "2.2.0",
+        "hexo-generator-sitemap": "2.0.0",
+        "hexo-generator-searchdb": "1.3.0",
+        "hexo-generator-tag": "1.0.0",
+        "hexo-html-minifier": "1.0.0",
+        "hexo-renderer-ejs": "1.0.0",
+        "hexo-renderer-stylus": "1.1.0",
+        "hexo-renderer-marked": "2.0.0",
+        "hexo-server": "1.0.0"
+      }
     }
-  }
-  ```
+    ```
 
-  细心的读者可能看到，除了默认插件以外，我额外添加了四个插件，分别是：
+    细心的读者可能看到，除了默认插件以外，我额外添加了四个插件，分别是：
 
-  - `hexo-generator-feed` 用于生成 RSS 文件。
+    - `hexo-generator-feed` 用于生成 RSS 文件。
 
-  - `hexo-generator-sitemap` 用于生成站点地图文件，提交给 Google 之后可以提高网页收录效率。
+    - `hexo-generator-sitemap` 用于生成站点地图文件，提交给 Google 之后可以提高网页收录效率。
 
-  - `hexo-generator-searchdb` 用于生成搜索文件。
+    - `hexo-generator-searchdb` 用于生成搜索文件。
 
-  - `hexo-html-minifier` 用于压缩 html 文件（删除大量空白和换行），可以加快网页加载速度。
-  {% endnote %}
+    - `hexo-html-minifier` 用于压缩 html 文件（删除大量空白和换行），可以加快网页加载速度。
+    {% endnote %}
 
 6. **下拉 `master` 分支至 `blog-source-ws/pubic` 文件夹中。**
 
 7. **配置时区和用户信息后，通过**
 
-  ```bash
-  $ ls -a | egrep -v '^\.{1,2}$' | egrep -v .git | xargs rm -rf
-  ```
+    ```bash
+    $ ls -a | egrep -v '^\.{1,2}$' | egrep -v .git | xargs rm -rf
+    ```
 
-  **清空 `blog-source-ws/pubic` 文件夹（相当于 `hexo clean`），再通过**
+    **清空 `blog-source-ws/pubic` 文件夹（相当于 `hexo clean`），再通过**
 
-  ```bash
-  $ hexo g
-  ```
+    ```bash
+    $ hexo g
+    ```
 
-  **在 `blog-source-ws/pubic` 文件夹中生成静态文件，再通过**
+    **在 `blog-source-ws/pubic` 文件夹中生成静态文件，再通过**
 
-  ```bash
-  $ git add -A
-  $ git commit -m "Update blog: `date '+%Y-%m-%d %H:%M:%S'`"
-  $ git push origin master
-  ```
+    ```bash
+    $ git add -A
+    $ git commit -m "Update blog: `date '+%Y-%m-%d %H:%M:%S'`"
+    $ git push origin master
+    ```
 
-  **将静态文件手动提交至 `master` 分支。**
+    **将静态文件手动提交至 `master` 分支。**
 
 ### 2.2 完整代码
 
