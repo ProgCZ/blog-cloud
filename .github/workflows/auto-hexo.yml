@@ -7,7 +7,7 @@ jobs:
     - name: Setup Node
       uses: actions/setup-node@v2
       with:
-        node-version: '14'
+        node-version: '16'
 
     - name: Checkout source
       uses: actions/checkout@v2
@@ -17,7 +17,7 @@ jobs:
 
     - name: Setup Hexo
       run: |
-        npm install -g hexo-cli@4.2.0
+        npm install -g hexo-cli@4.3.0
         cd blog-source-ws
         npm install
 
