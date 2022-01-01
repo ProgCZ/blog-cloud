@@ -142,7 +142,7 @@ site_state: true
 # Key is the link label showing to end users.
 # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
 social:
-  E-Mail: mailto:zhaozengzhi1995@163.com || fa fa-envelope
+  E-Mail: mailto:progcz@yeah.net || fa fa-envelope
   GitHub: https://github.com/ProgCZ || fab fa-github
   #Weibo: https://weibo.com/yourname || fab fa-weibo
   #Google: https://plus.google.com/yourname || fab fa-google

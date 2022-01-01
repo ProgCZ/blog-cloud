@@ -21,8 +21,8 @@ tags:
 ### 1.1 本地配置
 
 ```bash
-$ git config --global user.name "ProgCZ"
-$ git config --global user.email "zhaozengzhi1995@163.com"
+$ git config --global user.name "NAME"
+$ git config --global user.email "NAME@EXAMPLE.COM"
 ```
 
 ### 1.2 GitHub 远程配置
@@ -30,7 +30,7 @@ $ git config --global user.email "zhaozengzhi1995@163.com"
 生成公钥和私钥：
 
 ```bash
-$ ssh-keygen -t rsa -C "zhaozengzhi1995@163.com"
+$ ssh-keygen -t rsa -C "NAME@EXAMPLE.COM"
 ```
 
 查看公钥的内容：

@@ -170,8 +170,8 @@ jobs:
         cd ..
         hexo g
         cd public
-        git config --local user.name "ProgCZ"
-        git config --local user.email "zhaozengzhi1995@163.com"
+        git config --local user.name "NAME"
+        git config --local user.email "NAME@EXAMPLE.COM"
         git add -A
         git commit -m "Update blog: `date '+%Y-%m-%d %H:%M:%S'`"
         git push origin master

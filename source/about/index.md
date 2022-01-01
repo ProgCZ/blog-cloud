@@ -15,6 +15,6 @@ toc:
 
 如果您在浏览文章的过程中发现错误或者需要帮助，可以通过「以下邮箱/平台」联系到我。
 
-- E-Mail: [zhaozengzhi1995@163.com](mailto:zhaozengzhi1995@163.com)
+- E-Mail: [progcz@yeah.net](mailto:progcz@yeah.net)
 
 - GitHub: <https://github.com/ProgCZ>
