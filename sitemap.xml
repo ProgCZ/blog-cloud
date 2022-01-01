@@ -83,51 +83,6 @@
   </url>
   
   <url>
-    <loc>https://progcz.com/posts/1629077320/</loc>
-    
-    <lastmod>2021-08-21</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/posts/1628470617/</loc>
-    
-    <lastmod>2021-08-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/posts/1627831620/</loc>
-    
-    <lastmod>2021-08-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/posts/1627951198/</loc>
-    
-    <lastmod>2021-08-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/posts/1627949478/</loc>
-    
-    <lastmod>2021-08-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://progcz.com/posts/1624282620/</loc>
     
     <lastmod>2021-06-26</lastmod>
@@ -173,54 +128,9 @@
   </url>
   
   <url>
-    <loc>https://progcz.com/posts/leetcode-problem-longest-substring-without-repeating-characters/</loc>
-    
-    <lastmod>2021-03-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/posts/leetcode-problem-add-two-numbers/</loc>
-    
-    <lastmod>2021-02-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/posts/leetcode-problem-two-sum/</loc>
-    
-    <lastmod>2021-02-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://progcz.com/posts/summary-for-past-year-and-plan-for-new-year/</loc>
     
     <lastmod>2021-01-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/posts/2020-august-leetcoding-challenge-week-2/</loc>
-    
-    <lastmod>2020-08-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/posts/2020-august-leetcoding-challenge-week-1/</loc>
-    
-    <lastmod>2020-08-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -245,15 +155,6 @@
   </url>
   
   <url>
-    <loc>https://progcz.com/posts/2020-may-leetcoding-challenge-week-4/</loc>
-    
-    <lastmod>2020-05-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://progcz.com/posts/record-use-ifttt-tg-sub-rss-push-template/</loc>
     
     <lastmod>2020-05-24</lastmod>
@@ -272,72 +173,9 @@
   </url>
   
   <url>
-    <loc>https://progcz.com/posts/2020-may-leetcoding-challenge-week-3/</loc>
-    
-    <lastmod>2020-05-21</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/posts/leetcode-weekly-contest-189-1450-1453/</loc>
-    
-    <lastmod>2020-05-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/posts/2020-may-leetcoding-challenge-week-2/</loc>
-    
-    <lastmod>2020-05-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://progcz.com/posts/record-for-sell-wechat-official-account/</loc>
     
     <lastmod>2020-05-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/posts/leetcode-weekly-contest-188-1441-1444/</loc>
-    
-    <lastmod>2020-05-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/posts/leetcode-biweekly-contest-25-1431-1434/</loc>
-    
-    <lastmod>2020-05-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/posts/2020-may-leetcoding-challenge-week-1/</loc>
-    
-    <lastmod>2020-05-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/posts/leetcode-weekly-contest-187-1436-1439/</loc>
-    
-    <lastmod>2020-05-03</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -362,72 +200,9 @@
   </url>
   
   <url>
-    <loc>https://progcz.com/posts/leetcode-weekly-contest-186-1422-1425/</loc>
-    
-    <lastmod>2020-04-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/posts/leetcode-weekly-contest-183-1403-1406/</loc>
-    
-    <lastmod>2020-04-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/posts/leetcode-biweekly-contest-23-1399-1402/</loc>
-    
-    <lastmod>2020-04-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/posts/leetcode-weekly-contest-182-1394-1397/</loc>
-    
-    <lastmod>2020-03-30</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/posts/leetcode-biweekly-contest-22-1385-1388/</loc>
-    
-    <lastmod>2020-03-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/posts/leetcode-weekly-contest-181-1389-1392/</loc>
-    
-    <lastmod>2020-03-24</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://progcz.com/posts/cmake-tutorial-write-cmakelists-txt-from-the-very-beginning/</loc>
     
     <lastmod>2020-03-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/posts/leetcode-biweekly-contest-21-1370-1373/</loc>
-    
-    <lastmod>2020-03-16</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -580,13 +355,6 @@
   </url>
   
   <url>
-    <loc>https://progcz.com/tags/Challenge/</loc>
-    <lastmod>2022-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://progcz.com/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/</loc>
     <lastmod>2022-01-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -685,55 +453,6 @@
   </url>
   
   <url>
-    <loc>https://progcz.com/tags/Array/</loc>
-    <lastmod>2022-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/tags/Hash-Table/</loc>
-    <lastmod>2022-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/tags/Linked-List/</loc>
-    <lastmod>2022-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/tags/Math/</loc>
-    <lastmod>2022-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/tags/Recursion/</loc>
-    <lastmod>2022-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/tags/Two-Pointers/</loc>
-    <lastmod>2022-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/tags/Sliding-Window/</loc>
-    <lastmod>2022-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://progcz.com/tags/NexT/</loc>
     <lastmod>2022-01-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -797,13 +516,6 @@
   </url>
   
   <url>
-    <loc>https://progcz.com/tags/Dynamic-Programming/</loc>
-    <lastmod>2022-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://progcz.com/tags/Sort/</loc>
     <lastmod>2022-01-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -812,6 +524,13 @@
   
   <url>
     <loc>https://progcz.com/tags/%E9%9D%A2%E8%AF%95/</loc>
+    <lastmod>2022-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://progcz.com/tags/Linked-List/</loc>
     <lastmod>2022-01-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -869,7 +588,7 @@
   </url>
   
   <url>
-    <loc>https://progcz.com/categories/A4-LeetCode/</loc>
+    <loc>https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/</loc>
     <lastmod>2022-01-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -890,42 +609,7 @@
   </url>
   
   <url>
-    <loc>https://progcz.com/categories/A4-LeetCode/B2-LeetCode-Weekly-Contest/</loc>
-    <lastmod>2022-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/categories/A4-LeetCode/B3-LeetCode-Biweekly-Contest/</loc>
-    <lastmod>2022-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/</loc>
-    <lastmod>2022-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://progcz.com/categories/A3-%E6%8A%80%E6%9C%AF/B2-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</loc>
-    <lastmod>2022-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/categories/A4-LeetCode/B4-LeetCoding-Challenge/</loc>
-    <lastmod>2022-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/categories/A4-LeetCode/B1-LeetCode-Problems/</loc>
     <lastmod>2022-01-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
