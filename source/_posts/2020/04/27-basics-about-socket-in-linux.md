@@ -14,8 +14,6 @@ tags:
 
 <!-- more -->
 
-> 【迁移】旧文日期：2019-09-05
-
 ## 1 socket 编程基础
 
 ### 1.1 socket 的不同类型
@@ -120,7 +118,7 @@ ssize_t read(int fd, void *buf, size_t nbytes);
 int main() {
     // 创建套接字
     int serv_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-	
+
     // 将套接字与 IP、端口绑定
     struct sockaddr_in serv_addr;
     memset(&serv_addr, 0, sizeof(serv_addr));
@@ -128,19 +126,19 @@ int main() {
     serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
     serv_addr.sin_port = htons(1234);
     bind(serv_sock, (struct sockaddr*)&serv_addr, sizeof(serv_addr));
-	
+
     // 进入监听状态，等待用户发起请求
     listen(serv_sock, 20);
-	
+
     // 接收客户端请求
     struct sockaddr_in clnt_addr;
     socklen_t clnt_addr_size = sizeof(clnt_addr);
     int clnt_sock = accept(serv_sock, (struct sockaddr*)&clnt_addr, &clnt_addr_size);
-	
+
     // 向客户端发送数据
     char str[] = "Hello, World!";
     write(clnt_sock, str, sizeof(str));
-	
+
     // 关闭套接字
     close(clnt_sock);
     close(serv_sock);
@@ -162,7 +160,7 @@ int main() {
 int main() {
     // 创建套接字
     int sock = socket(AF_INET, SOCK_STREAM, 0);
-	
+
     // 向服务端发送请求
     struct sockaddr_in serv_addr;
     memset(&serv_addr, 0, sizeof(serv_addr));
@@ -170,12 +168,12 @@ int main() {
     serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
     serv_addr.sin_port = htons(1234);
     connect(sock, (struct sockaddr*)&serv_addr, sizeof(serv_addr));
-	
+
     // 读取服务端传回的数据
     char buffer[40];
     read(sock, buffer, sizeof(buffer)-1);
     printf("Massage: %s\n", buffer);
-	
+
     // 关闭套接字
     close(sock);
 
