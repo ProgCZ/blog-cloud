@@ -38,6 +38,15 @@
   </url>
   
   <url>
+    <loc>https://progcz.com/pieces/2021/index.html</loc>
+    
+    <lastmod>2022-01-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://progcz.com/posts/1638593506/</loc>
     
     <lastmod>2021-12-07</lastmod>
