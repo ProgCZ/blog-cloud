@@ -2,24 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://progcz.com/about/index.html</loc>
-    
-    <lastmod>2022-01-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/categories/index.html</loc>
-    
-    <lastmod>2022-01-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://progcz.com/pieces/index.html</loc>
     
     <lastmod>2022-01-26</lastmod>
@@ -39,6 +21,24 @@
   
   <url>
     <loc>https://progcz.com/pieces/2021/index.html</loc>
+    
+    <lastmod>2022-01-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://progcz.com/about/index.html</loc>
+    
+    <lastmod>2022-01-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://progcz.com/categories/index.html</loc>
     
     <lastmod>2022-01-26</lastmod>
     
