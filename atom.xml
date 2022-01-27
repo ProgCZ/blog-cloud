@@ -6,7 +6,7 @@
   <link href="https://progcz.com/atom.xml" rel="self"/>
   
   <link href="https://progcz.com/"/>
-  <updated>2021-12-07T09:13:13.000Z</updated>
+  <updated>2022-01-27T11:54:27.000Z</updated>
   <id>https://progcz.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从「腾讯应届生声讨加班事件」谈谈国内大厂的工作现状</title>
+    <link href="https://progcz.com/posts/1643205354/"/>
+    <id>https://progcz.com/posts/1643205354/</id>
+    <published>2022-01-27T06:44:09.000Z</published>
+    <updated>2022-01-27T11:54:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>昨天在 V2EX 看到<a href="https://v2ex.com/t/830681">腾讯应届生声讨加班事件的帖子</a>，心中不免有些共鸣，想想自己曾是大厂员工，也有过同样的感受，于是想借此热点，聊聊国内大厂，说说一枚螺丝钉的想法。</p><p><img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2022/01/26/01.jpg"></p><span id="more"></span><p>如果你还不了解事件的来龙去脉，可以去看看主人公 folezhang 自己整理的<a href="https://docs.google.com/document/d/1kxKl06QCgboPSkCULkWX-IvYHx93ZgBm/edit"><strong>《关于声讨加班事件的说明》</strong></a>，条理清晰，逻辑严密。<del>如果套用字节内部的梗来说就是，这位老哥非常善文。</del></p><blockquote><p>需要注意的是，文档放在 Google Docs，需要科学上网。（写到这里，我的第一想法还是，为啥不用更容易在国内传播的腾讯文档。随即才意识到，如果是腾讯文档，那大概就不会有传播的机会了吧。）</p></blockquote><p>简单来讲，企微部门在给员工颁奖时，在评语中赞扬了该员工的加班行为：</p><img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2022/01/26/02.png" width=70%><p>folezhang 当场怒怼：</p><img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2022/01/26/03.png" width=70%><p>说起来，我挺能理解 folezhang 的愤怒。</p><p><strong>这怒气里，有一小部分针对获奖同事及各位同僚，怒其为了工作而不顾身体。</strong></p><p>回想自己，<strong>如果只用一个字来形容在字节的工作体验，那一定是「累」。</strong></p><p>这种累不仅是生理上的，更是心理上的，大量琐碎且排期紧张的工作，常常压得我喘不过气，甚至工作中的事情还屡次出现在梦里，等我醒来的时候发现自己浑身都是冷汗。</p><p>要说成长，那肯定是有的，正所谓「字节一年，人间三年」，四舍五入我也是有五年工作经验的人了（狗头）。</p><p><strong>毕竟玩游戏都可以靠「肝」来涨经验，谁说工作不可以呢？</strong></p><p><strong>这怒气里，还有大部分针对企微部门及国内大厂，怒其鼓励加班仍不知整改。</strong></p><p>国内大厂能有如今的成就，从时代的角度来说，是吃尽了移动互联网的红利。</p><p>那如何才能从同一个锅里，盛尽量多的饭到自己碗里？</p><p>对于这个问题，大厂之间展现出了惊人的默契，那就是：<strong>让员工多干活少休息，</strong>三天上线新需求，一个月上线新产品，未来半年突破百万日活。</p><p><strong>最让人痛心的是，这样的做法真的有效果。</strong></p><p>臭名昭著的血汗工厂拼多多，一度跻身国内第四大互联网公司，业内公认的养老公司豆瓣，如今靠评分和八卦勉强度日。</p><p>尽管过去一年监管不断重锤出击，国内大厂看起来也确实像在反思了，但是很多改进都还停留在纸面。</p><p>比如去年十一月的某天早上，HR 部门的某篇文档传遍了字节甚至整个互联网，文档中规定员工的工作时间为早上十点至晚上七点，超出时间可以申请加班，有加班费。</p><p>但是不同以往，如此重要的事情，既没有全员邮件，也没有领导通知，宛如房间里的大象。直到两个月后我离职的那天，这项规定都没能真正推行下去。</p><p>从这件事情，我甚至能看到决策者的挣扎：一方面是政府和舆论，让公司不得不下场表态，而另一方面是流量和竞争，也让公司不敢将其付诸行动。</p><p>很多年前，我就看到过这样一句话，至今深以为然：</p><blockquote><p><strong>入职以后，公司给每位员工发了一台电脑，表面上看是每个人拥有了一台电脑，其实是给每台电脑配了一个人。</strong></p></blockquote><p>我也看到过这样一张图，不免苦笑：</p><p><img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2022/01/26/04.jpg"></p><p>写到最后，不知怎么突然想起了马丁·路德·金的 <em>I Have a Dream</em>，这场为了推动黑人争取民权而进行的演讲，彼时彼刻，恰如此时此刻。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;昨天在 V2EX 看到&lt;a href=&quot;https://v2ex.com/t/830681&quot;&gt;腾讯应届生声讨加班事件的帖子&lt;/a&gt;，心中不免有些共鸣，想想自己曾是大厂员工，也有过同样的感受，于是想借此热点，聊聊国内大厂，说说一枚螺丝钉的想法。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&quot;https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2022/01/26/01.jpg&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="A1 - 生活" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/"/>
+    
+    <category term="B3 - 看法" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/B3-%E7%9C%8B%E6%B3%95/"/>
+    
+    
+    <category term="腾讯" scheme="https://progcz.com/tags/%E8%85%BE%E8%AE%AF/"/>
+    
+    <category term="字节跳动" scheme="https://progcz.com/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/"/>
+    
+    <category term="加班" scheme="https://progcz.com/tags/%E5%8A%A0%E7%8F%AD/"/>
+    
+  </entry>
   
   <entry>
     <title>微软（苏州）面试经历：从入门到入职</title>
@@ -635,35 +663,6 @@
     <category term="LeetCode" scheme="https://progcz.com/tags/LeetCode/"/>
     
     <category term="String" scheme="https://progcz.com/tags/String/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git Cookbook</title>
-    <link href="https://progcz.com/posts/git-cookbook/"/>
-    <id>https://progcz.com/posts/git-cookbook/</id>
-    <published>2019-11-02T02:24:00.000Z</published>
-    <updated>2020-06-26T08:01:07.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文介绍一些使用 <code>Git</code> 的过程中经常遇到的问题及解决方法。</p><span id="more"></span><h2 id="1-如何在新设备上配置-Git"><a href="#1-如何在新设备上配置-Git" class="headerlink" title="1 如何在新设备上配置 Git"></a>1 如何在新设备上配置 Git</h2><h3 id="1-1-本地配置"><a href="#1-1-本地配置" class="headerlink" title="1.1 本地配置"></a>1.1 本地配置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">&quot;NAME&quot;</span></span><br><span class="line">$ git config --global user.email <span class="string">&quot;NAME@EXAMPLE.COM&quot;</span></span><br></pre></td></tr></table></figure><h3 id="1-2-GitHub-远程配置"><a href="#1-2-GitHub-远程配置" class="headerlink" title="1.2 GitHub 远程配置"></a>1.2 GitHub 远程配置</h3><p>生成公钥和私钥：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">&quot;NAME@EXAMPLE.COM&quot;</span></span><br></pre></td></tr></table></figure><p>查看公钥的内容：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cat .ssh/id_rsa.pub</span><br></pre></td></tr></table></figure><p>将公钥的内容复制到 GitHub 的<a href="https://github.com/settings/keys">设置</a>中即可。</p><h3 id="1-3-下拉-Repo"><a href="#1-3-下拉-Repo" class="headerlink" title="1.3 下拉 Repo"></a>1.3 下拉 Repo</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git init</span><br><span class="line">$ git remote add origin git@github.com:ProgCZ/xxx.git</span><br><span class="line">$ git pull origin master</span><br></pre></td></tr></table></figure><h3 id="1-4-上推-Repo"><a href="#1-4-上推-Repo" class="headerlink" title="1.4 上推 Repo"></a>1.4 上推 Repo</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add -A</span><br><span class="line">$ git commit -m <span class="string">&quot;xxx&quot;</span></span><br><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure><h2 id="2-如何查看和丢弃某一文件未-commit-的修改"><a href="#2-如何查看和丢弃某一文件未-commit-的修改" class="headerlink" title="2 如何查看和丢弃某一文件未 commit 的修改"></a>2 如何查看和丢弃某一文件未 <code>commit</code> 的修改</h2><p>查看 <code>README.md</code> 文件未 <code>commit</code> 的修改：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git diff README.md</span><br></pre></td></tr></table></figure><p>丢弃暂存区的修改：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git restore --staged README.md</span><br></pre></td></tr></table></figure><p>丢弃工作区的修改：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git restore README.md</span><br></pre></td></tr></table></figure><h2 id="3-如何查看、合并和删除分支"><a href="#3-如何查看、合并和删除分支" class="headerlink" title="3 如何查看、合并和删除分支"></a>3 如何查看、合并和删除分支</h2><p>查看本地的所有分支：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch</span><br></pre></td></tr></table></figure><p>查看本地和远程的所有分支：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch -a</span><br></pre></td></tr></table></figure><p>创建分支：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch dev</span><br></pre></td></tr></table></figure><p>切换分支：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Pre code</span></span><br><span class="line">$ git checkout dev</span><br><span class="line"><span class="comment"># New code</span></span><br><span class="line">$ git switch dev</span><br></pre></td></tr></table></figure><p>创建并切换分支：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Pre code</span></span><br><span class="line">$ git checkout -b dev</span><br><span class="line"><span class="comment"># New code</span></span><br><span class="line">$ git switch -c dev</span><br></pre></td></tr></table></figure><p>使用 Fast forward 模式合并某分支到当前分支：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git merge dev</span><br></pre></td></tr></table></figure><p>效果如图：</p><img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2020/03/00.png" style="zoom:80%"/><p>禁用 Fast forward 模式合并某分支到当前分支，提交一次新的 <code>commit</code>：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git merge --no-ff -m <span class="string">&quot;merge with no-ff&quot;</span> dev</span><br></pre></td></tr></table></figure><p>效果如图：</p><img data-src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2020/03/01.png" style="zoom:80%"/><p>查看分支的合并情况：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> --graph --pretty=oneline --abbrev-commit</span><br></pre></td></tr></table></figure><p>删除已合并的分支：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch -d dev</span><br></pre></td></tr></table></figure><p>删除未合并的分支：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch -D dev</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;本文介绍一些使用 &lt;code&gt;Git&lt;/code&gt; 的过程中经常遇到的问题及解决方法。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="A3 - 技术" scheme="https://progcz.com/categories/A3-%E6%8A%80%E6%9C%AF/"/>
-    
-    <category term="B3 - 开发基础" scheme="https://progcz.com/categories/A3-%E6%8A%80%E6%9C%AF/B3-%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/"/>
-    
-    
-    <category term="Linux" scheme="https://progcz.com/tags/Linux/"/>
-    
-    <category term="Cookbook" scheme="https://progcz.com/tags/Cookbook/"/>
-    
-    <category term="Git" scheme="https://progcz.com/tags/Git/"/>
-    
-    <category term="GitHub" scheme="https://progcz.com/tags/GitHub/"/>
     
   </entry>
   
