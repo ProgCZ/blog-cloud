@@ -86,7 +86,6 @@ menu:
   archives: /archives/ || fa fa-archive
   categories: /categories/ || fa fa-folder
   tags: /tags/ || fa fa-tag
-  pieces: /pieces/ || fa fa-comment
   about: /about/ || fa fa-user
   #schedule: /schedule/ || fa fa-calendar
   #sitemap: /sitemap.xml || fa fa-sitemap
@@ -143,10 +142,10 @@ site_state: true
 # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
 social:
   E-Mail: mailto:progcz@yeah.net || fa fa-envelope
+  Twitter: https://twitter.com/ProgCZ || fab fa-twitter
   GitHub: https://github.com/ProgCZ || fab fa-github
   #Weibo: https://weibo.com/yourname || fab fa-weibo
   #Google: https://plus.google.com/yourname || fab fa-google
-  #Twitter: https://twitter.com/yourname || fab fa-twitter
   #FB Page: https://www.facebook.com/yourname || fab fa-facebook
   #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow
   #YouTube: https://youtube.com/yourname || fab fa-youtube
@@ -154,8 +153,8 @@ social:
   #Skype: skype:yourname?call|chat || fab fa-skype
 
 social_icons:
-  enable: false
-  icons_only: false
+  enable: true
+  icons_only: true
   transition: false
 
 # Blog rolls

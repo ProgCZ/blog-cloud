@@ -17,4 +17,6 @@ toc:
 
 - E-Mail: [progcz@yeah.net](mailto:progcz@yeah.net)
 
+- Twitter: <https://twitter.com/ProgCZ>
+
 - GitHub: <https://github.com/ProgCZ>
