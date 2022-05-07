@@ -31,9 +31,9 @@
     
     
     
-    <category term="A1 - 生活" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/"/>
+    <category term="生活" scheme="https://progcz.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
-    <category term="B3 - 看法" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/B3-%E7%9C%8B%E6%B3%95/"/>
+    <category term="看法" scheme="https://progcz.com/categories/%E7%94%9F%E6%B4%BB/%E7%9C%8B%E6%B3%95/"/>
     
     
     <category term="腾讯" scheme="https://progcz.com/tags/%E8%85%BE%E8%AE%AF/"/>
@@ -60,9 +60,9 @@
     
     
     
-    <category term="A1 - 生活" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/"/>
+    <category term="生活" scheme="https://progcz.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
-    <category term="B1 - 经历" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/B1-%E7%BB%8F%E5%8E%86/"/>
+    <category term="经历" scheme="https://progcz.com/categories/%E7%94%9F%E6%B4%BB/%E7%BB%8F%E5%8E%86/"/>
     
     
     <category term="面试" scheme="https://progcz.com/tags/%E9%9D%A2%E8%AF%95/"/>
@@ -91,9 +91,9 @@
     
     
     
-    <category term="A3 - 技术" scheme="https://progcz.com/categories/A3-%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://progcz.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
-    <category term="B1 - 数据结构与算法" scheme="https://progcz.com/categories/A3-%E6%8A%80%E6%9C%AF/B1-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    <category term="数据结构与算法" scheme="https://progcz.com/categories/%E6%8A%80%E6%9C%AF/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
     
     
     <category term="CPP" scheme="https://progcz.com/tags/CPP/"/>
@@ -120,9 +120,9 @@
     
     
     
-    <category term="A3 - 技术" scheme="https://progcz.com/categories/A3-%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://progcz.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
-    <category term="B1 - 数据结构与算法" scheme="https://progcz.com/categories/A3-%E6%8A%80%E6%9C%AF/B1-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    <category term="数据结构与算法" scheme="https://progcz.com/categories/%E6%8A%80%E6%9C%AF/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
     
     
     <category term="CPP" scheme="https://progcz.com/tags/CPP/"/>
@@ -149,11 +149,11 @@
     
     
     
-    <category term="A3 - 技术" scheme="https://progcz.com/categories/A3-%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://progcz.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
-    <category term="B2 - 编程语言" scheme="https://progcz.com/categories/A3-%E6%8A%80%E6%9C%AF/B2-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    <category term="编程语言" scheme="https://progcz.com/categories/%E6%8A%80%E6%9C%AF/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
     
-    <category term="C1 - CPP" scheme="https://progcz.com/categories/A3-%E6%8A%80%E6%9C%AF/B2-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C1-CPP/"/>
+    <category term="CPP" scheme="https://progcz.com/categories/%E6%8A%80%E6%9C%AF/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/"/>
     
     
     <category term="CPP" scheme="https://progcz.com/tags/CPP/"/>
@@ -240,9 +240,9 @@
     
     
     
-    <category term="A3 - 技术" scheme="https://progcz.com/categories/A3-%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://progcz.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
-    <category term="B1 - 数据结构与算法" scheme="https://progcz.com/categories/A3-%E6%8A%80%E6%9C%AF/B1-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    <category term="数据结构与算法" scheme="https://progcz.com/categories/%E6%8A%80%E6%9C%AF/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
     
     
     <category term="CPP" scheme="https://progcz.com/tags/CPP/"/>
@@ -270,9 +270,9 @@
     
     
     
-    <category term="A1 - 生活" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/"/>
+    <category term="生活" scheme="https://progcz.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
-    <category term="B1 - 经历" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/B1-%E7%BB%8F%E5%8E%86/"/>
+    <category term="经历" scheme="https://progcz.com/categories/%E7%94%9F%E6%B4%BB/%E7%BB%8F%E5%8E%86/"/>
     
     
     <category term="上海" scheme="https://progcz.com/tags/%E4%B8%8A%E6%B5%B7/"/>
@@ -304,9 +304,9 @@
     
     
     
-    <category term="A2 - 投资" scheme="https://progcz.com/categories/A2-%E6%8A%95%E8%B5%84/"/>
+    <category term="投资" scheme="https://progcz.com/categories/%E6%8A%95%E8%B5%84/"/>
     
-    <category term="B1 - 银行理财" scheme="https://progcz.com/categories/A2-%E6%8A%95%E8%B5%84/B1-%E9%93%B6%E8%A1%8C%E7%90%86%E8%B4%A2/"/>
+    <category term="银行理财" scheme="https://progcz.com/categories/%E6%8A%95%E8%B5%84/%E9%93%B6%E8%A1%8C%E7%90%86%E8%B4%A2/"/>
     
     
     <category term="招商银行" scheme="https://progcz.com/tags/%E6%8B%9B%E5%95%86%E9%93%B6%E8%A1%8C/"/>
@@ -341,9 +341,9 @@
     
     
     
-    <category term="A1 - 生活" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/"/>
+    <category term="生活" scheme="https://progcz.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
-    <category term="B2 - 折腾" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/B2-%E6%8A%98%E8%85%BE/"/>
+    <category term="折腾" scheme="https://progcz.com/categories/%E7%94%9F%E6%B4%BB/%E6%8A%98%E8%85%BE/"/>
     
     
     <category term="博客" scheme="https://progcz.com/tags/%E5%8D%9A%E5%AE%A2/"/>
@@ -365,9 +365,9 @@
     
     
     
-    <category term="A1 - 生活" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/"/>
+    <category term="生活" scheme="https://progcz.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
-    <category term="B2 - 折腾" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/B2-%E6%8A%98%E8%85%BE/"/>
+    <category term="折腾" scheme="https://progcz.com/categories/%E7%94%9F%E6%B4%BB/%E6%8A%98%E8%85%BE/"/>
     
     
     <category term="博客" scheme="https://progcz.com/tags/%E5%8D%9A%E5%AE%A2/"/>
@@ -395,7 +395,7 @@
     
     
     
-    <category term="A0 - 总结与计划" scheme="https://progcz.com/categories/A0-%E6%80%BB%E7%BB%93%E4%B8%8E%E8%AE%A1%E5%88%92/"/>
+    <category term="总结与计划" scheme="https://progcz.com/categories/%E6%80%BB%E7%BB%93%E4%B8%8E%E8%AE%A1%E5%88%92/"/>
     
     
     <category term="计划" scheme="https://progcz.com/tags/%E8%AE%A1%E5%88%92/"/>
@@ -422,9 +422,9 @@
     
     
     
-    <category term="A1 - 生活" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/"/>
+    <category term="生活" scheme="https://progcz.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
-    <category term="B2 - 折腾" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/B2-%E6%8A%98%E8%85%BE/"/>
+    <category term="折腾" scheme="https://progcz.com/categories/%E7%94%9F%E6%B4%BB/%E6%8A%98%E8%85%BE/"/>
     
     
     <category term="桌面" scheme="https://progcz.com/tags/%E6%A1%8C%E9%9D%A2/"/>
@@ -451,9 +451,9 @@
     
     
     
-    <category term="A1 - 生活" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/"/>
+    <category term="生活" scheme="https://progcz.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
-    <category term="B1 - 经历" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/B1-%E7%BB%8F%E5%8E%86/"/>
+    <category term="经历" scheme="https://progcz.com/categories/%E7%94%9F%E6%B4%BB/%E7%BB%8F%E5%8E%86/"/>
     
     
     <category term="上海" scheme="https://progcz.com/tags/%E4%B8%8A%E6%B5%B7/"/>
@@ -478,9 +478,9 @@
     
     
     
-    <category term="A1 - 生活" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/"/>
+    <category term="生活" scheme="https://progcz.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
-    <category term="B2 - 折腾" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/B2-%E6%8A%98%E8%85%BE/"/>
+    <category term="折腾" scheme="https://progcz.com/categories/%E7%94%9F%E6%B4%BB/%E6%8A%98%E8%85%BE/"/>
     
     
     <category term="IFTTT" scheme="https://progcz.com/tags/IFTTT/"/>
@@ -506,9 +506,9 @@
     
     
     
-    <category term="A1 - 生活" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/"/>
+    <category term="生活" scheme="https://progcz.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
-    <category term="B2 - 折腾" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/B2-%E6%8A%98%E8%85%BE/"/>
+    <category term="折腾" scheme="https://progcz.com/categories/%E7%94%9F%E6%B4%BB/%E6%8A%98%E8%85%BE/"/>
     
     
     <category term="GitHub" scheme="https://progcz.com/tags/GitHub/"/>
@@ -537,9 +537,9 @@
     
     
     
-    <category term="A1 - 生活" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/"/>
+    <category term="生活" scheme="https://progcz.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
-    <category term="B1 - 经历" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/B1-%E7%BB%8F%E5%8E%86/"/>
+    <category term="经历" scheme="https://progcz.com/categories/%E7%94%9F%E6%B4%BB/%E7%BB%8F%E5%8E%86/"/>
     
     
     <category term="微信公众号" scheme="https://progcz.com/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/"/>
@@ -562,9 +562,9 @@
     
     
     
-    <category term="A3 - 技术" scheme="https://progcz.com/categories/A3-%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://progcz.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
-    <category term="B3 - 开发基础" scheme="https://progcz.com/categories/A3-%E6%8A%80%E6%9C%AF/B3-%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/"/>
+    <category term="开发基础" scheme="https://progcz.com/categories/%E6%8A%80%E6%9C%AF/%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/"/>
     
     
     <category term="CPP" scheme="https://progcz.com/tags/CPP/"/>
@@ -587,9 +587,9 @@
     
     
     
-    <category term="A1 - 生活" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/"/>
+    <category term="生活" scheme="https://progcz.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
-    <category term="B2 - 折腾" scheme="https://progcz.com/categories/A1-%E7%94%9F%E6%B4%BB/B2-%E6%8A%98%E8%85%BE/"/>
+    <category term="折腾" scheme="https://progcz.com/categories/%E7%94%9F%E6%B4%BB/%E6%8A%98%E8%85%BE/"/>
     
     
     <category term="博客" scheme="https://progcz.com/tags/%E5%8D%9A%E5%AE%A2/"/>
@@ -618,11 +618,11 @@
     
     
     
-    <category term="A3 - 技术" scheme="https://progcz.com/categories/A3-%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://progcz.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
-    <category term="B2 - 编程语言" scheme="https://progcz.com/categories/A3-%E6%8A%80%E6%9C%AF/B2-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    <category term="编程语言" scheme="https://progcz.com/categories/%E6%8A%80%E6%9C%AF/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
     
-    <category term="C1 - CPP" scheme="https://progcz.com/categories/A3-%E6%8A%80%E6%9C%AF/B2-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C1-CPP/"/>
+    <category term="CPP" scheme="https://progcz.com/categories/%E6%8A%80%E6%9C%AF/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/"/>
     
     
     <category term="CPP" scheme="https://progcz.com/tags/CPP/"/>
@@ -651,9 +651,9 @@
     
     
     
-    <category term="A3 - 技术" scheme="https://progcz.com/categories/A3-%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://progcz.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
-    <category term="B1 - 数据结构与算法" scheme="https://progcz.com/categories/A3-%E6%8A%80%E6%9C%AF/B1-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    <category term="数据结构与算法" scheme="https://progcz.com/categories/%E6%8A%80%E6%9C%AF/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
     
     
     <category term="CPP" scheme="https://progcz.com/tags/CPP/"/>
