@@ -3,8 +3,8 @@ title:   Linux 系统中 socket 编程的入门必知
 date:    2020-04-27 15:01:49
 updated: 2020-04-27 15:01:49
 categories:
-    - A3 - 技术
-    - B3 - 开发基础
+    - 技术
+    - 开发基础
 tags:
     - Linux
     - CPP
