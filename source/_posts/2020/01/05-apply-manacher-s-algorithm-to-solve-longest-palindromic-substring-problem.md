@@ -61,11 +61,11 @@ radius: 1 2 1 2 5 2 1 6 1 2 3 2 1
 
 目的在于，**`radius` 中某个位置的值减一之后刚好等于原字符串 `s` 中回文子串的长度，**举个例子：下图中的 `radius[4] == 5`，也就是说以 `ns[4] == '#'` 为中心的最长回文子串 `#a#b#b#a#` 的半径为`5`，`5 - 1 == 4`，对应原字符串中的最长回文子串为 `abba`，其长度刚好是 `4`，符合规律且数学上也很容易证明。
 
-<img src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2020/01/00.png" style="zoom:80%"/>
+<img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/01/00.png" style="zoom:80%"/>
 
 只知道长度无法确定子串，还需要知道子串的起始位置。为了便于计算，我们**在新字符串 `ns` 开头加入字符 `$`，此时 `radius` 中某个位置的下标减去其值，再除以 `2` 刚好等于原字符串 `s` 中回文子串的起始位置，**举个例子：下图中的 `radius[8] == 6`，也就是说以 `ns[8] == 'a'` 为中心的最长回文子串 `#b#b#a#b#b#` 的半径为 `6`，`(8 - 6) / 2 == 1`，对应原字符串中的最长回文子串为 `bbabb`，其起始位置刚好是 `1`，符合规律且数学上也很容易证明。
 
-<img src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2020/01/01.png" style="zoom:80%"/>
+<img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/01/01.png" style="zoom:80%"/>
 
 ### 2.3 核心：如何维护数组 `radius`
 
@@ -86,11 +86,11 @@ for (int i = 1; i < ns.size(); ++i)
 
 - **如果 `idx + rad > i`，说明 `i` 没有超出 `idx` 和 `rad` 代表的最长回文子串的范围，那么根据回文性质可以知道，在这个子串中，下标 `i` 的对称位置为下标 `idx-(i-idx)`（即 `2*idx-i`），而 `radius` 中下标 `2*idx-i` 的位置必然已经维护过了，也就是说以 `2*idx-1` 为中心的最长回文子串的半径已经知道了，那么以 `i` 为中心的最长回文子串的半径可以从 `radius[2*idx-1]` 开始遍历。**
 
-  <img src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2020/01/02.png" style="zoom:80%"/>
+  <img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/01/02.png" style="zoom:80%"/>
 
   但是，**对称位置 `2*idx-1` 的最长回文子串的半径可能超出了 `idx` 和 `rad` 代表的最长回文子串的范围，其超出部分不可能出现在 `i` 的右侧，但未超出部分还是可以保证满足回文要求的，那么以 `i` 为中心的最长回文子串的半径必须从 `idx+rad-i` 开始遍历。**
 
-  <img src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2020/01/03.png" style="zoom:80%"/>
+  <img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/01/03.png" style="zoom:80%"/>
 
   所以，**以 `i` 为中心的最长回文子串的半径从 `min(radius[2*idx-i], idx+rad-i)` 开始遍历。**
 

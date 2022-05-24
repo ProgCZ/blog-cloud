@@ -15,7 +15,7 @@ tags:
 
 所以，为了实现**「即时通知」**的功能，**可以使用 IFTTT 将 RSS 订阅内容推送至 Telegram 的对话、群组或公开频道，形成属于自己的「信息流」。**
 
-<img src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2020/05/10.png" style="zoom:100%"/>
+<img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/05/10.png" style="zoom:100%"/>
 
 <!-- more -->
 

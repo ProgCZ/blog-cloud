@@ -15,7 +15,7 @@ tags:
 
 也罢，就让我这个记忆力和行动力都逐渐退化的人，来一场「全年总结」和「新年计划」吧！
 
-<img src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/01/01.jpg" style="zoom:100%"/>
+<img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/01/01.jpg" style="zoom:100%"/>
 
 <!-- more -->
 
@@ -23,7 +23,7 @@ tags:
 
 ### 1.1 失去的五个月
 
-<img src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/01/02.jpg" style="zoom:100%"/>
+<img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/01/02.jpg" style="zoom:100%"/>
 
 但凡回顾 2020，疫情是怎么都绕不开的话题。
 
@@ -45,7 +45,7 @@ Whatever, it's just the way how i was raised and educated.
 
 ### 1.2 十九年寒窗
 
-<img src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/01/03.jpg" style="zoom:100%"/>
+<img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/01/03.jpg" style="zoom:100%"/>
 
 毕业算是改变人生的事情当中，意外指数最低的事情了吧。
 
@@ -107,7 +107,7 @@ Whatever, it's just the way how i was raised and educated.
 
 希望每年能有一次旅游，实际上 2021 的额度已经分给厦门了，毕竟厦大百年校庆，是时候回去看看了。
 
-<img src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/01/04.jpg" style="zoom:100%"/>
+<img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/01/04.jpg" style="zoom:100%"/>
 
 ---
 
@@ -115,4 +115,4 @@ Whatever, it's just the way how i was raised and educated.
 
 新年第一天，去撸了猫猫狗狗，希望能把这份开心延续一整年吧。
 
-<img src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2021/01/05.jpg" style="zoom:100%"/>
+<img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/01/05.jpg" style="zoom:100%"/>

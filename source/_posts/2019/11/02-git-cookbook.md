@@ -123,7 +123,7 @@ $ git merge dev
 
 效果如图：
 
-<img src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2020/03/00.png" style="zoom:80%"/>
+<img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/03/00.png" style="zoom:80%"/>
 
 禁用 Fast forward 模式合并某分支到当前分支，提交一次新的 `commit`：
 
@@ -133,7 +133,7 @@ $ git merge --no-ff -m "merge with no-ff" dev
 
 效果如图：
 
-<img src="https://cdn.jsdelivr.net/gh/ProgCZ/image-cloud-a@master/2020/03/01.png" style="zoom:80%"/>
+<img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/03/01.png" style="zoom:80%"/>
 
 查看分支的合并情况：
 
