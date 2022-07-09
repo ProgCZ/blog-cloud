@@ -1,5 +1,7 @@
 name: Auto Hexo
+
 on: push
+
 jobs:
   Work:
     runs-on: ubuntu-20.04
