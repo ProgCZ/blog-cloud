@@ -58,7 +58,7 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-          az storage blob upload-batch --account-name progczcomstorage --auth-mode key -d '$web' -s blog-source-ws/public --pattern "^[^\.].*" --overwrite true
+          az storage blob upload-batch --account-name progczcomstorage --auth-mode key -d '$web' -s blog-source-ws/public --pattern "[!.]*" --overwrite true
 
     - name: Logout Azure
       run: |
