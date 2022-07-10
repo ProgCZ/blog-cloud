@@ -69,84 +69,6 @@
       </tags>
   </entry>
   <entry>
-    <title>使用马拉车算法解决最长回文子串问题</title>
-    <url>/posts/apply-manacher-s-algorithm-to-solve-longest-palindromic-substring-problem/</url>
-    <content><![CDATA[<p>使用马拉车算法（即 Manacher’s Algorithm）可以将解决最长回文子串（即 Longest Palindromic Substring）问题的时间复杂度降至 <code>O(n)</code>。</p>
-<span id="more"></span>
-
-<p>参考：<a href="https://www.cnblogs.com/grandyang/p/4475985.html">Manacher’s Algorithm 马拉车算法 - 刷尽天下</a></p>
-<h2 id="1-最长回文子串问题"><a href="#1-最长回文子串问题" class="headerlink" title="1 最长回文子串问题"></a>1 最长回文子串问题</h2><p>Given a string <strong>s</strong>, find the longest palindromic substring in <strong>s</strong>. You may assume that the maximum length of <strong>s</strong> is 1000.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: &quot;babad&quot;</span><br><span class="line">Output: &quot;bab&quot;</span><br><span class="line">Note: &quot;aba&quot; is also a valid answer.</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: &quot;cbbd&quot;</span><br><span class="line">Output: &quot;bb&quot;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-马拉车算法"><a href="#2-马拉车算法" class="headerlink" title="2 马拉车算法"></a>2 马拉车算法</h2><h3 id="2-1-添加字符-用以解决回文子串中的奇偶性问题"><a href="#2-1-添加字符-用以解决回文子串中的奇偶性问题" class="headerlink" title="2.1 添加字符 # 用以解决回文子串中的奇偶性问题"></a>2.1 添加字符 <code>#</code> 用以解决回文子串中的奇偶性问题</h3><p><strong>添加字符 <code>#</code>，使得字符串 <code>s</code> 中每个字符的左右两侧都有一个 <code>#</code>，</strong>比如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bob  -&gt; #b#o#b#</span><br><span class="line">noon -&gt; #n#o#o#n#</span><br></pre></td></tr></table></figure>
-
-<p>目的在于，<strong>不管原回文子串的长度是奇是偶，处理后的新回文子串的长度永远为奇数，</strong>便于处理。</p>
-<h3 id="2-2-定义数组-radius-用以表示各元素的最长回文子串半径"><a href="#2-2-定义数组-radius-用以表示各元素的最长回文子串半径" class="headerlink" title="2.2 定义数组 radius 用以表示各元素的最长回文子串半径"></a>2.2 定义数组 <code>radius</code> 用以表示各元素的最长回文子串半径</h3><p>定义数组 <code>radius</code>，其长度与处理后的新字符串 <code>ns</code> 的长度保持一致，**<code>radius</code> 中每个位置的值表示以 <code>ns</code> 对应位置的字符为中心的最长回文子串的半径，**维护结束的 <code>radius</code> 大概是这个样子：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ns:     # a # b # b # a # b # b #</span><br><span class="line">radius: 1 2 1 2 5 2 1 6 1 2 3 2 1</span><br></pre></td></tr></table></figure>
-
-<p>目的在于，**<code>radius</code> 中某个位置的值减一之后刚好等于原字符串 <code>s</code> 中回文子串的长度，**举个例子：下图中的 <code>radius[4] == 5</code>，也就是说以 <code>ns[4] == &#39;#&#39;</code> 为中心的最长回文子串 <code>#a#b#b#a#</code> 的半径为<code>5</code>，<code>5 - 1 == 4</code>，对应原字符串中的最长回文子串为 <code>abba</code>，其长度刚好是 <code>4</code>，符合规律且数学上也很容易证明。</p>
-<img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/01/00.png" style="zoom:80%"/>
-
-<p>只知道长度无法确定子串，还需要知道子串的起始位置。为了便于计算，我们<strong>在新字符串 <code>ns</code> 开头加入字符 <code>$</code>，此时 <code>radius</code> 中某个位置的下标减去其值，再除以 <code>2</code> 刚好等于原字符串 <code>s</code> 中回文子串的起始位置，</strong>举个例子：下图中的 <code>radius[8] == 6</code>，也就是说以 <code>ns[8] == &#39;a&#39;</code> 为中心的最长回文子串 <code>#b#b#a#b#b#</code> 的半径为 <code>6</code>，<code>(8 - 6) / 2 == 1</code>，对应原字符串中的最长回文子串为 <code>bbabb</code>，其起始位置刚好是 <code>1</code>，符合规律且数学上也很容易证明。</p>
-<img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/01/01.png" style="zoom:80%"/>
-
-<h3 id="2-3-核心：如何维护数组-radius"><a href="#2-3-核心：如何维护数组-radius" class="headerlink" title="2.3 核心：如何维护数组 radius"></a>2.3 核心：如何维护数组 <code>radius</code></h3><p>定义四个变量，分别为：</p>
-<ul>
-<li><p><code>idx</code> 和 <code>rad</code>：<strong>在所有已遍历过的位置中，必然存在某个最长回文子串能够向右到达最远位置，那么这个子串的中心就是 <code>idx</code>，半径就是 <code>rad</code>。</strong></p>
-</li>
-<li><p><code>res_idx</code> 和 <code>res_rad</code>：<strong>在所有已遍历过的位置中，必然存在某个位置上的最长回文子串的长度最长，那么这个子串的中心就是 <code>res_idx</code>，半径就是 <code>res_rad</code>。</strong></p>
-</li>
-</ul>
-<p>结合下面这句代码来理解具体的维护过程：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; ns.<span class="built_in">size</span>(); ++i)</span><br><span class="line">    radius[i] = idx + rad &gt; i ? <span class="built_in">min</span>(radius[<span class="number">2</span>*idx-i], idx+rad-i) : <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-
-<p>对于在新字符串 <code>ns</code> 中遍历到的下标 <code>i</code>，我们想知道<strong>以 <code>i</code> 为中心的最长回文子串的半径，</strong>从半径为 <code>1</code> 开始遍历自然就不能体现这个算法的精妙了，为此我们考虑以下两种情况：</p>
-<ul>
-<li><p><strong>如果 <code>idx + rad &gt; i</code>，说明 <code>i</code> 没有超出 <code>idx</code> 和 <code>rad</code> 代表的最长回文子串的范围，那么根据回文性质可以知道，在这个子串中，下标 <code>i</code> 的对称位置为下标 <code>idx-(i-idx)</code>（即 <code>2*idx-i</code>），而 <code>radius</code> 中下标 <code>2*idx-i</code> 的位置必然已经维护过了，也就是说以 <code>2*idx-1</code> 为中心的最长回文子串的半径已经知道了，那么以 <code>i</code> 为中心的最长回文子串的半径可以从 <code>radius[2*idx-1]</code> 开始遍历。</strong></p>
-<img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/01/02.png" style="zoom:80%"/>
-
-<p>但是，<strong>对称位置 <code>2*idx-1</code> 的最长回文子串的半径可能超出了 <code>idx</code> 和 <code>rad</code> 代表的最长回文子串的范围，其超出部分不可能出现在 <code>i</code> 的右侧，但未超出部分还是可以保证满足回文要求的，那么以 <code>i</code> 为中心的最长回文子串的半径必须从 <code>idx+rad-i</code> 开始遍历。</strong></p>
-<img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/01/03.png" style="zoom:80%"/>
-
-<p>所以，<strong>以 <code>i</code> 为中心的最长回文子串的半径从 <code>min(radius[2*idx-i], idx+rad-i)</code> 开始遍历。</strong></p>
-</li>
-<li><p><strong>如果 <code>idx + rad &lt;= i</code>，说明 <code>i</code> 超出 <code>idx</code> 和 <code>rad</code> 代表的最长回文子串的范围，那么不存在对称位置可以参考，所以只能从半径为 <code>1</code> 开始遍历。</strong></p>
-</li>
-</ul>
-<p>然后，维护那四个变量：</p>
-<ul>
-<li><p><strong>如果以 <code>i</code> 为中心的最长回文子串能够向右到达更远位置，则更新 <code>idx</code> 和 <code>rad</code>。</strong></p>
-</li>
-<li><p><strong>如果以 <code>i</code> 为中心的最长回文子串的长度更长，则更新 <code>res_idx</code> 和 <code>res_rad</code>。</strong></p>
-</li>
-</ul>
-<p>最后，遍历结束，根据前文提到的两个规律从原字符串 <code>s</code> 中截取子串即可。</p>
-<h2 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3 代码实现"></a>3 代码实现</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">longestPalindrome</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        string ns = <span class="string">&quot;$#&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : s) &#123;</span><br><span class="line">            ns.<span class="built_in">push_back</span>(c);</span><br><span class="line">            ns.<span class="built_in">push_back</span>(<span class="string">&#x27;#&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">radius</span><span class="params">(ns.size())</span></span>;</span><br><span class="line">        <span class="keyword">int</span> idx = <span class="number">0</span>, rad = <span class="number">0</span>, res_idx = <span class="number">0</span>, res_rad = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; ns.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            radius[i] = idx + rad &gt; i ? <span class="built_in">min</span>(radius[<span class="number">2</span>*idx-i], idx+rad-i) : <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (ns[i-radius[i]] == ns[i+radius[i]]) ++radius[i];</span><br><span class="line">            <span class="keyword">if</span> (idx + rad &lt; i + radius[i]) &#123;</span><br><span class="line">                idx = i;</span><br><span class="line">                rad = radius[i];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (res_rad &lt; radius[i]) &#123;</span><br><span class="line">                res_idx = i;</span><br><span class="line">                res_rad = radius[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.<span class="built_in">substr</span>((res_idx-res_rad)/<span class="number">2</span>, res_rad<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-时间和内存对比"><a href="#4-时间和内存对比" class="headerlink" title="4 时间和内存对比"></a>4 时间和内存对比</h2><ul>
-<li><p>使用常规算法，时间和内存分别为 <code>16 ms</code> 和 <code>8.6 MB</code>。</p>
-</li>
-<li><p>使用马拉车算法，时间和内存分别为 <code>4 ms</code> 和 <code>9.7 MB</code>。</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>技术</category>
-        <category>数据结构与算法</category>
-      </categories>
-      <tags>
-        <tag>CPP</tag>
-        <tag>数据结构与算法</tag>
-        <tag>LeetCode</tag>
-        <tag>String</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git Cookbook</title>
     <url>/posts/git-cookbook/</url>
     <content><![CDATA[<p>本文介绍一些使用 <code>Git</code> 的过程中经常遇到的问题及解决方法。</p>
@@ -193,13 +115,13 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git merge dev</span><br></pre></td></tr></table></figure>
 
 <p>效果如图：</p>
-<img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/03/00.png" style="zoom:80%"/>
+<img data-src="https://image.progcz.com/2020/03/00.png" style="zoom:80%"/>
 
 <p>禁用 Fast forward 模式合并某分支到当前分支，提交一次新的 <code>commit</code>：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git merge --no-ff -m <span class="string">&quot;merge with no-ff&quot;</span> dev</span><br></pre></td></tr></table></figure>
 
 <p>效果如图：</p>
-<img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/03/01.png" style="zoom:80%"/>
+<img data-src="https://image.progcz.com/2020/03/01.png" style="zoom:80%"/>
 
 <p>查看分支的合并情况：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> --graph --pretty=oneline --abbrev-commit</span><br></pre></td></tr></table></figure>
@@ -219,6 +141,84 @@
         <tag>Cookbook</tag>
         <tag>Git</tag>
         <tag>GitHub</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用马拉车算法解决最长回文子串问题</title>
+    <url>/posts/apply-manacher-s-algorithm-to-solve-longest-palindromic-substring-problem/</url>
+    <content><![CDATA[<p>使用马拉车算法（即 Manacher’s Algorithm）可以将解决最长回文子串（即 Longest Palindromic Substring）问题的时间复杂度降至 <code>O(n)</code>。</p>
+<span id="more"></span>
+
+<p>参考：<a href="https://www.cnblogs.com/grandyang/p/4475985.html">Manacher’s Algorithm 马拉车算法 - 刷尽天下</a></p>
+<h2 id="1-最长回文子串问题"><a href="#1-最长回文子串问题" class="headerlink" title="1 最长回文子串问题"></a>1 最长回文子串问题</h2><p>Given a string <strong>s</strong>, find the longest palindromic substring in <strong>s</strong>. You may assume that the maximum length of <strong>s</strong> is 1000.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: &quot;babad&quot;</span><br><span class="line">Output: &quot;bab&quot;</span><br><span class="line">Note: &quot;aba&quot; is also a valid answer.</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: &quot;cbbd&quot;</span><br><span class="line">Output: &quot;bb&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-马拉车算法"><a href="#2-马拉车算法" class="headerlink" title="2 马拉车算法"></a>2 马拉车算法</h2><h3 id="2-1-添加字符-用以解决回文子串中的奇偶性问题"><a href="#2-1-添加字符-用以解决回文子串中的奇偶性问题" class="headerlink" title="2.1 添加字符 # 用以解决回文子串中的奇偶性问题"></a>2.1 添加字符 <code>#</code> 用以解决回文子串中的奇偶性问题</h3><p><strong>添加字符 <code>#</code>，使得字符串 <code>s</code> 中每个字符的左右两侧都有一个 <code>#</code>，</strong>比如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bob  -&gt; #b#o#b#</span><br><span class="line">noon -&gt; #n#o#o#n#</span><br></pre></td></tr></table></figure>
+
+<p>目的在于，<strong>不管原回文子串的长度是奇是偶，处理后的新回文子串的长度永远为奇数，</strong>便于处理。</p>
+<h3 id="2-2-定义数组-radius-用以表示各元素的最长回文子串半径"><a href="#2-2-定义数组-radius-用以表示各元素的最长回文子串半径" class="headerlink" title="2.2 定义数组 radius 用以表示各元素的最长回文子串半径"></a>2.2 定义数组 <code>radius</code> 用以表示各元素的最长回文子串半径</h3><p>定义数组 <code>radius</code>，其长度与处理后的新字符串 <code>ns</code> 的长度保持一致，**<code>radius</code> 中每个位置的值表示以 <code>ns</code> 对应位置的字符为中心的最长回文子串的半径，**维护结束的 <code>radius</code> 大概是这个样子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ns:     # a # b # b # a # b # b #</span><br><span class="line">radius: 1 2 1 2 5 2 1 6 1 2 3 2 1</span><br></pre></td></tr></table></figure>
+
+<p>目的在于，**<code>radius</code> 中某个位置的值减一之后刚好等于原字符串 <code>s</code> 中回文子串的长度，**举个例子：下图中的 <code>radius[4] == 5</code>，也就是说以 <code>ns[4] == &#39;#&#39;</code> 为中心的最长回文子串 <code>#a#b#b#a#</code> 的半径为<code>5</code>，<code>5 - 1 == 4</code>，对应原字符串中的最长回文子串为 <code>abba</code>，其长度刚好是 <code>4</code>，符合规律且数学上也很容易证明。</p>
+<img data-src="https://image.progcz.com/2020/01/00.png" style="zoom:80%"/>
+
+<p>只知道长度无法确定子串，还需要知道子串的起始位置。为了便于计算，我们<strong>在新字符串 <code>ns</code> 开头加入字符 <code>$</code>，此时 <code>radius</code> 中某个位置的下标减去其值，再除以 <code>2</code> 刚好等于原字符串 <code>s</code> 中回文子串的起始位置，</strong>举个例子：下图中的 <code>radius[8] == 6</code>，也就是说以 <code>ns[8] == &#39;a&#39;</code> 为中心的最长回文子串 <code>#b#b#a#b#b#</code> 的半径为 <code>6</code>，<code>(8 - 6) / 2 == 1</code>，对应原字符串中的最长回文子串为 <code>bbabb</code>，其起始位置刚好是 <code>1</code>，符合规律且数学上也很容易证明。</p>
+<img data-src="https://image.progcz.com/2020/01/01.png" style="zoom:80%"/>
+
+<h3 id="2-3-核心：如何维护数组-radius"><a href="#2-3-核心：如何维护数组-radius" class="headerlink" title="2.3 核心：如何维护数组 radius"></a>2.3 核心：如何维护数组 <code>radius</code></h3><p>定义四个变量，分别为：</p>
+<ul>
+<li><p><code>idx</code> 和 <code>rad</code>：<strong>在所有已遍历过的位置中，必然存在某个最长回文子串能够向右到达最远位置，那么这个子串的中心就是 <code>idx</code>，半径就是 <code>rad</code>。</strong></p>
+</li>
+<li><p><code>res_idx</code> 和 <code>res_rad</code>：<strong>在所有已遍历过的位置中，必然存在某个位置上的最长回文子串的长度最长，那么这个子串的中心就是 <code>res_idx</code>，半径就是 <code>res_rad</code>。</strong></p>
+</li>
+</ul>
+<p>结合下面这句代码来理解具体的维护过程：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; ns.<span class="built_in">size</span>(); ++i)</span><br><span class="line">    radius[i] = idx + rad &gt; i ? <span class="built_in">min</span>(radius[<span class="number">2</span>*idx-i], idx+rad-i) : <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>对于在新字符串 <code>ns</code> 中遍历到的下标 <code>i</code>，我们想知道<strong>以 <code>i</code> 为中心的最长回文子串的半径，</strong>从半径为 <code>1</code> 开始遍历自然就不能体现这个算法的精妙了，为此我们考虑以下两种情况：</p>
+<ul>
+<li><p><strong>如果 <code>idx + rad &gt; i</code>，说明 <code>i</code> 没有超出 <code>idx</code> 和 <code>rad</code> 代表的最长回文子串的范围，那么根据回文性质可以知道，在这个子串中，下标 <code>i</code> 的对称位置为下标 <code>idx-(i-idx)</code>（即 <code>2*idx-i</code>），而 <code>radius</code> 中下标 <code>2*idx-i</code> 的位置必然已经维护过了，也就是说以 <code>2*idx-1</code> 为中心的最长回文子串的半径已经知道了，那么以 <code>i</code> 为中心的最长回文子串的半径可以从 <code>radius[2*idx-1]</code> 开始遍历。</strong></p>
+<img data-src="https://image.progcz.com/2020/01/02.png" style="zoom:80%"/>
+
+<p>但是，<strong>对称位置 <code>2*idx-1</code> 的最长回文子串的半径可能超出了 <code>idx</code> 和 <code>rad</code> 代表的最长回文子串的范围，其超出部分不可能出现在 <code>i</code> 的右侧，但未超出部分还是可以保证满足回文要求的，那么以 <code>i</code> 为中心的最长回文子串的半径必须从 <code>idx+rad-i</code> 开始遍历。</strong></p>
+<img data-src="https://image.progcz.com/2020/01/03.png" style="zoom:80%"/>
+
+<p>所以，<strong>以 <code>i</code> 为中心的最长回文子串的半径从 <code>min(radius[2*idx-i], idx+rad-i)</code> 开始遍历。</strong></p>
+</li>
+<li><p><strong>如果 <code>idx + rad &lt;= i</code>，说明 <code>i</code> 超出 <code>idx</code> 和 <code>rad</code> 代表的最长回文子串的范围，那么不存在对称位置可以参考，所以只能从半径为 <code>1</code> 开始遍历。</strong></p>
+</li>
+</ul>
+<p>然后，维护那四个变量：</p>
+<ul>
+<li><p><strong>如果以 <code>i</code> 为中心的最长回文子串能够向右到达更远位置，则更新 <code>idx</code> 和 <code>rad</code>。</strong></p>
+</li>
+<li><p><strong>如果以 <code>i</code> 为中心的最长回文子串的长度更长，则更新 <code>res_idx</code> 和 <code>res_rad</code>。</strong></p>
+</li>
+</ul>
+<p>最后，遍历结束，根据前文提到的两个规律从原字符串 <code>s</code> 中截取子串即可。</p>
+<h2 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3 代码实现"></a>3 代码实现</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">longestPalindrome</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        string ns = <span class="string">&quot;$#&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : s) &#123;</span><br><span class="line">            ns.<span class="built_in">push_back</span>(c);</span><br><span class="line">            ns.<span class="built_in">push_back</span>(<span class="string">&#x27;#&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">radius</span><span class="params">(ns.size())</span></span>;</span><br><span class="line">        <span class="keyword">int</span> idx = <span class="number">0</span>, rad = <span class="number">0</span>, res_idx = <span class="number">0</span>, res_rad = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; ns.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            radius[i] = idx + rad &gt; i ? <span class="built_in">min</span>(radius[<span class="number">2</span>*idx-i], idx+rad-i) : <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (ns[i-radius[i]] == ns[i+radius[i]]) ++radius[i];</span><br><span class="line">            <span class="keyword">if</span> (idx + rad &lt; i + radius[i]) &#123;</span><br><span class="line">                idx = i;</span><br><span class="line">                rad = radius[i];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (res_rad &lt; radius[i]) &#123;</span><br><span class="line">                res_idx = i;</span><br><span class="line">                res_rad = radius[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.<span class="built_in">substr</span>((res_idx-res_rad)/<span class="number">2</span>, res_rad<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-时间和内存对比"><a href="#4-时间和内存对比" class="headerlink" title="4 时间和内存对比"></a>4 时间和内存对比</h2><ul>
+<li><p>使用常规算法，时间和内存分别为 <code>16 ms</code> 和 <code>8.6 MB</code>。</p>
+</li>
+<li><p>使用马拉车算法，时间和内存分别为 <code>4 ms</code> 和 <code>9.7 MB</code>。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>数据结构与算法</category>
+      </categories>
+      <tags>
+        <tag>CPP</tag>
+        <tag>数据结构与算法</tag>
+        <tag>LeetCode</tag>
+        <tag>String</tag>
       </tags>
   </entry>
   <entry>
@@ -560,7 +560,7 @@
     <url>/posts/record-for-sell-wechat-official-account/</url>
     <content><![CDATA[<p><strong>因为腾讯在两年前关闭了新注册微信公众号的「留言」功能，所以新注册微信公众号必须通过一些特殊方法才能拥有「留言」功能，「账号迁移」便是其中之一。</strong></p>
 <p>刚好，我有一个闲置已久的微信公众号，于是联系到经办人将自己的微信公众号「卖」了出去。<strong>两个工作日</strong>的时间就把整个流程走完了，大部分手续都是经办人的事情，需要我来配合的地方并不多。</p>
-<img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/05/03.png" style="zoom:100%"/>
+<img data-src="https://image.progcz.com/2020/05/03.png" style="zoom:100%"/>
 
 <span id="more"></span>
 
@@ -590,7 +590,7 @@
 </div>
 
 <p>以上就是我需要做的事情，总体来说不算麻烦，何乐而不为。</p>
-<h2 id="2-推广"><a href="#2-推广" class="headerlink" title="2 推广"></a>2 推广</h2><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/05/04.png" style="zoom:100%"/>
+<h2 id="2-推广"><a href="#2-推广" class="headerlink" title="2 推广"></a>2 推广</h2><img data-src="https://image.progcz.com/2020/05/04.png" style="zoom:100%"/>
 
 <p><strong>如果你也有一个在 2018 年 03 月 12 日之前注册而又闲置的微信公众号，可以通过「下方的评论区」或「<a href="/about/">关于</a>页面的其他联系方式」联系到我，</strong>我可以把这个比较靠谱的经办人推荐给你。</p>
 ]]></content>
@@ -629,13 +629,13 @@
 </li>
 </ul>
 <h2 id="1-注册并登录-Cloudflare-账号"><a href="#1-注册并登录-Cloudflare-账号" class="headerlink" title="1 注册并登录 Cloudflare 账号"></a>1 注册并登录 Cloudflare 账号</h2><p>这没啥好说的，前往 <a href="https://www.cloudflare.com/">Cloudflare 官网</a>自行注册并登录，然后<strong>点击「Workers」。</strong></p>
-<img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/05/06.png" style="zoom:100%"/>
+<img data-src="https://image.progcz.com/2020/05/06.png" style="zoom:100%"/>
 
 <h2 id="2-创建新的-Worker-应用"><a href="#2-创建新的-Worker-应用" class="headerlink" title="2 创建新的 Worker 应用"></a>2 创建新的 Worker 应用</h2><p>进入 Workers 页面之后，新用户需要设置用户名（比如 <code>progcz</code>），然后<strong>点击「创建 Worker」。</strong></p>
-<img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/05/07.png" style="zoom:100%"/>
+<img data-src="https://image.progcz.com/2020/05/07.png" style="zoom:100%"/>
 
 <h2 id="3-部署-Worker-应用"><a href="#3-部署-Worker-应用" class="headerlink" title="3 部署 Worker 应用"></a>3 部署 Worker 应用</h2><p><strong>自行修改应用名（比如 <code>test</code>），将 <a href="https://github.com/ProgCZ/code-cloud-a/blob/master/2020/05/cf-workers-mirrors/index.js">index.js</a> 中的代码拷贝至脚本中，点击「保存并部署」，</strong>然后就可以通过 <a href="https://test.progcz.workers.dev/">https://test.progcz.workers.dev/</a>（注意替换应用名 <code>test</code> 和用户名 <code>progcz</code>）访问 Google 的镜像网站了。</p>
-<img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/05/08.png" style="zoom:100%"/>
+<img data-src="https://image.progcz.com/2020/05/08.png" style="zoom:100%"/>
 
 <h2 id="4-自定义-index-js-脚本"><a href="#4-自定义-index-js-脚本" class="headerlink" title="4 自定义 index.js 脚本"></a>4 自定义 index.js 脚本</h2><div class="note info"><p>上文的 <a href="https://github.com/ProgCZ/code-cloud-a/blob/master/2020/05/cf-workers-mirrors/index.js">index.js</a> 其实来自于 <a href="https://github.com/Berkeley-Reject/Workers-Proxy">Berkeley-Reject/Workers-Proxy</a> 仓库，但是代码中设置了对于国内访问的屏蔽，所以为了避免误用，我就在自行修改之后保存了一份。</p>
 </div>
@@ -664,7 +664,7 @@
     <url>/posts/record-use-ifttt-tg-sub-rss-push-template/</url>
     <content><![CDATA[<p>对于大部分使用 RSS 的人来说，RSS 最大的优势便是能够提供<strong>「聚合阅读」</strong>的功能，也就是在一个地方阅读多篇不同来源的文章，而且可以自主选择订阅源，拒绝推荐引擎的「投喂」。然而对于我来说，RSS 还有一个重要的作用在于能够提供<strong>「即时通知」</strong>的功能，也就是<strong>「一旦发生了什么，请立刻通知我」</strong>。</p>
 <p>所以，为了实现<strong>「即时通知」</strong>的功能，<strong>可以使用 IFTTT 将 RSS 订阅内容推送至 Telegram 的对话、群组或公开频道，形成属于自己的「信息流」。</strong></p>
-<img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/05/10.png" style="zoom:100%"/>
+<img data-src="https://image.progcz.com/2020/05/10.png" style="zoom:100%"/>
 
 <span id="more"></span>
 
@@ -708,7 +708,7 @@
     <url>/posts/record-for-rent-in-shanghai/</url>
     <content><![CDATA[<p>入职之前，我预留了一周的时间用来租房，本以为做好了充足的准备，但还是碰到了很多「租房新手」必踩的坑。果然，<strong>小马还是要自己过一遍河才能知道河水的深浅。</strong></p>
 <p>所以，趁着自己的记忆还够新鲜，记录一下这次在上海租房的经历，为以后的自己留下亿点经验和教训。</p>
-<img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/06/00.png" style="zoom:100%"/>
+<img data-src="https://image.progcz.com/2020/06/00.png" style="zoom:100%"/>
 
 <span id="more"></span>
 
@@ -796,11 +796,11 @@
 <p>在这两个月里，我一直在适应工作节奏，所以没有时间更新博客（虽然也没什么人看）。</p>
 <p>在这两个月里，我的工作桌面也在不断进化，不断适应我的使用习惯，到现在也算是个初级形态了，所以打算在这里梳理一下（其实就是想晒装备）。</p>
 <p>先来张工作桌面的整体照片过过瘾：</p>
-<img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/08/00.png" style="zoom:100%"/>
+<img data-src="https://image.progcz.com/2020/08/00.png" style="zoom:100%"/>
 
 <span id="more"></span>
 
-<h2 id="1-「公司发的」MacBook-Pro-16"><a href="#1-「公司发的」MacBook-Pro-16" class="headerlink" title="1 「公司发的」MacBook Pro 16"></a>1 「公司发的」MacBook Pro 16</h2><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/08/01.png" style="zoom:100%"/>
+<h2 id="1-「公司发的」MacBook-Pro-16"><a href="#1-「公司发的」MacBook-Pro-16" class="headerlink" title="1 「公司发的」MacBook Pro 16"></a>1 「公司发的」MacBook Pro 16</h2><img data-src="https://image.progcz.com/2020/08/01.png" style="zoom:100%"/>
 
 <p>整个桌面都是围绕着 MacBook Pro 16 来布置的，具体配置：</p>
 <table>
@@ -834,18 +834,18 @@
 <p>我已经过了那个对配置敏感的年纪，拿到这个电脑之后也只会感叹「好漂亮」和「好流畅」了。</p>
 <p>在日常开发中，MacBook Pro 的性能确实绰绰有余，毕竟编译之类的苦差事都是在远程开发机上完成的，本地只是开开 Chrome 和 VS Code 而已。</p>
 <p>P.S. 散热架也是公司发的，感觉薅了太多羊毛。</p>
-<h2 id="2-「公司发的」Dell-U2720Q-4K-显示器"><a href="#2-「公司发的」Dell-U2720Q-4K-显示器" class="headerlink" title="2 「公司发的」Dell U2720Q 4K 显示器"></a>2 「公司发的」Dell U2720Q 4K 显示器</h2><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/08/02.png" style="zoom:100%"/>
+<h2 id="2-「公司发的」Dell-U2720Q-4K-显示器"><a href="#2-「公司发的」Dell-U2720Q-4K-显示器" class="headerlink" title="2 「公司发的」Dell U2720Q 4K 显示器"></a>2 「公司发的」Dell U2720Q 4K 显示器</h2><img data-src="https://image.progcz.com/2020/08/02.png" style="zoom:100%"/>
 
 <p>两台 4K 显示器的幸福，我以前无法想象，现在除了开会和回家以外，MacBook Pro 基本上都是合盖的状态，因为两个显示器已经够我看的了，多了怕鼠标都挪不过来。</p>
 <p>另外一个让人感到幸福的细节，就是可以使用单根 Type-C 数据线合并「显示」、「充电」和「扩展」的功能，显示器的下行接口可以外接键盘和鼠标，极大地节约了 MacBook Pro 的接口数量。</p>
 <p>但是我有两台显示器，为了达到显示的最佳效果，还是不可避免地占用了 MacBook Pro 的两个接口。</p>
-<h2 id="3-「自己买的」DURGOD-TAURUS-K320-茶轴机械键盘"><a href="#3-「自己买的」DURGOD-TAURUS-K320-茶轴机械键盘" class="headerlink" title="3 「自己买的」DURGOD TAURUS K320 茶轴机械键盘"></a>3 「自己买的」DURGOD TAURUS K320 茶轴机械键盘</h2><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/08/03.png" style="zoom:100%"/>
+<h2 id="3-「自己买的」DURGOD-TAURUS-K320-茶轴机械键盘"><a href="#3-「自己买的」DURGOD-TAURUS-K320-茶轴机械键盘" class="headerlink" title="3 「自己买的」DURGOD TAURUS K320 茶轴机械键盘"></a>3 「自己买的」DURGOD TAURUS K320 茶轴机械键盘</h2><img data-src="https://image.progcz.com/2020/08/03.png" style="zoom:100%"/>
 
 <p>当时买这款机械键盘，主要是看中了 PBT 键帽，长期使用不打油的体验也是非常幸福。</p>
-<h2 id="4-「自己买的」Logitech-MX-Master-2S-无线蓝牙鼠标"><a href="#4-「自己买的」Logitech-MX-Master-2S-无线蓝牙鼠标" class="headerlink" title="4 「自己买的」Logitech MX Master 2S 无线蓝牙鼠标"></a>4 「自己买的」Logitech MX Master 2S 无线蓝牙鼠标</h2><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/08/04.png" style="zoom:50%"/>
+<h2 id="4-「自己买的」Logitech-MX-Master-2S-无线蓝牙鼠标"><a href="#4-「自己买的」Logitech-MX-Master-2S-无线蓝牙鼠标" class="headerlink" title="4 「自己买的」Logitech MX Master 2S 无线蓝牙鼠标"></a>4 「自己买的」Logitech MX Master 2S 无线蓝牙鼠标</h2><img data-src="https://image.progcz.com/2020/08/04.png" style="zoom:50%"/>
 
 <p>不解释，办公神器。</p>
-<h2 id="5-「自己买的」AirPods-2-无线蓝牙耳机"><a href="#5-「自己买的」AirPods-2-无线蓝牙耳机" class="headerlink" title="5 「自己买的」AirPods 2 无线蓝牙耳机"></a>5 「自己买的」AirPods 2 无线蓝牙耳机</h2><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/08/05.png" style="zoom:25%"/>
+<h2 id="5-「自己买的」AirPods-2-无线蓝牙耳机"><a href="#5-「自己买的」AirPods-2-无线蓝牙耳机" class="headerlink" title="5 「自己买的」AirPods 2 无线蓝牙耳机"></a>5 「自己买的」AirPods 2 无线蓝牙耳机</h2><img data-src="https://image.progcz.com/2020/08/05.png" style="zoom:25%"/>
 
 <p>MacBook Pro 的耳机孔在右侧，使用的有线耳机总是和使用鼠标的手发生干涉，所以我就入手了 AirPods，在一众无线蓝牙耳机中算是最省心的选择了，连接、音质和通话质量都足够稳定，别无他求。</p>
 <h2 id="6-写在最后"><a href="#6-写在最后" class="headerlink" title="6 写在最后"></a>6 写在最后</h2><p>之前在 V2EX 看到一句话，与君共勉：</p>
@@ -854,7 +854,7 @@
 </blockquote>
 <hr>
 <h2 id="7-更新（2020-11-26）"><a href="#7-更新（2020-11-26）" class="headerlink" title="7 更新（2020-11-26）"></a>7 更新（2020-11-26）</h2><p>惯例，先放张工作桌面 2.0 的整体照片：</p>
-<img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/11/00.jpg" style="zoom:100%"/>
+<img data-src="https://image.progcz.com/2020/11/00.jpg" style="zoom:100%"/>
 
 <p>改动：</p>
 <ul>
@@ -866,7 +866,7 @@
 </li>
 </ul>
 <h2 id="8-更新（2021-05-31）"><a href="#8-更新（2021-05-31）" class="headerlink" title="8 更新（2021-05-31）"></a>8 更新（2021-05-31）</h2><p>可能是最终形态的工作桌面 3.0：</p>
-<p><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/05/11.png"></p>
+<p><img data-src="https://image.progcz.com/2021/05/11.png"></p>
 <p>改动：</p>
 <ul>
 <li><p>MBP 16 背着实在有点重，换成 MBP 13</p>
@@ -897,11 +897,11 @@
     <content><![CDATA[<p>即使新建好了文档，我依然不知道到底该写些什么，但是「写」这个念头就像只怎么也赶不走的乌鸦，一直在我的头顶盘旋。</p>
 <p>也许确实是因为仪式感吧，<strong>每到了辞旧迎新的时候，总该有些「落在纸面」的文字，先跟过去的一年和解，再把自己交代给未来的一年。</strong></p>
 <p>也罢，就让我这个记忆力和行动力都逐渐退化的人，来一场「全年总结」和「新年计划」吧！</p>
-<img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/01/01.jpg" style="zoom:100%"/>
+<img data-src="https://image.progcz.com/2021/01/01.jpg" style="zoom:100%"/>
 
 <span id="more"></span>
 
-<h2 id="1-全年总结"><a href="#1-全年总结" class="headerlink" title="1 全年总结"></a>1 全年总结</h2><h3 id="1-1-失去的五个月"><a href="#1-1-失去的五个月" class="headerlink" title="1.1 失去的五个月"></a>1.1 失去的五个月</h3><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/01/02.jpg" style="zoom:100%"/>
+<h2 id="1-全年总结"><a href="#1-全年总结" class="headerlink" title="1 全年总结"></a>1 全年总结</h2><h3 id="1-1-失去的五个月"><a href="#1-1-失去的五个月" class="headerlink" title="1.1 失去的五个月"></a>1.1 失去的五个月</h3><img data-src="https://image.progcz.com/2021/01/02.jpg" style="zoom:100%"/>
 
 <p>但凡回顾 2020，疫情是怎么都绕不开的话题。</p>
 <p>不论性别，不论国籍，不论贫穷或富有，不论疾病或健康，只要你还是这颗蓝色星球上的原住民，或多或少都会受到疫情的影响，唯一的区别就在于这个「或多或少」。</p>
@@ -913,7 +913,7 @@
 </div>
 
 <p>不是超级英雄，<strong>只能保护好自己，照顾好家人，足够了。</strong></p>
-<h3 id="1-2-十九年寒窗"><a href="#1-2-十九年寒窗" class="headerlink" title="1.2 十九年寒窗"></a>1.2 十九年寒窗</h3><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/01/03.jpg" style="zoom:100%"/>
+<h3 id="1-2-十九年寒窗"><a href="#1-2-十九年寒窗" class="headerlink" title="1.2 十九年寒窗"></a>1.2 十九年寒窗</h3><img data-src="https://image.progcz.com/2021/01/03.jpg" style="zoom:100%"/>
 
 <p>毕业算是改变人生的事情当中，意外指数最低的事情了吧。</p>
 <p>在这种意义下，与其说是改变人生，<strong>不如说是人生早就被安排成了列车的时刻表，毕业这件事情就在单线轨道的某个站点上等着，没有丝毫悬念。</strong></p>
@@ -944,11 +944,11 @@
 <p>至于数量，不想做硬性要求，只求在有大块时间和舒适状态的时候，能想起来读书，而不是刷手机/看视频。</p>
 <h3 id="2-3-按摩-健身"><a href="#2-3-按摩-健身" class="headerlink" title="2.3 按摩/健身"></a>2.3 按摩/健身</h3><p>每周二按摩，每周四健身。</p>
 <h3 id="2-4-旅游"><a href="#2-4-旅游" class="headerlink" title="2.4 旅游"></a>2.4 旅游</h3><p>希望每年能有一次旅游，实际上 2021 的额度已经分给厦门了，毕竟厦大百年校庆，是时候回去看看了。</p>
-<img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/01/04.jpg" style="zoom:100%"/>
+<img data-src="https://image.progcz.com/2021/01/04.jpg" style="zoom:100%"/>
 
 <hr>
 <h2 id="3-番外"><a href="#3-番外" class="headerlink" title="3 番外"></a>3 番外</h2><p>新年第一天，去撸了猫猫狗狗，希望能把这份开心延续一整年吧。</p>
-<img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/01/05.jpg" style="zoom:100%"/>
+<img data-src="https://image.progcz.com/2021/01/05.jpg" style="zoom:100%"/>
 ]]></content>
       <categories>
         <category>总结与计划</category>
@@ -967,12 +967,12 @@
 
 <h2 id="1-Hexo-主题"><a href="#1-Hexo-主题" class="headerlink" title="1 Hexo 主题"></a>1 Hexo 主题</h2><p>在静态博客框架中，Hexo 向来是最受青睐的选择，没有之一。</p>
 <p>Jekyll 作为 GitHub 官方支持的框架，可以直接托管源码而无需手动生成静态网页，Hugo 借助 Go 语言的性能优势，号称全世界最快的框架，然而这两者都有一点远落后于 Hexo，那就是最为关键的<strong>主题生态</strong>。</p>
-<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/04/01.png"></div><div class="group-picture-column"><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/04/02.png"></div></div></div>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://image.progcz.com/2021/04/01.png"></div><div class="group-picture-column"><img data-src="https://image.progcz.com/2021/04/02.png"></div></div></div>
 
 <p>作为一个想搭博客的人来说，审美能对自己胃口才是头等大事，所以主题生态只有枝繁叶茂才能留住众口难调的用户。</p>
 <p>Hexo 使用 Node.js 开发，从语言层面上就吸引了大批优秀的前端工程师，精美主题可以说是层出不穷。</p>
 <p>当然再好的主题也必然有令人不甚满意的地方，这里就把 Butterfly 单拎出来说说问题。</p>
-<h3 id="1-1-Butterfly"><a href="#1-1-Butterfly" class="headerlink" title="1.1 Butterfly"></a>1.1 <a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></h3><p><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/04/03.png"></p>
+<h3 id="1-1-Butterfly"><a href="#1-1-Butterfly" class="headerlink" title="1.1 Butterfly"></a>1.1 <a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></h3><p><img data-src="https://image.progcz.com/2021/04/03.png"></p>
 <p>简洁好看，尤其是首屏的视觉效果，足够吸引眼球。这也是我刚开始重建的第一选择。</p>
 <p>但是这个主题，说得严重一点，「金玉其外，败絮其中。」</p>
 <p>我相信，任何用过 Butterfly 的人，一定会被 <code>_config.butterfly.yml</code> 中混乱的配置给搞得心烦意乱，举个栗子：</p>
@@ -994,27 +994,27 @@
 <ol>
 <li><p>替换站点标题中不规范的部分</p>
 <p> 如果足够细心的话，你就会发现，在每个分类页面中，标题中的冒号都是英文冒号，不符合中文排版规范：</p>
-<p> <img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/04/04.png"></p>
+<p> <img data-src="https://image.progcz.com/2021/04/04.png"></p>
 <p> 替换后：</p>
-<p> <img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/04/05.png"></p>
+<p> <img data-src="https://image.progcz.com/2021/04/05.png"></p>
 </li>
 <li><p>替换归档页面中不规范的部分</p>
 <p> 归档页面中，表达冗余，且英文叹号也不符合中文排版规范：</p>
-<p> <img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/04/06.png"></p>
+<p> <img data-src="https://image.progcz.com/2021/04/06.png"></p>
 <p> 替换后：</p>
-<p> <img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/04/07.png"></p>
+<p> <img data-src="https://image.progcz.com/2021/04/07.png"></p>
 </li>
 <li><p>替换文章信息中不规范的部分</p>
 <p> 这个单纯是我看中文逗号不顺眼，不能表达分类之间的层级关系：</p>
-<p> <img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/04/08.png"></p>
+<p> <img data-src="https://image.progcz.com/2021/04/08.png"></p>
 <p> 替换后：</p>
-<p> <img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/04/09.png"></p>
+<p> <img data-src="https://image.progcz.com/2021/04/09.png"></p>
 </li>
 <li><p>替换页脚中不规范的部分</p>
 <p> 这个也单纯是我看 copyright 字符不顺眼，有点矮：</p>
-<p> <img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/04/10.png"></p>
+<p> <img data-src="https://image.progcz.com/2021/04/10.png"></p>
 <p> 替换后：</p>
-<p> <img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/04/11.png"></p>
+<p> <img data-src="https://image.progcz.com/2021/04/11.png"></p>
 </li>
 <li><p>动画速度调整至 0.3s</p>
  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.animated</span> &#123;</span><br><span class="line">    <span class="attribute">animation-duration</span>: <span class="number">0.3s</span> <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
@@ -1042,7 +1042,7 @@
 <p>但是如你所见，我还是没有重设评论系统。</p>
 <p>真正促使我放弃的，根本原因是<strong>互联网中随处可见的，无知、无营养甚至充满恶意的评论。</strong></p>
 <p>而导火索则是这样一封邮件：</p>
-<p><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/05/01.png"></p>
+<p><img data-src="https://image.progcz.com/2021/05/01.png"></p>
 <span id="more"></span>
 
 <h2 id="1-事情起因（我的猜测）"><a href="#1-事情起因（我的猜测）" class="headerlink" title="1 事情起因（我的猜测）"></a>1 事情起因（我的猜测）</h2><p>这位朋友曾经使用 Cloudflare 搭过 Google Scholar 的镜像网站，突然发现不可用了，于是在 Google 搜索相关信息，看到了我一年前写的这篇文章：<a href="https://progcz.com/posts/use-cf-workers-build-google-and-github-mirrors/">使用 Cloudflare Workers 搭建 Google 和 GitHub 镜像网站</a>，认为是我的分享和传播导致了 Cloudflare 不可用，怒不可遏的同时又看到了我的邮箱，于是就有了上面那封邮件。</p>
@@ -1053,7 +1053,7 @@
 <p>但是这位朋友提到了谷歌学术，说明至少已经到了高等教育的阶段，却依然这么狭隘，让我匪夷所思。</p>
 <p>当然，这种情况不止发生了一次，在评论量较大的博客、在我认为社区氛围很好的 B 站和豆瓣，我都会频繁地看到这类评论，不然我也不会对互联网的评论环境如此失望。</p>
 <h2 id="3-我的回复"><a href="#3-我的回复" class="headerlink" title="3 我的回复"></a>3 我的回复</h2><p>尽管无法理解，但我还是出于本能的 defence，回复了这封邮件：</p>
-<p><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/05/02.png"></p>
+<p><img data-src="https://image.progcz.com/2021/05/02.png"></p>
 <p>看，这也是我不想要评论系统的原因之一，我不想为了这种事情 defence 啊。</p>
 <p>人生已经很累了，照顾好自己的情绪都是一件非常困难的事情，就更不想陷入这种本不该存在的争论之中了。</p>
 ]]></content>
@@ -1069,7 +1069,7 @@
     <title>招商银行朝朝宝：余额宝和零钱通的最佳替代品</title>
     <url>/posts/1620777814/</url>
     <content><![CDATA[<p>当我们看向历史的后视镜，2013 年面世的余额宝确实是一款影响十分深远的产品，它永久地改变了人们对于短期闲置现金的处置方式，更进一步地推动了无现金支付的发展。邯郸学步的零钱通后来也不断壮大，和余额宝一起，成为人们活期理财的首要选择。</p>
-<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/05/03.png"></div><div class="group-picture-column"><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/05/04.png"></div></div></div>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://image.progcz.com/2021/05/03.png"></div><div class="group-picture-column"><img data-src="https://image.progcz.com/2021/05/04.png"></div></div></div>
 
 <p>达成这一切，靠的便是直击用户痛点的两个特性：<strong>高收益率</strong>和<strong>随时支取</strong>。</p>
 <p>然而，眼看着互联网金融的繁荣发展，银行自然不能坐以待毙。</p>
@@ -1077,7 +1077,7 @@
 <span id="more"></span>
 
 <h2 id="1-在余额宝出现之前，用于日常支出的钱都放在哪里？"><a href="#1-在余额宝出现之前，用于日常支出的钱都放在哪里？" class="headerlink" title="1 在余额宝出现之前，用于日常支出的钱都放在哪里？"></a>1 在余额宝出现之前，用于日常支出的钱都放在哪里？</h2><p>无非三个选择：钱包、银行卡的活期账户、支付宝的余额。</p>
-<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/05/05.png"></div><div class="group-picture-column"><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/05/06.png"></div><div class="group-picture-column"><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/05/07.png"></div></div></div>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://image.progcz.com/2021/05/05.png"></div><div class="group-picture-column"><img data-src="https://image.progcz.com/2021/05/06.png"></div><div class="group-picture-column"><img data-src="https://image.progcz.com/2021/05/07.png"></div></div></div>
 
 <p>这样看来，钱包和银行卡的活期账户明显是更优的选择，因为</p>
 <ul>
@@ -1096,7 +1096,7 @@
 
 <p>但是，用户还有个小问题：我为啥不选择其他货币基金？</p>
 <h3 id="2-2-随时支取"><a href="#2-2-随时支取" class="headerlink" title="2.2 随时支取"></a>2.2 随时支取</h3><p>我们都知道，余额宝可以用于扫码支付、淘宝购物。</p>
-<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/05/08.png"></div><div class="group-picture-column"><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/05/09.png"></div></div></div>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://image.progcz.com/2021/05/08.png"></div><div class="group-picture-column"><img data-src="https://image.progcz.com/2021/05/09.png"></div></div></div>
 
 <p>其支撑就在于，不同于当时的其他货币基金，余额宝提供了 T+0 的快速赎回方式。</p>
 <p>好，第二个极具吸引力的特性向我们走来：<strong>我把钱放在余额宝里，24 小时均可取出，几分钟内到账。</strong></p>
@@ -1121,7 +1121,7 @@
 </blockquote>
 <p>当然，收益率会不会像余额宝一样下滑，还需要持续观察，至少现在是高的对吧。</p>
 <h3 id="4-2-管理方面"><a href="#4-2-管理方面" class="headerlink" title="4.2 管理方面"></a>4.2 管理方面</h3><p>朝朝宝支持支付宝支付，微信支付，银行转账，ATM 取款，还信用卡、花呗和贷款，购买银行理财和基金等，如果不出意外的话，应该还支持 Apple Pay 或者其他 Pay（我没试过）。</p>
-<p><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/05/10.png"></p>
+<p><img data-src="https://image.progcz.com/2021/05/10.png"></p>
 <p>我只需要每月初在朝朝宝里放 1W 整，不管是支付宝还是微信支付，在扫码后选择使用银行卡支付即可。</p>
 <p>这样的话，我就可以集中管理生活中各个方面的支出情况，我直接大呼过瘾。</p>
 <div class="note warning"><p>需要注意的是，朝朝宝最多可转入 5W，每日也最多可转出 5W，对于日常支出较多的人来说可能不是很友好。</p>
@@ -1147,7 +1147,7 @@
     <content><![CDATA[<p>从去年开始，女朋友就一直念着想去上海迪士尼乐园，然而疫情使得计划一拖再拖，直到上周六才如愿以偿。</p>
 <p>不得不说，迪士尼乐园的确是真实世界中最接近于「童话王国」的地方，迪士尼作品中的经典形象在这里都触手可及。你可以是杰克船长的水手，也可以是冰雪女王的朋友；你可以坐在蜜罐里和小熊维尼打招呼，也可以跟着小飞侠穿梭在城市的上空。</p>
 <p>迪士尼满足你的童心、少女心，以及对于浪漫的一切幻想。<del>只要你肯花钱。</del></p>
-<p><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/06/25.png"></p>
+<p><img data-src="https://image.progcz.com/2021/06/25.png"></p>
 <span id="more"></span>
 
 <div class="note info"><p>友情提示：上海迪士尼乐园的政策几乎每月一变，可能导致攻略失效，比如很多攻略中提到的 FP 早就不复存在了，所以以下内容与其称为攻略，不如说是记录，仅供参考。</p>
@@ -1176,19 +1176,19 @@
 </li>
 </ol>
 <p>放张盗来的图，热门项目基本一览无余。</p>
-<p><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/06/26.png"></p>
+<p><img data-src="https://image.progcz.com/2021/06/26.png"></p>
 <p>再来分享一波自己拍的照片。</p>
 <p>两个必看的舞台剧：风暴来临·杰克船长之惊天特技大冒险 &amp; 冰雪奇缘·欢唱盛会。</p>
-<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/06/27.png"></div><div class="group-picture-column"><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/06/28.png"></div></div></div>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://image.progcz.com/2021/06/27.png"></div><div class="group-picture-column"><img data-src="https://image.progcz.com/2021/06/28.png"></div></div></div>
 
 <p>在漫威总部见到了钢铁侠的历代战甲，还碰到了钢铁侠的 COS，可惜是个视频没办法传上来。</p>
-<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/06/29.png"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/06/30.png"></div><div class="group-picture-column"><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/06/31.png"></div></div></div>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://image.progcz.com/2021/06/29.png"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://image.progcz.com/2021/06/30.png"></div><div class="group-picture-column"><img data-src="https://image.progcz.com/2021/06/31.png"></div></div></div>
 
 <p>夜晚的旋转木马，可以说是如梦如幻了。</p>
-<p><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/06/32.png"></p>
+<p><img data-src="https://image.progcz.com/2021/06/32.png"></p>
 <h2 id="6-就餐"><a href="#6-就餐" class="headerlink" title="6 就餐"></a>6 就餐</h2><p>图个省事，我和女朋友在园区内吃的午饭和晚饭，每顿人均 100 左右。</p>
 <p>午饭在加勒比海盗附近的巴博萨烧烤，左图的秋刀鱼套餐很不错。</p>
-<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/06/33.png"></div><div class="group-picture-column"><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/06/34.png"></div></div></div>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://image.progcz.com/2021/06/33.png"></div><div class="group-picture-column"><img data-src="https://image.progcz.com/2021/06/34.png"></div></div></div>
 
 <p>晚饭在创极速光轮附近的星露台餐厅，钢铁侠牛肉汉堡非常难吃，不放图了。</p>
 ]]></content>
@@ -1275,7 +1275,7 @@
 
 <h2 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1 冒泡排序"></a>1 冒泡排序</h2><h3 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h3><p>遍历数组 <code>nums</code>，对于遍历到的元素 <code>nums[i]</code>，如果 <code>nums[i] &gt; nums[i+1]</code>，那么交换 <code>nums[i]</code> 和 <code>nums[i+1]</code>，这样一轮下来，最后一位必然是 <code>nums</code> 中最大的数字，在下一轮遍历中可以避开这一元素。不断重复这一过程，直到无可遍历元素为止。</p>
 <p>可以参考来自<a href="https://www.runoob.com/w3cnote/bubble-sort.html">菜鸟教程</a>的动图：</p>
-<p><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/10/15/01.gif"></p>
+<p><img data-src="https://image.progcz.com/2021/10/15/01.gif"></p>
 <h3 id="C-实现"><a href="#C-实现" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble_sort</span><span class="params">(std::vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = n<span class="number">-1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">        <span class="keyword">bool</span> has_swap = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; ++j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] &gt; nums[j+<span class="number">1</span>]) &#123;</span><br><span class="line">                std::<span class="built_in">swap</span>(nums[j], nums[j+<span class="number">1</span>]);</span><br><span class="line">                has_swap = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!has_swap) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <div class="note info"><p>这里的实现，是在冒泡排序的基础实现之上，加了「早停」的思想，即：在一轮冒泡之后，如果没有发生交换，那么说明数组已经有序，直接退出即可。</p>
@@ -1284,17 +1284,17 @@
 
 <h2 id="2-插入排序"><a href="#2-插入排序" class="headerlink" title="2 插入排序"></a>2 插入排序</h2><h3 id="基本思想-1"><a href="#基本思想-1" class="headerlink" title="基本思想"></a>基本思想</h3><p>遍历数组 <code>nums</code>，对于遍历到的元素 <code>nums[i]</code>，嵌套遍历并后移其前的元素，直到找到比 <code>nums[i]</code> 小的元素，将 <code>nums[i]</code> 插入其后即可。</p>
 <p>可以参考来自<a href="https://www.runoob.com/w3cnote/insertion-sort.html">菜鸟教程</a>的动图：</p>
-<p><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/10/15/02.gif"></p>
+<p><img data-src="https://image.progcz.com/2021/10/15/02.gif"></p>
 <h3 id="C-实现-1"><a href="#C-实现-1" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertion_sort</span><span class="params">(std::vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> val = nums[i], j = i<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (; j &gt;= <span class="number">0</span> &amp;&amp; nums[j] &gt; val; --j) &#123;</span><br><span class="line">            nums[j+<span class="number">1</span>] = nums[j];</span><br><span class="line">        &#125;</span><br><span class="line">        nums[j+<span class="number">1</span>] = val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="3-选择排序"><a href="#3-选择排序" class="headerlink" title="3 选择排序"></a>3 选择排序</h2><h3 id="基本思想-2"><a href="#基本思想-2" class="headerlink" title="基本思想"></a>基本思想</h3><p>遍历数组 <code>nums</code>，对于遍历到的元素 <code>nums[i]</code>，嵌套遍历其后的所有元素，找出其中的最小值 <code>nums[min_num_idx]</code>，将 <code>nums[i]</code> 与 <code>nums[min_num_idx]</code> 进行交换即可。</p>
 <p>可以参考来自<a href="https://www.runoob.com/w3cnote/selection-sort.html">菜鸟教程</a>的动图：</p>
-<p><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/10/15/03.gif"></p>
+<p><img data-src="https://image.progcz.com/2021/10/15/03.gif"></p>
 <h3 id="C-实现-2"><a href="#C-实现-2" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">selection_sort</span><span class="params">(std::vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> min_num_idx = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; n; ++j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] &lt; nums[min_num_idx]) &#123;</span><br><span class="line">                min_num_idx = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        std::<span class="built_in">swap</span>(nums[i], nums[min_num_idx]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="4-归并排序"><a href="#4-归并排序" class="headerlink" title="4 归并排序"></a>4 归并排序</h2><h3 id="基本思想-3"><a href="#基本思想-3" class="headerlink" title="基本思想"></a>基本思想</h3><p>将数组 <code>nums</code> 拆分为左右两个子数组，不断向下递归，直到无法拆分为止。拷贝左右两个子数组，使用两个指针不断比较，较小者放入原数组中，自此向上递归。</p>
 <p>可以参考来自<a href="https://www.runoob.com/w3cnote/merge-sort.html">菜鸟教程</a>的动图：</p>
-<p><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/10/15/04.gif"></p>
+<p><img data-src="https://image.progcz.com/2021/10/15/04.gif"></p>
 <h3 id="C-实现-3"><a href="#C-实现-3" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><p>递归版本：</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_sort_recursive_core</span><span class="params">(std::vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> beg, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (beg &gt;= end) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = beg + (end - beg) / <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">merge_sort_recursive_core</span>(nums, beg, mid);</span><br><span class="line">    <span class="built_in">merge_sort_recursive_core</span>(nums, mid+<span class="number">1</span>, end);</span><br><span class="line">    <span class="function">std::vector&lt;<span class="keyword">int</span>&gt; <span class="title">left_sub_arr</span><span class="params">(nums.begin()+beg, nums.begin()+mid+<span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="function">std::vector&lt;<span class="keyword">int</span>&gt; <span class="title">right_sub_arr</span><span class="params">(nums.begin()+mid+<span class="number">1</span>, nums.begin()+end+<span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="keyword">int</span> i = beg, left_idx = <span class="number">0</span>, right_idx = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (left_idx &lt;= mid-beg &amp;&amp; right_idx &lt;= end-mid<span class="number">-1</span>) &#123;</span><br><span class="line">        nums[i++] = left_sub_arr[left_idx] &lt; right_sub_arr[right_idx] ?</span><br><span class="line">            left_sub_arr[left_idx++] : right_sub_arr[right_idx++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (left_idx &lt;= mid-beg) &#123;</span><br><span class="line">        nums[i++] = left_sub_arr[left_idx++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (right_idx &lt;= end-mid<span class="number">-1</span>) &#123;</span><br><span class="line">        nums[i++] = right_sub_arr[right_idx++];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_sort_recursive</span><span class="params">(std::vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">    <span class="built_in">merge_sort_recursive_core</span>(nums, <span class="number">0</span>, n<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -1303,7 +1303,7 @@
 
 <h2 id="5-快速排序"><a href="#5-快速排序" class="headerlink" title="5 快速排序"></a>5 快速排序</h2><h3 id="基本思想-4"><a href="#基本思想-4" class="headerlink" title="基本思想"></a>基本思想</h3><p>在数组 <code>nums</code> 中，挑选出一个基准数字 <code>pivot</code>，一般为数组头部的数字。使用两个指针 <code>beg</code> 和 <code>end</code> 分别从数组头部和尾部遍历，<code>nums[end]</code> 比 <code>pivot</code> 小者挪至 <code>beg</code> 处，<code>nums[beg]</code> 比 <code>pivot</code> 大者挪至 <code>end</code> 处，从而保证在 <code>beg</code> 和 <code>end</code> 相遇时，相遇位置左侧的所有元素均小于 <code>pivot</code>，相遇位置右侧的所有元素均大于 <code>pivot</code>。之后递归地处理左右两个子数组即可。</p>
 <p>可以参考来自<a href="https://www.runoob.com/w3cnote/quick-sort-2.html">菜鸟教程</a>的动图：</p>
-<p><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/10/15/05.gif"></p>
+<p><img data-src="https://image.progcz.com/2021/10/15/05.gif"></p>
 <h3 id="C-实现-4"><a href="#C-实现-4" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><p>递归版本：</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">partition_recursive</span><span class="params">(std::vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> beg, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (beg &gt;= end) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> pivot = nums[beg], <span class="keyword">beg_t</span> = beg, <span class="keyword">end_t</span> = end;</span><br><span class="line">    <span class="keyword">while</span> (beg &lt; end) &#123;</span><br><span class="line">        <span class="keyword">while</span> (beg &lt; end &amp;&amp; nums[end] &gt; pivot) --end;</span><br><span class="line">        nums[beg] = nums[end];</span><br><span class="line">        <span class="keyword">while</span> (beg &lt; end &amp;&amp; nums[beg] &lt;= pivot) ++beg;</span><br><span class="line">        nums[end] = nums[beg];</span><br><span class="line">    &#125;</span><br><span class="line">    nums[beg] = pivot;</span><br><span class="line">    <span class="built_in">partition_recursive</span>(nums, <span class="keyword">beg_t</span>, beg<span class="number">-1</span>);</span><br><span class="line">    <span class="built_in">partition_recursive</span>(nums, beg+<span class="number">1</span>, <span class="keyword">end_t</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort_recursive</span><span class="params">(std::vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">    <span class="built_in">partition_recursive</span>(nums, <span class="number">0</span>, n<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -1313,7 +1313,7 @@
 <h2 id="6-计数排序"><a href="#6-计数排序" class="headerlink" title="6 计数排序"></a>6 计数排序</h2><h3 id="基本思想-5"><a href="#基本思想-5" class="headerlink" title="基本思想"></a>基本思想</h3><p>计数排序适用于：数据的范围不大，方差不大，且均为离散值。</p>
 <p>在数组 <code>nums</code> 中，找到最小值 <code>min_num</code> 和最大值 <code>max_num</code>，就可以得到 <code>nums</code> 中数字的范围，将这个范围表示为计数数组 <code>cnts</code>，将 <code>nums</code> 中数字在对应索引处进行计数，最后将 <code>cnts</code> 中的数字依次填回 <code>nums</code> 即可。</p>
 <p>可以参考来自<a href="https://www.runoob.com/w3cnote/counting-sort.html">菜鸟教程</a>的动图：</p>
-<p><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/10/15/06.gif"></p>
+<p><img data-src="https://image.progcz.com/2021/10/15/06.gif"></p>
 <h3 id="C-实现-5"><a href="#C-实现-5" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">counting_sort</span><span class="params">(std::vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (nums.<span class="built_in">empty</span>()) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> min_num = INT_MAX, max_num = INT_MIN;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> num : nums) &#123;</span><br><span class="line">        min_num = <span class="built_in">min</span>(min_num, num);</span><br><span class="line">        max_num = <span class="built_in">max</span>(max_num, num);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">cnts</span><span class="params">(max_num-min_num+<span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> num : nums) &#123;</span><br><span class="line">        ++cnts[num-min_num];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> idx = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; max_num-min_num+<span class="number">1</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = cnts[i]; j &gt; <span class="number">0</span>; --j) &#123;</span><br><span class="line">            nums[idx++] = min_num + i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
@@ -1854,7 +1854,7 @@
 <li><p>最后将 <code>pre</code> 移动至 <code>cur</code> 的位置，将 <code>cur</code> 移动至 <code>nxt</code> 的位置</p>
 </li>
 </ol>
-<p>可以参考这个动图：<a href="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/10/26/01.gif">How to Reverse Linked List</a></p>
+<p>可以参考这个动图：<a href="https://image.progcz.com/2021/10/26/01.gif">How to Reverse Linked List</a></p>
 <h3 id="C-实现"><a href="#C-实现" class="headerlink" title="C++ 实现"></a>C++ 实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!head || !head-&gt;next) <span class="keyword">return</span> head;</span><br><span class="line">        ListNode* pre = <span class="literal">nullptr</span>, *cur = head, *nxt = <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">while</span> (cur) &#123;</span><br><span class="line">            nxt = cur-&gt;next;</span><br><span class="line">            cur-&gt;next = pre;</span><br><span class="line">            pre = cur;</span><br><span class="line">            cur = nxt;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pre;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <h2 id="2-排序链表"><a href="#2-排序链表" class="headerlink" title="2 排序链表"></a>2 排序链表</h2><p><a href="https://leetcode.com/problems/sort-list">LeetCode 148. Sort List</a></p>
@@ -1875,146 +1875,6 @@
         <tag>数据结构与算法</tag>
         <tag>面试</tag>
         <tag>Linked List</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>微软（苏州）面试经历：从入门到入职</title>
-    <url>/posts/1638593506/</url>
-    <content><![CDATA[<p>年末，微软面试终于告一段落，目前已经签定 Offer Letter，处于背调阶段，不出意外的话，月底就会入职。</p>
-<p>在准备面试的过程中，一众大佬的面经给了我很多启发，如今到了薪火相传的时候，希望我的面经对你也能有所帮助。</p>
-<p><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/12/07/01.png"></p>
-<span id="more"></span>
-
-<div class="note success"><p><strong>微软内推，可以发送邮件至 <a href="mailto:progcz@yeah.net">progcz@yeah.net</a>，记得附上简历、心仪的岗位及链接（可以<a href="https://careers.microsoft.com/us/en/search-results">官网</a>搜索）和简单的自我介绍哦。</strong></p>
-</div>
-
-<h2 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h2><p>面经，向来是典型的「小马过河」问题。不同的人有着不同的教育和工作经历，装备等级在一定程度上影响着打怪难度，所以<strong>你我的背景越相近，面经才越具备参考价值。</strong></p>
-<h3 id="1-1-教育经历"><a href="#1-1-教育经历" class="headerlink" title="1.1 教育经历"></a>1.1 教育经历</h3><p>2017 年本科毕业于厦门大学测控技术与仪器专业，2020 年硕士毕业于中国科学技术大学控制工程专业。所以，我并非计算机科班出身，更多是靠选修和自学来接触的编程。</p>
-<h3 id="1-2-工作经历"><a href="#1-2-工作经历" class="headerlink" title="1.2 工作经历"></a>1.2 工作经历</h3><p>2020 年入职字节跳动（上海），担任推荐算法工程师。至于为什么离开字节，我想这应该是下一篇文章的主题了，写在正式离开字节之后。</p>
-<h3 id="1-3-面试岗位"><a href="#1-3-面试岗位" class="headerlink" title="1.3 面试岗位"></a>1.3 面试岗位</h3><p>微软（苏州），Windows 365 软件开发工程师。</p>
-<blockquote>
-<p>JD 参考：<a href="https://careers.microsoft.com/us/en/job/1168023/Windows-365-Software-Engineer">https://careers.microsoft.com/us/en/job/1168023/Windows-365-Software-Engineer</a></p>
-</blockquote>
-<h2 id="2-简历"><a href="#2-简历" class="headerlink" title="2 简历"></a>2 简历</h2><p>如下所示，我并没有套用模板，只是参考了下简历一般需要哪些信息，然后用 Word 最基础的功能，做了一份够简的简历出来。</p>
-<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/12/07/02.png"></div><div class="group-picture-column"><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/12/07/03.png"></div></div></div>
-
-<p>几点可能有用的建议：</p>
-<ul>
-<li><p>准备中、英两版简历，做在同一个 Word 文件中，导入同一个 PDF 文件中。</p>
-</li>
-<li><p>保持简洁，重要的信息，尤其是与所面岗位相契合的信息，应该大书特书，占最大的版面。</p>
-</li>
-</ul>
-<h2 id="3-人生问题"><a href="#3-人生问题" class="headerlink" title="3 人生问题"></a>3 人生问题</h2><p><strong>开个文档，针对面试中常见的人生问题，把答案提前准备一遍，每个答案都尽量保持在 5 - 10 分钟。</strong></p>
-<p>准备的过程，其实也是与自己对话的过程，因此这样做并不是为了弄虚作假，而是为了在被问到的时候，能够从容应对，逻辑清晰地表达内心想法。</p>
-<p>比如：</p>
-<ul>
-<li><p>为什么想离开上一家公司？为什么想加入我们这家公司？</p>
-</li>
-<li><p>简单介绍一下简历上的某个项目？你在其中承担哪一部分的工作？遇到最大的挑战是什么？</p>
-</li>
-<li><p>未来的职业规划是什么？想成为一个什么样的工程师？</p>
-</li>
-<li><p>简单介绍一下自己的优缺点？</p>
-</li>
-<li><p>有什么想问我的吗？</p>
-</li>
-</ul>
-<h2 id="4-算法题目"><a href="#4-算法题目" class="headerlink" title="4 算法题目"></a>4 算法题目</h2><p>优先刷下 LeetCode 的 <a href="https://leetcode.com/problemset/all/?listId=wpwgkgt&page=1">Top Interview Questions</a>，难度在 Medium 及以下即可。</p>
-<p>几点可能有用的建议：</p>
-<ul>
-<li><p>每道题目限定 20 分钟，没做出来直接去看 Discuss 里 Most Votes 的答案（如果英文吃力，可以参考 <a href="https://www.cnblogs.com/grandyang/p/4606334.html">LeetCode All in One</a> 项目），看完之后自己手写一遍。</p>
-</li>
-<li><p>不要满足于仅一种解法，要问这么几个问题：</p>
-<ul>
-<li><p>现在这个解法，时间复杂度、空间复杂度是多少？</p>
-</li>
-<li><p>还有没有解法，可以降低时间复杂度，或者降低空间复杂度，或者写法上更简洁？</p>
-</li>
-</ul>
-</li>
-<li><p>会讲思路，在写代码前能把解法口头描述出来。</p>
-</li>
-<li><p>会写测试代码和测试用例，在运行前能考虑到尽量多的 corner case，在运行后能根据 error case 分析代码中的 bug。</p>
-  <details class="note info"><summary><p>面试过程中，推荐使用 LeetCode 的 <a href="https://leetcode.com/playground/">Playground</a> 编写代码，相比 <a href="https://codeshare.io/">Codeshare</a>，Playground 可以在线编译并运行，测试起来非常方便<strong>（微软的面试官都非常注重测试）</strong>。</p>
-</summary>
-<p>比如，我在<a href="/posts/1633654398/">常见排序算法的 C++ 实现、复杂度和稳定性分析</a>中给出的 <a href="https://leetcode.com/playground/gZfypPAn">Playground</a>：</p>
-<p><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/12/07/04.png"></p>
-
-</details></li>
-</ul>
-<h2 id="5-面试"><a href="#5-面试" class="headerlink" title="5 面试"></a>5 面试</h2><p>简单记录一下我的面试过程，以供参考。</p>
-<h3 id="5-1-第一轮面试"><a href="#5-1-第一轮面试" class="headerlink" title="5.1 第一轮面试"></a>5.1 第一轮面试</h3><p>常规，聊工作项目，做算法题目。</p>
-<ul>
-<li><p>算法题目：给定一个由 <code>0</code> 和 <code>1</code> 组成的矩阵，从左上角出发，只能向右或向下移动，<code>0</code> 表示可以通行，<code>1</code> 表示不可通行，求解到达右下角的不同路径的数量。原题参考：<a href="https://leetcode.com/problems/unique-paths-ii/">LeetCode 63. Unique Paths II</a></p>
-<p>  解法：动态规划，维护一个同样尺寸的矩阵，矩阵中的每个值代表从左上角到这一格的不同路径的数量，那么容易得到，每个值都是其左侧格（如有）的值与其上方格（如有）的值之和，而该矩阵左上角的值确定为 <code>1</code>，则从左上角开始遍历更新，最终返回右下角的值即可。</p>
-  <div class="note success"><p>上述解法写完之后，我主动与面试官进一步讲了，如何将空间复杂度从 <code>O(n^2)</code> 优化至 <code>O(n)</code>：不需要维护整个矩阵，只需要维护遍历位置的当前行即可。我相信这应该是个加分项。</p>
-</div></li>
-</ul>
-<h3 id="5-2-第二轮面试（连续三场）"><a href="#5-2-第二轮面试（连续三场）" class="headerlink" title="5.2 第二轮面试（连续三场）"></a>5.2 第二轮面试（连续三场）</h3><p>连续三场面试真的很累，一定注意精力管理。</p>
-<h4 id="第一场"><a href="#第一场" class="headerlink" title="第一场"></a>第一场</h4><p>科大师兄，聊学校，聊毕业论文（这个让我有点意外，我以为社招只会聊工作项目），做算法题目。</p>
-<ul>
-<li><p>算法题目：给定一个 <code>long long</code> 类型的数字，以 <code>long long</code> 类型返回其 reverse 后的数字。相似题目参考：<a href="https://leetcode.com/problems/reverse-integer/">LeetCode 7. Reverse Integer</a></p>
-<p>  解法：题目并不难，主要考察如何处理 corner case，比如负数、结果值溢出、中间值溢出等情况。</p>
-</li>
-</ul>
-<h4 id="第二场"><a href="#第二场" class="headerlink" title="第二场"></a>第二场</h4><p>常规，聊工作项目，做算法题目。</p>
-<ul>
-<li><p>算法题目一：给定一个尺寸为 n 的数组，其值均在 [1, n+1] 之间，有且只有一个数字不在这个数组中，找出这个数字。</p>
-<p>  解法：题目并不难，实际上简单的数学运算就可以，但是面试官还是问了有没有其他解法，最后写了一个使用两轮异或运算的解法。</p>
-</li>
-<li><p>算法题目二：给定一个数组和一个目标值，在数组中找到三数之和，使其最接近目标值。原题参考：<a href="https://leetcode.com/problems/3sum-closest">LeetCode 16. 3Sum Closest</a></p>
-<p>  解法：面试过程中只给了暴力解法，面试结束后才想起来，使用头尾双指针的解法，可以把时间复杂度优化到 <code>O(n^2)</code>。</p>
-</li>
-</ul>
-<h4 id="第三场"><a href="#第三场" class="headerlink" title="第三场"></a>第三场</h4><p>科大师兄，聊工作项目，问 C++ 题目，做算法题目。</p>
-<ul>
-<li><p>C++ 题目：C++ 11 相比于 C++ 98，有什么新特性？智能指针 <code>unique_ptr</code> 是怎么实现资源独占的？</p>
-<p>  答案：第一个问题老生常谈，可以参考<a href="/posts/1634567000/#%E7%9B%B8%E6%AF%94%E4%BA%8E-C-98%EF%BC%8CC-11-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%89%B9%E6%80%A7%EF%BC%9F">面试中常见的 C++ 问题汇总</a>；第二个问题，面试过程中猜错了，正确答案是 <code>unique_ptr</code> 使用 <code>= delete</code> 禁用了拷贝构造函数。</p>
-</li>
-<li><p>算法题目：对于带有随机指针的链表，进行深拷贝。原题参考：<a href="https://leetcode.com/problems/copy-list-with-random-pointer/">LeetCode 138. Copy List with Random Pointer</a></p>
-<p>  解法：第一轮遍历，先不考虑随机指针的拷贝，遍历原链表，构造新链表，在遍历过程中，将新链表节点的随机指针指向原链表节点，同时维护从原链表节点到新链表节点的映射；第二轮遍历，遍历新链表，从新链表节点的随机指针找到原链表节点，再从原链表节点的随机指针找到原链表随机节点，再从映射找到新链表随机节点，赋值给新链表的随机指针即可。</p>
-  <div class="note info"><p>解法的难度是一方面，测试的难度才是真正考察的点。</p>
-<p>在面试过程中，为了方便测试，我实现了 <code>MyListNode* vec2list(vector&lt;pair&lt;int, int&gt;&gt;&amp; vec);</code> 将测试用例从数组形式构造为链表形式，实现了 <code>bool valid(MyListNode* root_1, MyListNode* root_2);</code> 用来判断两个链表是否互为深拷贝的关系。</p>
-<p>尤其是 <code>valid</code> 这个函数，千算万算还是百密一疏，面试官最后指出了其中可能存在的漏洞。</p>
-</div></li>
-</ul>
-<h3 id="5-3-第三轮面试"><a href="#5-3-第三轮面试" class="headerlink" title="5.3 第三轮面试"></a>5.3 第三轮面试</h3><p>最后一面是跟老板（竟然也是科大师兄）面，邮件里的 PRINCIPAL GROUP SW ENG MGR 格外显眼。</p>
-<p>其实能到最后一面，说明候选人在技术方面没什么太大问题，<strong>老板考察更多的是，候选人是否具备成为优秀工程师的基本素养。</strong></p>
-<ul>
-<li><p>人生问题：</p>
-<ol>
-<li><p>为什么想离开字节，为什么想加入微软？</p>
-</li>
-<li><p>希望成为一个什么样的工程师？</p>
-</li>
-<li><p>在字节有什么样的成长？</p>
-</li>
-<li><p>对 Windows 365 产品有什么样的理解？</p>
-</li>
-</ol>
-</li>
-<li><p>算法题目：实现 sqrt 运算，计算算术平方根，结果向下取整。原题参考：<a href="https://leetcode.com/problems/sqrtx/">LeetCode 69. Sqrt(x)</a></p>
-<p>  解法：二分法。</p>
-</li>
-</ul>
-<h2 id="6-致谢"><a href="#6-致谢" class="headerlink" title="6 致谢"></a>6 致谢</h2><ul>
-<li><p><a href="http://mp.weixin.qq.com/s?__biz=MzIwODE4Nzg2NQ==&mid=2650548534&idx=1&sn=7b8b5f417e3e9423f6584bdc69328abc&chksm=8f0e7180b879f8964f57da433275455d456930a891594ebf9fd213c40c1e08def7e929e4a95a&scene=21#wechat_redirect">微软面经分享：如何更好地做好面试准备</a></p>
-</li>
-<li><p><a href="https://www.paincker.com/microsoft-interview">微软面试经历和相关思考总结</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>生活</category>
-        <category>经历</category>
-      </categories>
-      <tags>
-        <tag>面试</tag>
-        <tag>微软</tag>
-        <tag>苏州</tag>
-        <tag>社招</tag>
-        <tag>内推</tag>
       </tags>
   </entry>
   <entry>
@@ -2094,10 +1954,150 @@
       </tags>
   </entry>
   <entry>
+    <title>微软（苏州）面试经历：从入门到入职</title>
+    <url>/posts/1638593506/</url>
+    <content><![CDATA[<p>年末，微软面试终于告一段落，目前已经签定 Offer Letter，处于背调阶段，不出意外的话，月底就会入职。</p>
+<p>在准备面试的过程中，一众大佬的面经给了我很多启发，如今到了薪火相传的时候，希望我的面经对你也能有所帮助。</p>
+<p><img data-src="https://image.progcz.com/2021/12/07/01.png"></p>
+<span id="more"></span>
+
+<div class="note success"><p><strong>微软内推，可以发送邮件至 <a href="mailto:progcz@yeah.net">progcz@yeah.net</a>，记得附上简历、心仪的岗位及链接（可以<a href="https://careers.microsoft.com/us/en/search-results">官网</a>搜索）和简单的自我介绍哦。</strong></p>
+</div>
+
+<h2 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h2><p>面经，向来是典型的「小马过河」问题。不同的人有着不同的教育和工作经历，装备等级在一定程度上影响着打怪难度，所以<strong>你我的背景越相近，面经才越具备参考价值。</strong></p>
+<h3 id="1-1-教育经历"><a href="#1-1-教育经历" class="headerlink" title="1.1 教育经历"></a>1.1 教育经历</h3><p>2017 年本科毕业于厦门大学测控技术与仪器专业，2020 年硕士毕业于中国科学技术大学控制工程专业。所以，我并非计算机科班出身，更多是靠选修和自学来接触的编程。</p>
+<h3 id="1-2-工作经历"><a href="#1-2-工作经历" class="headerlink" title="1.2 工作经历"></a>1.2 工作经历</h3><p>2020 年入职字节跳动（上海），担任推荐算法工程师。至于为什么离开字节，我想这应该是下一篇文章的主题了，写在正式离开字节之后。</p>
+<h3 id="1-3-面试岗位"><a href="#1-3-面试岗位" class="headerlink" title="1.3 面试岗位"></a>1.3 面试岗位</h3><p>微软（苏州），Windows 365 软件开发工程师。</p>
+<blockquote>
+<p>JD 参考：<a href="https://careers.microsoft.com/us/en/job/1168023/Windows-365-Software-Engineer">https://careers.microsoft.com/us/en/job/1168023/Windows-365-Software-Engineer</a></p>
+</blockquote>
+<h2 id="2-简历"><a href="#2-简历" class="headerlink" title="2 简历"></a>2 简历</h2><p>如下所示，我并没有套用模板，只是参考了下简历一般需要哪些信息，然后用 Word 最基础的功能，做了一份够简的简历出来。</p>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://image.progcz.com/2021/12/07/02.png"></div><div class="group-picture-column"><img data-src="https://image.progcz.com/2021/12/07/03.png"></div></div></div>
+
+<p>几点可能有用的建议：</p>
+<ul>
+<li><p>准备中、英两版简历，做在同一个 Word 文件中，导入同一个 PDF 文件中。</p>
+</li>
+<li><p>保持简洁，重要的信息，尤其是与所面岗位相契合的信息，应该大书特书，占最大的版面。</p>
+</li>
+</ul>
+<h2 id="3-人生问题"><a href="#3-人生问题" class="headerlink" title="3 人生问题"></a>3 人生问题</h2><p><strong>开个文档，针对面试中常见的人生问题，把答案提前准备一遍，每个答案都尽量保持在 5 - 10 分钟。</strong></p>
+<p>准备的过程，其实也是与自己对话的过程，因此这样做并不是为了弄虚作假，而是为了在被问到的时候，能够从容应对，逻辑清晰地表达内心想法。</p>
+<p>比如：</p>
+<ul>
+<li><p>为什么想离开上一家公司？为什么想加入我们这家公司？</p>
+</li>
+<li><p>简单介绍一下简历上的某个项目？你在其中承担哪一部分的工作？遇到最大的挑战是什么？</p>
+</li>
+<li><p>未来的职业规划是什么？想成为一个什么样的工程师？</p>
+</li>
+<li><p>简单介绍一下自己的优缺点？</p>
+</li>
+<li><p>有什么想问我的吗？</p>
+</li>
+</ul>
+<h2 id="4-算法题目"><a href="#4-算法题目" class="headerlink" title="4 算法题目"></a>4 算法题目</h2><p>优先刷下 LeetCode 的 <a href="https://leetcode.com/problemset/all/?listId=wpwgkgt&page=1">Top Interview Questions</a>，难度在 Medium 及以下即可。</p>
+<p>几点可能有用的建议：</p>
+<ul>
+<li><p>每道题目限定 20 分钟，没做出来直接去看 Discuss 里 Most Votes 的答案（如果英文吃力，可以参考 <a href="https://www.cnblogs.com/grandyang/p/4606334.html">LeetCode All in One</a> 项目），看完之后自己手写一遍。</p>
+</li>
+<li><p>不要满足于仅一种解法，要问这么几个问题：</p>
+<ul>
+<li><p>现在这个解法，时间复杂度、空间复杂度是多少？</p>
+</li>
+<li><p>还有没有解法，可以降低时间复杂度，或者降低空间复杂度，或者写法上更简洁？</p>
+</li>
+</ul>
+</li>
+<li><p>会讲思路，在写代码前能把解法口头描述出来。</p>
+</li>
+<li><p>会写测试代码和测试用例，在运行前能考虑到尽量多的 corner case，在运行后能根据 error case 分析代码中的 bug。</p>
+  <details class="note info"><summary><p>面试过程中，推荐使用 LeetCode 的 <a href="https://leetcode.com/playground/">Playground</a> 编写代码，相比 <a href="https://codeshare.io/">Codeshare</a>，Playground 可以在线编译并运行，测试起来非常方便<strong>（微软的面试官都非常注重测试）</strong>。</p>
+</summary>
+<p>比如，我在<a href="/posts/1633654398/">常见排序算法的 C++ 实现、复杂度和稳定性分析</a>中给出的 <a href="https://leetcode.com/playground/gZfypPAn">Playground</a>：</p>
+<p><img data-src="https://image.progcz.com/2021/12/07/04.png"></p>
+
+</details></li>
+</ul>
+<h2 id="5-面试"><a href="#5-面试" class="headerlink" title="5 面试"></a>5 面试</h2><p>简单记录一下我的面试过程，以供参考。</p>
+<h3 id="5-1-第一轮面试"><a href="#5-1-第一轮面试" class="headerlink" title="5.1 第一轮面试"></a>5.1 第一轮面试</h3><p>常规，聊工作项目，做算法题目。</p>
+<ul>
+<li><p>算法题目：给定一个由 <code>0</code> 和 <code>1</code> 组成的矩阵，从左上角出发，只能向右或向下移动，<code>0</code> 表示可以通行，<code>1</code> 表示不可通行，求解到达右下角的不同路径的数量。原题参考：<a href="https://leetcode.com/problems/unique-paths-ii/">LeetCode 63. Unique Paths II</a></p>
+<p>  解法：动态规划，维护一个同样尺寸的矩阵，矩阵中的每个值代表从左上角到这一格的不同路径的数量，那么容易得到，每个值都是其左侧格（如有）的值与其上方格（如有）的值之和，而该矩阵左上角的值确定为 <code>1</code>，则从左上角开始遍历更新，最终返回右下角的值即可。</p>
+  <div class="note success"><p>上述解法写完之后，我主动与面试官进一步讲了，如何将空间复杂度从 <code>O(n^2)</code> 优化至 <code>O(n)</code>：不需要维护整个矩阵，只需要维护遍历位置的当前行即可。我相信这应该是个加分项。</p>
+</div></li>
+</ul>
+<h3 id="5-2-第二轮面试（连续三场）"><a href="#5-2-第二轮面试（连续三场）" class="headerlink" title="5.2 第二轮面试（连续三场）"></a>5.2 第二轮面试（连续三场）</h3><p>连续三场面试真的很累，一定注意精力管理。</p>
+<h4 id="第一场"><a href="#第一场" class="headerlink" title="第一场"></a>第一场</h4><p>科大师兄，聊学校，聊毕业论文（这个让我有点意外，我以为社招只会聊工作项目），做算法题目。</p>
+<ul>
+<li><p>算法题目：给定一个 <code>long long</code> 类型的数字，以 <code>long long</code> 类型返回其 reverse 后的数字。相似题目参考：<a href="https://leetcode.com/problems/reverse-integer/">LeetCode 7. Reverse Integer</a></p>
+<p>  解法：题目并不难，主要考察如何处理 corner case，比如负数、结果值溢出、中间值溢出等情况。</p>
+</li>
+</ul>
+<h4 id="第二场"><a href="#第二场" class="headerlink" title="第二场"></a>第二场</h4><p>常规，聊工作项目，做算法题目。</p>
+<ul>
+<li><p>算法题目一：给定一个尺寸为 n 的数组，其值均在 [1, n+1] 之间，有且只有一个数字不在这个数组中，找出这个数字。</p>
+<p>  解法：题目并不难，实际上简单的数学运算就可以，但是面试官还是问了有没有其他解法，最后写了一个使用两轮异或运算的解法。</p>
+</li>
+<li><p>算法题目二：给定一个数组和一个目标值，在数组中找到三数之和，使其最接近目标值。原题参考：<a href="https://leetcode.com/problems/3sum-closest">LeetCode 16. 3Sum Closest</a></p>
+<p>  解法：面试过程中只给了暴力解法，面试结束后才想起来，使用头尾双指针的解法，可以把时间复杂度优化到 <code>O(n^2)</code>。</p>
+</li>
+</ul>
+<h4 id="第三场"><a href="#第三场" class="headerlink" title="第三场"></a>第三场</h4><p>科大师兄，聊工作项目，问 C++ 题目，做算法题目。</p>
+<ul>
+<li><p>C++ 题目：C++ 11 相比于 C++ 98，有什么新特性？智能指针 <code>unique_ptr</code> 是怎么实现资源独占的？</p>
+<p>  答案：第一个问题老生常谈，可以参考<a href="/posts/1634567000/#%E7%9B%B8%E6%AF%94%E4%BA%8E-C-98%EF%BC%8CC-11-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%89%B9%E6%80%A7%EF%BC%9F">面试中常见的 C++ 问题汇总</a>；第二个问题，面试过程中猜错了，正确答案是 <code>unique_ptr</code> 使用 <code>= delete</code> 禁用了拷贝构造函数。</p>
+</li>
+<li><p>算法题目：对于带有随机指针的链表，进行深拷贝。原题参考：<a href="https://leetcode.com/problems/copy-list-with-random-pointer/">LeetCode 138. Copy List with Random Pointer</a></p>
+<p>  解法：第一轮遍历，先不考虑随机指针的拷贝，遍历原链表，构造新链表，在遍历过程中，将新链表节点的随机指针指向原链表节点，同时维护从原链表节点到新链表节点的映射；第二轮遍历，遍历新链表，从新链表节点的随机指针找到原链表节点，再从原链表节点的随机指针找到原链表随机节点，再从映射找到新链表随机节点，赋值给新链表的随机指针即可。</p>
+  <div class="note info"><p>解法的难度是一方面，测试的难度才是真正考察的点。</p>
+<p>在面试过程中，为了方便测试，我实现了 <code>MyListNode* vec2list(vector&lt;pair&lt;int, int&gt;&gt;&amp; vec);</code> 将测试用例从数组形式构造为链表形式，实现了 <code>bool valid(MyListNode* root_1, MyListNode* root_2);</code> 用来判断两个链表是否互为深拷贝的关系。</p>
+<p>尤其是 <code>valid</code> 这个函数，千算万算还是百密一疏，面试官最后指出了其中可能存在的漏洞。</p>
+</div></li>
+</ul>
+<h3 id="5-3-第三轮面试"><a href="#5-3-第三轮面试" class="headerlink" title="5.3 第三轮面试"></a>5.3 第三轮面试</h3><p>最后一面是跟老板（竟然也是科大师兄）面，邮件里的 PRINCIPAL GROUP SW ENG MGR 格外显眼。</p>
+<p>其实能到最后一面，说明候选人在技术方面没什么太大问题，<strong>老板考察更多的是，候选人是否具备成为优秀工程师的基本素养。</strong></p>
+<ul>
+<li><p>人生问题：</p>
+<ol>
+<li><p>为什么想离开字节，为什么想加入微软？</p>
+</li>
+<li><p>希望成为一个什么样的工程师？</p>
+</li>
+<li><p>在字节有什么样的成长？</p>
+</li>
+<li><p>对 Windows 365 产品有什么样的理解？</p>
+</li>
+</ol>
+</li>
+<li><p>算法题目：实现 sqrt 运算，计算算术平方根，结果向下取整。原题参考：<a href="https://leetcode.com/problems/sqrtx/">LeetCode 69. Sqrt(x)</a></p>
+<p>  解法：二分法。</p>
+</li>
+</ul>
+<h2 id="6-致谢"><a href="#6-致谢" class="headerlink" title="6 致谢"></a>6 致谢</h2><ul>
+<li><p><a href="http://mp.weixin.qq.com/s?__biz=MzIwODE4Nzg2NQ==&mid=2650548534&idx=1&sn=7b8b5f417e3e9423f6584bdc69328abc&chksm=8f0e7180b879f8964f57da433275455d456930a891594ebf9fd213c40c1e08def7e929e4a95a&scene=21#wechat_redirect">微软面经分享：如何更好地做好面试准备</a></p>
+</li>
+<li><p><a href="https://www.paincker.com/microsoft-interview">微软面试经历和相关思考总结</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>生活</category>
+        <category>经历</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+        <tag>微软</tag>
+        <tag>苏州</tag>
+        <tag>社招</tag>
+        <tag>内推</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>从「腾讯应届生声讨加班事件」谈谈国内大厂的工作现状</title>
     <url>/posts/1643205354/</url>
     <content><![CDATA[<p>昨天在 V2EX 看到<a href="https://v2ex.com/t/830681">腾讯应届生声讨加班事件的帖子</a>，心中不免有些共鸣，想想自己曾是大厂员工，也有过同样的感受，于是想借此热点，聊聊国内大厂，说说一枚螺丝钉的想法。</p>
-<p><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2022/01/26/01.jpg"></p>
+<p><img data-src="https://image.progcz.com/2022/01/26/01.jpg"></p>
 <span id="more"></span>
 
 <p>如果你还不了解事件的来龙去脉，可以去看看主人公 folezhang 自己整理的<a href="https://docs.google.com/document/d/1kxKl06QCgboPSkCULkWX-IvYHx93ZgBm/edit"><strong>《关于声讨加班事件的说明》</strong></a>，条理清晰，逻辑严密。<del>如果套用字节内部的梗来说就是，这位老哥非常善文。</del></p>
@@ -2105,10 +2105,10 @@
 <p>需要注意的是，文档放在 Google Docs，需要科学上网。（写到这里，我的第一想法还是，为啥不用更容易在国内传播的腾讯文档。随即才意识到，如果是腾讯文档，那大概就不会有传播的机会了吧。）</p>
 </blockquote>
 <p>简单来讲，企微部门在给员工颁奖时，在评语中赞扬了该员工的加班行为：</p>
-<img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2022/01/26/02.png" width=70%>
+<img data-src="https://image.progcz.com/2022/01/26/02.png" width=70%>
 
 <p>folezhang 当场怒怼：</p>
-<img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2022/01/26/03.png" width=70%>
+<img data-src="https://image.progcz.com/2022/01/26/03.png" width=70%>
 
 <p>说起来，我挺能理解 folezhang 的愤怒。</p>
 <p><strong>这怒气里，有一小部分针对获奖同事及各位同僚，怒其为了工作而不顾身体。</strong></p>
@@ -2131,7 +2131,7 @@
 <p><strong>入职以后，公司给每位员工发了一台电脑，表面上看是每个人拥有了一台电脑，其实是给每台电脑配了一个人。</strong></p>
 </blockquote>
 <p>我也看到过这样一张图，不免苦笑：</p>
-<p><img data-src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2022/01/26/04.jpg"></p>
+<p><img data-src="https://image.progcz.com/2022/01/26/04.jpg"></p>
 <p>写到最后，不知怎么突然想起了马丁·路德·金的 <em>I Have a Dream</em>，这场为了推动黑人争取民权而进行的演讲，彼时彼刻，恰如此时此刻。</p>
 ]]></content>
       <categories>
