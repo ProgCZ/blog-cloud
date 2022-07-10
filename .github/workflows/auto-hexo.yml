@@ -43,6 +43,22 @@ jobs:
         git commit -m "update at `date '+%Y-%m-%d %H:%M:%S'`"
         git push origin master
 
+    - name: Login Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Upload to Azure Storage
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+          az storage blob upload-batch --account-name progczcomstorage --auth-mode key -d '$web' -s blog-source-ws/public
+
+    - name: Logout Azure
+      run: |
+        az logout
+      if: always()
+
     - name: Sleep
       run: |
         sleep 30
