@@ -48,6 +48,12 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+    - name: Clear Azure Storage
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+          az storage blob delete-batch --account-name progczcomstorage --auth-mode key -s '$web'
+
     - name: Upload to Azure Storage
       uses: azure/CLI@v1
       with:
