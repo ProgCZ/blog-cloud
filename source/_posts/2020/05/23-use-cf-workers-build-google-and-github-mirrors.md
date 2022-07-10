@@ -40,19 +40,19 @@ tags:
 
 这没啥好说的，前往 [Cloudflare 官网](https://www.cloudflare.com/)自行注册并登录，然后**点击「Workers」。**
 
-<img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/05/06.png" style="zoom:100%"/>
+<img src="https://image.progcz.com/2020/05/06.png" style="zoom:100%"/>
 
 ## 2 创建新的 Worker 应用
 
 进入 Workers 页面之后，新用户需要设置用户名（比如 `progcz`），然后**点击「创建 Worker」。**
 
-<img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/05/07.png" style="zoom:100%"/>
+<img src="https://image.progcz.com/2020/05/07.png" style="zoom:100%"/>
 
 ## 3 部署 Worker 应用
 
 **自行修改应用名（比如 `test`），将 [index.js](https://github.com/ProgCZ/code-cloud-a/blob/master/2020/05/cf-workers-mirrors/index.js) 中的代码拷贝至脚本中，点击「保存并部署」，**然后就可以通过 <https://test.progcz.workers.dev/>（注意替换应用名 `test` 和用户名 `progcz`）访问 Google 的镜像网站了。
 
-<img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/05/08.png" style="zoom:100%"/>
+<img src="https://image.progcz.com/2020/05/08.png" style="zoom:100%"/>
 
 ## 4 自定义 index.js 脚本
 

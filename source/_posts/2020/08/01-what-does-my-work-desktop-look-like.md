@@ -19,13 +19,13 @@ tags:
 
 先来张工作桌面的整体照片过过瘾：
 
-<img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/08/00.png" style="zoom:100%"/>
+<img src="https://image.progcz.com/2020/08/00.png" style="zoom:100%"/>
 
 <!-- more -->
 
 ## 1 「公司发的」MacBook Pro 16
 
-<img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/08/01.png" style="zoom:100%"/>
+<img src="https://image.progcz.com/2020/08/01.png" style="zoom:100%"/>
 
 整个桌面都是围绕着 MacBook Pro 16 来布置的，具体配置：
 
@@ -45,7 +45,7 @@ P.S. 散热架也是公司发的，感觉薅了太多羊毛。
 
 ## 2 「公司发的」Dell U2720Q 4K 显示器
 
-<img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/08/02.png" style="zoom:100%"/>
+<img src="https://image.progcz.com/2020/08/02.png" style="zoom:100%"/>
 
 两台 4K 显示器的幸福，我以前无法想象，现在除了开会和回家以外，MacBook Pro 基本上都是合盖的状态，因为两个显示器已经够我看的了，多了怕鼠标都挪不过来。
 
@@ -55,19 +55,19 @@ P.S. 散热架也是公司发的，感觉薅了太多羊毛。
 
 ## 3 「自己买的」DURGOD TAURUS K320 茶轴机械键盘
 
-<img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/08/03.png" style="zoom:100%"/>
+<img src="https://image.progcz.com/2020/08/03.png" style="zoom:100%"/>
 
 当时买这款机械键盘，主要是看中了 PBT 键帽，长期使用不打油的体验也是非常幸福。
 
 ## 4 「自己买的」Logitech MX Master 2S 无线蓝牙鼠标
 
-<img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/08/04.png" style="zoom:50%"/>
+<img src="https://image.progcz.com/2020/08/04.png" style="zoom:50%"/>
 
 不解释，办公神器。
 
 ## 5 「自己买的」AirPods 2 无线蓝牙耳机
 
-<img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/08/05.png" style="zoom:25%"/>
+<img src="https://image.progcz.com/2020/08/05.png" style="zoom:25%"/>
 
 MacBook Pro 的耳机孔在右侧，使用的有线耳机总是和使用鼠标的手发生干涉，所以我就入手了 AirPods，在一众无线蓝牙耳机中算是最省心的选择了，连接、音质和通话质量都足够稳定，别无他求。
 
@@ -83,7 +83,7 @@ MacBook Pro 的耳机孔在右侧，使用的有线耳机总是和使用鼠标�
 
 惯例，先放张工作桌面 2.0 的整体照片：
 
-<img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/11/00.jpg" style="zoom:100%"/>
+<img src="https://image.progcz.com/2020/11/00.jpg" style="zoom:100%"/>
 
 改动：
 
@@ -97,7 +97,7 @@ MacBook Pro 的耳机孔在右侧，使用的有线耳机总是和使用鼠标�
 
 可能是最终形态的工作桌面 3.0：
 
-![](https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2021/05/11.png)
+![](https://image.progcz.com/2021/05/11.png)
 
 改动：
 

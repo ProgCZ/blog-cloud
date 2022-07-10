@@ -14,7 +14,7 @@ tags:
 
 刚好，我有一个闲置已久的微信公众号，于是联系到经办人将自己的微信公众号「卖」了出去。**两个工作日**的时间就把整个流程走完了，大部分手续都是经办人的事情，需要我来配合的地方并不多。
 
-<img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/05/03.png" style="zoom:100%"/>
+<img src="https://image.progcz.com/2020/05/03.png" style="zoom:100%"/>
 
 <!-- more -->
 
@@ -54,6 +54,6 @@ tags:
 
 ## 2 推广
 
-<img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/05/04.png" style="zoom:100%"/>
+<img src="https://image.progcz.com/2020/05/04.png" style="zoom:100%"/>
 
 **如果你也有一个在 2018 年 03 月 12 日之前注册而又闲置的微信公众号，可以通过「下方的评论区」或「[关于](/about/)页面的其他联系方式」联系到我，**我可以把这个比较靠谱的经办人推荐给你。

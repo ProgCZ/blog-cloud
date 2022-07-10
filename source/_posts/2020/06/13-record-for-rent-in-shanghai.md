@@ -14,7 +14,7 @@ tags:
 
 所以，趁着自己的记忆还够新鲜，记录一下这次在上海租房的经历，为以后的自己留下亿点经验和教训。
 
-<img src="https://cdn.staticaly.com/gh/ProgCZ/image-cloud-a/master/2020/06/00.png" style="zoom:100%"/>
+<img src="https://image.progcz.com/2020/06/00.png" style="zoom:100%"/>
 
 <!-- more -->
 
