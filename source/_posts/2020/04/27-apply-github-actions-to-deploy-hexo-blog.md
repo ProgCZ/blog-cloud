@@ -23,7 +23,7 @@ GitHub Actions 入门教程：<https://p3terx.com/archives/github-actions-starte
 
 ## 1 分支设计
 
-[ProgCZ/progcz.github.io](https://github.com/ProgCZ/progcz.github.io) 包含两个分支：
+[ProgCZ/blog-cloud](https://github.com/ProgCZ/blog-cloud) 包含两个分支：
 
 - `master` 分支：用于存放**解析后的静态文件**，也就是托管于 GitHub Pages 的静态网页，无需在本地保存。
 
@@ -63,7 +63,7 @@ GitHub Actions 入门教程：<https://p3terx.com/archives/github-actions-starte
 
     完整依赖文件如下所示：
 
-    ```json code https://github.com/ProgCZ/progcz.github.io/blob/source/package.json package.json
+    ```json code https://github.com/ProgCZ/blog-cloud/blob/source/package.json package.json
     {
       "name": "hexo-site",
       "version": "0.0.0",
@@ -132,7 +132,7 @@ GitHub Actions 入门教程：<https://p3terx.com/archives/github-actions-starte
 
 ### 2.2 完整代码
 
-```yaml code https://github.com/ProgCZ/progcz.github.io/blob/source/.github/workflows/auto-hexo.yml auto-hexo.yml
+```yaml code https://github.com/ProgCZ/blog-cloud/blob/source/.github/workflows/auto-hexo.yml auto-hexo.yml
 name: Auto Hexo
 on: push
 jobs:
@@ -185,6 +185,6 @@ jobs:
 
 ## 3 自动部署效果
 
-可以在[这里](https://github.com/ProgCZ/progcz.github.io/actions?query=branch%3Asource)看到，部署时间大概在 40 秒左右，随着文章数量不断增多，部署时间也会不断增加，但是总不可能超过 6 小时的限制（GitHub Actions 的使用限制可以在[这里](https://help.github.com/en/actions/getting-started-with-github-actions/about-github-actions#usage-limits)查看）。
+可以在[这里](https://github.com/ProgCZ/blog-cloud/actions?query=branch%3Asource)看到，部署时间大概在 40 秒左右，随着文章数量不断增多，部署时间也会不断增加，但是总不可能超过 6 小时的限制（GitHub Actions 的使用限制可以在[这里](https://help.github.com/en/actions/getting-started-with-github-actions/about-github-actions#usage-limits)查看）。
 
 只要 GitHub 没有警告版本过期，上述方案就可以一直使用下去，即使 GitHub 警告版本过期，也可以尝试更改版本号，一般都会向下兼容，所以目测支撑个四五年应该没有问题。
