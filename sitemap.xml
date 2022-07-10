@@ -29,6 +29,15 @@
   </url>
   
   <url>
+    <loc>https://progcz.com/posts/1657454864/</loc>
+    
+    <lastmod>2022-07-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://progcz.com/posts/1643205354/</loc>
     
     <lastmod>2022-01-27</lastmod>
@@ -587,6 +596,41 @@
   
   <url>
     <loc>https://progcz.com/tags/%E5%8A%A0%E7%8F%AD/</loc>
+    <lastmod>2022-07-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://progcz.com/tags/Azure/</loc>
+    <lastmod>2022-07-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://progcz.com/tags/Azure-Storage/</loc>
+    <lastmod>2022-07-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://progcz.com/tags/Azure-CDN/</loc>
+    <lastmod>2022-07-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://progcz.com/tags/Azure-DNS/</loc>
+    <lastmod>2022-07-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://progcz.com/tags/Blog/</loc>
     <lastmod>2022-07-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
