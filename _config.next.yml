@@ -50,8 +50,8 @@ darkmode: true
 # ---------------------------------------------------------------
 
 favicon:
-  small: https://cdn.staticaly.com/gh/ProgCZ/progcz.github.io/master/images/favicon-16x16.png
-  medium: https://cdn.staticaly.com/gh/ProgCZ/progcz.github.io/master/images/favicon-32x32.png
+  small: /images/favicon-16x16.png
+  medium: /images/favicon-32x32.png
   #apple_touch_icon: /images/apple-touch-icon-next.png
   #safari_pinned_tab: /images/logo.svg
   #android_manifest: /manifest.json
@@ -127,7 +127,7 @@ sidebar:
 # Sidebar Avatar
 avatar:
   # Replace the default image and set the url here.
-  url: https://cdn.staticaly.com/gh/ProgCZ/progcz.github.io/master/images/avatar.jpg
+  url: /images/avatar.jpg
   # If true, the avatar will be dispalyed in circle.
   rounded: true
   # If true, the avatar will be rotated with the cursor.
@@ -259,8 +259,8 @@ reward_settings:
   #comment: Buy me a coffee
 
 reward:
-  wechatpay: https://cdn.staticaly.com/gh/ProgCZ/progcz.github.io/master/images/donate-wechat.png
-  alipay: https://cdn.staticaly.com/gh/ProgCZ/progcz.github.io/master/images/donate-alipay.png
+  wechatpay: /images/donate-wechat.png
+  alipay: /images/donate-alipay.png
   #paypal: /images/paypal.png
   #bitcoin: /images/bitcoin.png
 
@@ -946,6 +946,6 @@ vendors:
 
 # Assets
 # Accelerate delivery of static files using a CDN
-css: https://cdn.staticaly.com/gh/ProgCZ/progcz.github.io/master/css
+css: css
 js: js
 images: images
