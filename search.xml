@@ -2145,11 +2145,11 @@
       </tags>
   </entry>
   <entry>
-    <title>使用 Azure Storage、CDN 和 DNS 服务部署静态博客</title>
+    <title>使用 Azure Storage、CDN 和 DNS 部署 Hexo 静态博客</title>
     <url>/posts/1657454864/</url>
     <content><![CDATA[<p>停更的这小半年，我自己身上发生了很多事情，自认为还算坚强地硬撑了过来。</p>
 <p>尽管还在阴影之中，没有完全脱离，但是生活还得继续，折腾反而能让我从痛苦的父进程里 fork 出来，在这个只有我自己存在的子进程里，时间的流速也大大加快，这可是我求之不得的事情。</p>
-<p>所以，趁着周末我又来折腾了，这次是把之前托管在 GitHub Pages 的静态博客，迁移到了 Azure Storage 和 CDN，顺便迁移了 DNS。</p>
+<p>所以，趁着周末我又来折腾了，这次是把之前托管在 GitHub Pages 的 Hexo 静态博客，迁移到了 Azure Storage 和 CDN，顺便迁移了 DNS。</p>
 <p><img data-src="https://image.progcz.com/2022/07/10/01.png"></p>
 <span id="more"></span>
 
@@ -2167,6 +2167,30 @@
 <h2 id="2-现在的方案"><a href="#2-现在的方案" class="headerlink" title="2 现在的方案"></a>2 现在的方案</h2><ul>
 <li>博客和图片的 GitHub 仓库都不变，只是 CI/CD 里多加了几步，把 Hexo 解析后的 HTML 文件上传至 Azure Storage，借助 Azure CDN 分发，再用 Azure DNS 绑上自己的域名。</li>
 </ul>
+<p>具体来讲：</p>
+<ol>
+<li><p>创建名为 blog-rg 的 Resource group，用来存放与博客相关的各个 resource。</p>
+</li>
+<li><p>创建名为 progczcomstorage 的 Storage account，创建时可以通过 Redundancy 选择不同的可用性。</p>
+ <div class="note info"><p>Redundancy 我选择了最低也最便宜的 LRS。说是最低，其实也保证了 11 个 9 的 SLA（<a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy#locally-redundant-storage">文档</a>），对于我这个小博客来说也绰绰有余了，毕竟 repo 还有源文件，即便数据丢了大不了重新上传一遍。</p>
+</div></li>
+<li><p>进入 progczcomstorage -&gt; Overview -&gt; Capabilities，开启 Static website 功能，自动创建名为 $web 的 container。</p>
+</li>
+<li><p>参考 <a href="https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blobs-static-site-github-actions?tabs=userlevel">Use GitHub Actions workflow to deploy your static website in Azure Storage</a> 把 repo 中的静态文件上传至 $web。</p>
+ <div class="note warning"><p>这里面有个坑是，第一次上传完之后，更新静态文件后再次上传会失败，因为默认是不会 overwrite 的。其实，即便加了 overwrite 的 arguments，如果你的更新是删除了某个文件的话，上传之后，原来那个文件依然存在，理论上用户还是可以访问到。</p>
+<p>所以，我在上传之前，会先把 $web 里面的所有文件清空，这样的做法会增加 cost，但好像也没多少钱，满足一下自己的强迫症也还不错。</p>
+<figure class="highlight yaml"><figcaption><span>code</span><a href="https://github.com/ProgCZ/blog-cloud/blob/source/.github/workflows/auto-hexo.yml">auto-hexo.yml</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Login</span> <span class="string">Azure</span></span><br><span class="line">  <span class="attr">uses:</span> <span class="string">azure/login@v1</span></span><br><span class="line">  <span class="attr">with:</span></span><br><span class="line">    <span class="attr">creds:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.AZURE_CREDENTIALS</span> <span class="string">&#125;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Clear</span> <span class="string">Azure</span> <span class="string">Storage</span></span><br><span class="line">  <span class="attr">uses:</span> <span class="string">azure/CLI@v1</span></span><br><span class="line">  <span class="attr">with:</span></span><br><span class="line">    <span class="attr">inlineScript:</span> <span class="string">|</span></span><br><span class="line">      <span class="string">az</span> <span class="string">storage</span> <span class="string">blob</span> <span class="string">delete-batch</span> <span class="string">--account-name</span> <span class="string">progczcomstorage</span> <span class="string">--auth-mode</span> <span class="string">key</span> <span class="string">-s</span> <span class="string">&#x27;$web&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Upload</span> <span class="string">to</span> <span class="string">Azure</span> <span class="string">Storage</span></span><br><span class="line">  <span class="attr">uses:</span> <span class="string">azure/CLI@v1</span></span><br><span class="line">  <span class="attr">with:</span></span><br><span class="line">    <span class="attr">inlineScript:</span> <span class="string">|</span></span><br><span class="line">      <span class="string">az</span> <span class="string">storage</span> <span class="string">blob</span> <span class="string">upload-batch</span> <span class="string">--account-name</span> <span class="string">progczcomstorage</span> <span class="string">--auth-mode</span> <span class="string">key</span> <span class="string">-d</span> <span class="string">&#x27;$web&#x27;</span> <span class="string">-s</span> <span class="string">blog-source-ws/public</span> <span class="string">--pattern</span> <span class="string">&quot;[!.]*&quot;</span> <span class="string">--overwrite</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Logout</span> <span class="string">Azure</span></span><br><span class="line">  <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">    <span class="string">az</span> <span class="string">logout</span></span><br><span class="line">  <span class="attr">if:</span> <span class="string">always()</span></span><br></pre></td></tr></table></figure>
+</div></li>
+<li><p>一切顺利的话，已经可以通过 {StorageAccountName}.z7.web.core.windows.net 访问到博客了。</p>
+ <div class="note warning"><p>这里有个槽点是，目前没有办法关掉 {StorageAccountName}.z7.web.core.windows.net 的 public access，即使关掉 Storage account 的 public access 也不行。这意味着，搜索引擎还是会爬到这个 url 的，很难受。</p>
+</div></li>
+<li><p>进入 progczcomstorage -&gt; Azure CDN，创建名为 <code>progczcom-cdn</code> 的 CDN profile 和名为 <code>progczcom</code> 的 CDN endpoint，指向 {StorageAccountName}.z7.web.core.windows.net。</p>
+</li>
+<li><p>一切顺利的话，已经可以通过 {CDNEndpointName}.azureedge.net 访问到博客了。</p>
+</li>
+<li><p>（最好）参考 <a href="https://docs.microsoft.com/en-us/azure/dns/dns-delegate-domain-azure-dns">Host your domain in Azure DNS</a> 把自定义域名接入 Azure DNS，因为 Azure DNS 可以在新建 record 的时候，通过 Alias record set 直接指向 CDN 的 resource，相信我这会省掉很多麻烦。</p>
+</li>
+</ol>
 <hr>
 <p>未完待续，困了，明天再写。</p>
 ]]></content>
@@ -2175,6 +2199,7 @@
         <category>折腾</category>
       </categories>
       <tags>
+        <tag>Hexo</tag>
         <tag>Azure</tag>
         <tag>Azure Storage</tag>
         <tag>Azure CDN</tag>
