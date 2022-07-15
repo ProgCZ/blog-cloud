@@ -2216,8 +2216,6 @@
 </li>
 </ol>
 <h2 id="3-待改进的地方"><a href="#3-待改进的地方" class="headerlink" title="3 待改进的地方"></a>3 待改进的地方</h2><ul>
-<li><p>需要添加自定义 404 页面。</p>
-</li>
 <li><p>需要安装 ImageBot 来压缩图片，节省 CDN 流量，提升加载速度。</p>
 </li>
 <li><p>（咬牙切齿）最好找到办法关掉 {StorageAccountName}.z7.web.core.windows.net 的 public access。</p>
