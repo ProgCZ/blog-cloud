@@ -70,7 +70,7 @@ jobs:
       uses: azure/CLI@v2
       with:
         inlineScript: |
-          az cdn endpoint purge -g blog-rg -n progczcom --profile-name progczcom-cdn --content-paths "/*"
+          az cdn endpoint purge -g blog-rg -n progczcom --profile-name progczcom-cdn --content-paths "/*" --no-wait true
 
     - name: Logout Azure
       run: |
