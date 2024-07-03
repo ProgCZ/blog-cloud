@@ -66,16 +66,13 @@ jobs:
         inlineScript: |
           az storage blob upload-batch --account-name progczcomstorage --auth-mode login -d '$web' -s blog-source-ws/public --pattern "[!.]*" --overwrite true
 
+    - name: Purge Azure CDN
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+          az cdn endpoint purge -g blog-rg -n progczcom --profile-name progczcom-cdn --content-paths "/*"
+
     - name: Logout Azure
       run: |
         az logout
       if: always()
-
-    - name: Sleep
-      run: |
-        sleep 30
-
-    - name: Ping Google
-      uses: wei/curl@v1
-      with:
-        args: http://www.google.com/ping?sitemap=https://progcz.com/sitemap.xml
