@@ -464,6 +464,62 @@
   </url>
   
   <url>
+    <loc>https://progcz.com/tags/%E8%85%BE%E8%AE%AF/</loc>
+    <lastmod>2024-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://progcz.com/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/</loc>
+    <lastmod>2024-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://progcz.com/tags/%E5%8A%A0%E7%8F%AD/</loc>
+    <lastmod>2024-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://progcz.com/tags/Azure/</loc>
+    <lastmod>2024-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://progcz.com/tags/Azure-Storage/</loc>
+    <lastmod>2024-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://progcz.com/tags/Azure-CDN/</loc>
+    <lastmod>2024-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://progcz.com/tags/Azure-DNS/</loc>
+    <lastmod>2024-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://progcz.com/tags/Blog/</loc>
+    <lastmod>2024-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://progcz.com/tags/%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2024-07-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -590,62 +646,6 @@
   </url>
   
   <url>
-    <loc>https://progcz.com/tags/%E8%85%BE%E8%AE%AF/</loc>
-    <lastmod>2024-07-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/</loc>
-    <lastmod>2024-07-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/tags/%E5%8A%A0%E7%8F%AD/</loc>
-    <lastmod>2024-07-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/tags/Azure/</loc>
-    <lastmod>2024-07-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/tags/Azure-Storage/</loc>
-    <lastmod>2024-07-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/tags/Azure-CDN/</loc>
-    <lastmod>2024-07-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/tags/Azure-DNS/</loc>
-    <lastmod>2024-07-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/tags/Blog/</loc>
-    <lastmod>2024-07-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://progcz.com/tags/Vite/</loc>
     <lastmod>2024-07-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -718,6 +718,13 @@
   </url>
   
   <url>
+    <loc>https://progcz.com/categories/%E7%94%9F%E6%B4%BB/%E7%9C%8B%E6%B3%95/</loc>
+    <lastmod>2024-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://progcz.com/categories/%E7%94%9F%E6%B4%BB/%E6%8A%98%E8%85%BE/</loc>
     <lastmod>2024-07-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -733,13 +740,6 @@
   
   <url>
     <loc>https://progcz.com/categories/%E7%94%9F%E6%B4%BB/%E7%BB%8F%E5%8E%86/</loc>
-    <lastmod>2024-07-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://progcz.com/categories/%E7%94%9F%E6%B4%BB/%E7%9C%8B%E6%B3%95/</loc>
     <lastmod>2024-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
