@@ -2,6 +2,10 @@ name: Auto Hexo
 
 on: push
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   Work:
     runs-on: ubuntu-22.04
@@ -46,19 +50,21 @@ jobs:
     - name: Login Azure
       uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
     - name: Clear Azure Storage
       uses: azure/CLI@v1
       with:
         inlineScript: |
-          az storage blob delete-batch --account-name progczcomstorage --auth-mode key -s '$web'
+          az storage blob delete-batch --account-name progczcomstorage --auth-mode login -s '$web'
 
     - name: Upload to Azure Storage
       uses: azure/CLI@v1
       with:
         inlineScript: |
-          az storage blob upload-batch --account-name progczcomstorage --auth-mode key -d '$web' -s blog-source-ws/public --pattern "[!.]*" --overwrite true
+          az storage blob upload-batch --account-name progczcomstorage --auth-mode login -d '$web' -s blog-source-ws/public --pattern "[!.]*" --overwrite true
 
     - name: Logout Azure
       run: |
