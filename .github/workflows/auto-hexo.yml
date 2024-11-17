@@ -1,6 +1,9 @@
 name: Auto Hexo
 
-on: push
+on:
+  push:
+    branches:
+      - 'source'
 
 permissions:
   id-token: write
